@@ -1,11 +1,11 @@
-export class AzureCompendia {
+export class AzureCampaignCompendia {
 
     /**
      * The id of the package in the manifest
      */
-    static id = 'azure-compendia';
+    static moduleId = 'azure-campaign-compendia';
 
-    static modulePath = `modules/${AzureCompendia.id}`;
+    static modulePath = `modules/${this.moduleId}`;
 
     /**
      * A small helper function which leverages developer mode flags to gate debug logs.
@@ -14,10 +14,10 @@ export class AzureCompendia {
      * @param  {...any} args - what to log
     */
     static logIf(force, ...args) {
-        const shouldLog = force || game.modules.get('_dev-mode')?.api?.getPackageDebugValue(this.id);
+        const shouldLog = force || game.modules.get('_dev-mode')?.api?.getPackageDebugValue(this.moduleId);
 
         if (shouldLog) {
-            console.log(this.id, '|', ...args);
+            console.log(this.moduleId, '|', ...args);
         }
     }
 
@@ -48,7 +48,7 @@ export class AzureCompendia {
      * @returns {string}
      */
     static prefixed(name) {
-        return `${moduleId}.${name}`;
+        return `${this.moduleId}.${name}`;
     }
 
     /**
@@ -56,6 +56,6 @@ export class AzureCompendia {
      * @returns {string}
      */
     static getTemplatePath(path) {
-        return `${AzureCompendia.modulePath}/templates/${path}.hbs`;
+        return `${this.modulePath}/templates/${path}.hbs`;
     }
 }

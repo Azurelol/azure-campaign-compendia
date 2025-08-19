@@ -22,20 +22,20 @@
 
     <!-- PRESSURE POOLS (3 cards with dice + connectors) -->
     <section class="sk-events">
-        {{> "modules/fu-azure-compendia/templates/partials/pressure-pool-view.hbs" data=system.prelude}}
+        {{> "modules/azure-campaign-compendia/templates/partials/pressure-pool-view.hbs" data=system.prelude}}
 
-        {{> "modules/fu-azure-compendia/templates/partials/pressure-pool-view.hbs" data=system.escalation}}
+        {{> "modules/azure-campaign-compendia/templates/partials/pressure-pool-view.hbs" data=system.escalation}}
 
-        {{> "modules/fu-azure-compendia/templates/partials/pressure-pool-view.hbs" data=system.climax}}
+        {{> "modules/azure-campaign-compendia/templates/partials/pressure-pool-view.hbs" data=system.climax}}
     </section>
 
     <!-- THREADS -->
     <section class="sk-panel">
         <div class="sk-panel-head">THREADS</div>
         <div class="sk-panel-grid">
-            {{> "modules/fu-azure-compendia/templates/partials/thread-view.hbs" data=system.thread1}}
-            {{> "modules/fu-azure-compendia/templates/partials/thread-view.hbs" data=system.thread2}}
-            {{> "modules/fu-azure-compendia/templates/partials/thread-view.hbs" data=system.thread3}}
+            {{> "modules/azure-campaign-compendia/templates/partials/thread-view.hbs" data=system.thread1}}
+            {{> "modules/azure-campaign-compendia/templates/partials/thread-view.hbs" data=system.thread2}}
+            {{> "modules/azure-campaign-compendia/templates/partials/thread-view.hbs" data=system.thread3}}
         </div>
     </section>
 
@@ -43,19 +43,19 @@
     <section class="sk-panel">
         <div class="sk-panel-head">SETUP</div>
         <div class="sk-panel-grid">
-            {{> "modules/fu-azure-compendia/templates/partials/setup-view.hbs" data=system.setup1}}
-            {{> "modules/fu-azure-compendia/templates/partials/setup-view.hbs" data=system.setup2}}
-            {{> "modules/fu-azure-compendia/templates/partials/setup-view.hbs" data=system.setup3}}
+            {{> "modules/azure-campaign-compendia/templates/partials/setup-view.hbs" data=system.setup1}}
+            {{> "modules/azure-campaign-compendia/templates/partials/setup-view.hbs" data=system.setup2}}
+            {{> "modules/azure-campaign-compendia/templates/partials/setup-view.hbs" data=system.setup3}}
         </div>
     </section>
 
     <!-- CHALLENGES -->
     <section class="sk-challenges">
-        {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge1}}
-        {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge2}}
-        {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge3}}
+        {{> "modules/azure-campaign-compendia/templates/partials/challenge-view.hbs" data=system.challenge1}}
+        {{> "modules/azure-campaign-compendia/templates/partials/challenge-view.hbs" data=system.challenge2}}
+        {{> "modules/azure-campaign-compendia/templates/partials/challenge-view.hbs" data=system.challenge3}}
         {{#if system.challenge4.valid}}
-            {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge4}}
+            {{> "modules/azure-campaign-compendia/templates/partials/challenge-view.hbs" data=system.challenge4}}
         {{/if}}
     </section>
 

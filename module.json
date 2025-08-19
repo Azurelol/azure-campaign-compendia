@@ -1,5 +1,5 @@
 {
-  "id": "azure-compendia",
+  "id": "azure-campaign-compendia",
   "title": "Azure Campaign Compendia",
   "version": "#{VERSION}#",
   "url": "#{URL}#",
@@ -21,9 +21,6 @@
     "src/index.mjs"
   ],
   "scripts": [
-    "vendor/pixi-filters.js",
-    "greensock/dist/gsap.min.js",
-    "greensock/dist/PixiPlugin.min.js"
   ],
   "styles": [
     "styles/azure-campaign-compendia.css"

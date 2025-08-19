@@ -1,4 +1,4 @@
-import {AzureCompendiaSettings} from "../settings.mjs";
+import {AzureCampaignCompendia} from "../azure-campaign-compendia.mjs";
 
 export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet   {
     /** @override */
@@ -18,12 +18,12 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
     static EDIT_PARTS = {
         header: super.EDIT_PARTS.header,
         content: {
-            template: AzureCompendiaSettings.getTemplatePath("journal/pages/story-kit-edit"),
+            template: AzureCampaignCompendia.getTemplatePath("journal/pages/story-kit-edit"),
             templates: [
-                AzureCompendiaSettings.getTemplatePath("partials/pressure-pool-edit"),
-                AzureCompendiaSettings.getTemplatePath("partials/thread-edit"),
-                AzureCompendiaSettings.getTemplatePath("partials/setup-edit"),
-                AzureCompendiaSettings.getTemplatePath("partials/challenge-edit"),
+                AzureCampaignCompendia.getTemplatePath("partials/pressure-pool-edit"),
+                AzureCampaignCompendia.getTemplatePath("partials/thread-edit"),
+                AzureCampaignCompendia.getTemplatePath("partials/setup-edit"),
+                AzureCampaignCompendia.getTemplatePath("partials/challenge-edit"),
             ],
             classes: ['scrollable']
         },
@@ -33,12 +33,12 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
     /** @override */
     static VIEW_PARTS = {
         content: {
-            template: AzureCompendiaSettings.getTemplatePath("journal/pages/story-kit-view"),
+            template: AzureCampaignCompendia.getTemplatePath("journal/pages/story-kit-view"),
             templates: [
-                AzureCompendiaSettings.getTemplatePath("partials/pressure-pool-view"),
-                AzureCompendiaSettings.getTemplatePath("partials/thread-view"),
-                AzureCompendiaSettings.getTemplatePath("partials/setup-view"),
-                AzureCompendiaSettings.getTemplatePath("partials/challenge-view"),
+                AzureCampaignCompendia.getTemplatePath("partials/pressure-pool-view"),
+                AzureCampaignCompendia.getTemplatePath("partials/thread-view"),
+                AzureCampaignCompendia.getTemplatePath("partials/setup-view"),
+                AzureCampaignCompendia.getTemplatePath("partials/challenge-view"),
             ],
             classes: ["sk"],
             root: true
