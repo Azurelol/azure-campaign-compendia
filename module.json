@@ -1,0 +1,96 @@
+{
+  "id": "azure-compendia",
+  "title": "Azure Campaign Compendia",
+  "version": "#{VERSION}#",
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Christian Sagel",
+      "url": "https://github.com/Azurelol",
+      "discord": "azurelol",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "src/index.mjs"
+  ],
+  "scripts": [
+    "vendor/pixi-filters.js",
+    "greensock/dist/gsap.min.js",
+    "greensock/dist/PixiPlugin.min.js"
+  ],
+  "styles": [
+    "styles/azure-campaign-compendia.css"
+  ],
+  "documentTypes": {
+    "JournalEntryPage": {
+      "storyKit": {
+        "label": "Story Kit",
+        "htmlFields": ["description"]
+      }
+    }
+  },
+  "languages": [
+    {"lang": "en", "name": "English", "path": "lang/en.json"}
+  ],
+  "packs": [
+    {
+      "name": "generators",
+      "label": "Generators",
+      "path": "packs/generators",
+      "type": "RollTable",
+      "ownership": {
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "journals",
+      "label": "Journals",
+      "path": "packs/journals",
+      "type": "JournalEntry",
+      "ownership": {
+        "ASSISTANT": "OWNER",
+        "PLAYER": "OBSERVER"
+      }
+    },
+    {
+      "name": "macros",
+      "label": "Macros",
+      "path": "packs/macros",
+      "type": "Macro",
+      "ownership": {
+        "ASSISTANT": "OWNER",
+        "PLAYER": "OBSERVER"
+      }
+    },
+    {
+      "name": "scenes",
+      "label": "Scenes",
+      "path": "packs/scenes",
+      "type": "Scene",
+      "ownership": {
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Azure Campaign Compendia",
+      "sorting": "m",
+      "color": "#08718c",
+      "packs":
+      [
+        "journals",
+        "generators",
+        "scenes",
+        "macros"
+      ]      
+    }
+  ]  
+}

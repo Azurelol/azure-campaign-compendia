@@ -1,0 +1,73 @@
+<div>
+
+    <!-- Title banner -->
+    <header class="sk-titlebar">
+        <h1 class="title"><b>{{name}}</b></h1>
+
+        <section class="hooks">
+            <div class="hook">{{system.hook1}}</div>
+            <div class="hook">{{system.hook2}}</div>
+            <div class="hook">{{system.hook3}}</div>
+        </section>
+
+        <!-- Intro callout -->
+        <section class="intro">
+            <p>
+                {{{enrichedIntroduction}}}
+            </p>
+        </section>
+    </header>
+
+
+
+    <!-- PRESSURE POOLS (3 cards with dice + connectors) -->
+    <section class="sk-events">
+        {{> "modules/fu-azure-compendia/templates/partials/pressure-pool-view.hbs" data=system.prelude}}
+
+        {{> "modules/fu-azure-compendia/templates/partials/pressure-pool-view.hbs" data=system.escalation}}
+
+        {{> "modules/fu-azure-compendia/templates/partials/pressure-pool-view.hbs" data=system.climax}}
+    </section>
+
+    <!-- THREADS -->
+    <section class="sk-panel">
+        <div class="sk-panel-head">THREADS</div>
+        <div class="sk-panel-grid">
+            {{> "modules/fu-azure-compendia/templates/partials/thread-view.hbs" data=system.thread1}}
+            {{> "modules/fu-azure-compendia/templates/partials/thread-view.hbs" data=system.thread2}}
+            {{> "modules/fu-azure-compendia/templates/partials/thread-view.hbs" data=system.thread3}}
+        </div>
+    </section>
+
+    <!-- SETUP -->
+    <section class="sk-panel">
+        <div class="sk-panel-head">SETUP</div>
+        <div class="sk-panel-grid">
+            {{> "modules/fu-azure-compendia/templates/partials/setup-view.hbs" data=system.setup1}}
+            {{> "modules/fu-azure-compendia/templates/partials/setup-view.hbs" data=system.setup2}}
+            {{> "modules/fu-azure-compendia/templates/partials/setup-view.hbs" data=system.setup3}}
+        </div>
+    </section>
+
+    <!-- CHALLENGES -->
+    <section class="sk-challenges">
+        {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge1}}
+        {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge2}}
+        {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge3}}
+        {{#if system.challenge4.valid}}
+            {{> "modules/fu-azure-compendia/templates/partials/challenge-view.hbs" data=system.challenge4}}
+        {{/if}}
+    </section>
+
+    <!-- Mix it up bar -->
+    <section class="sk-mix">
+        <div class="sk-mix-label">TWIST</div>
+        <div class="sk-mix-text">{{system.twist}}</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="sk-footer">
+        <div class="sk-page"></div>
+        <div class="sk-chapter">{{system.author}}</div>
+    </footer>
+</div>
