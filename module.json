@@ -38,9 +38,9 @@
   ],
   "packs": [
     {
-      "name": "generators",
-      "label": "Generators",
-      "path": "packs/generators",
+      "name": "tables",
+      "label": "Tables",
+      "path": "packs/tables",
       "type": "RollTable",
       "ownership": {
         "ASSISTANT": "OWNER"
@@ -84,7 +84,7 @@
       "packs":
       [
         "journals",
-        "generators",
+        "tables",
         "scenes",
         "macros"
       ]      

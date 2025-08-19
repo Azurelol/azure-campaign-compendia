@@ -9,7 +9,7 @@ export class PressurePoolDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
             label: new fields.StringField({ required: true, initial: "" }),
-            clock: new fields.NumberField({ initial: 6, min: 0, max: 6, integer: true }),
+            clock: new fields.NumberField({ initial: 6, min: 0, max: 12, integer: true }),
             event1: new fields.StringField({ required: true, initial: "" }),
             event2: new fields.StringField({ required: true, initial: "" }),
             event3: new fields.StringField({ required: true, initial: "" }),
@@ -64,7 +64,7 @@ export class ChallengeDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
             label: new fields.StringField({ required: true, initial: "" }),
-            clock: new fields.NumberField({ initial: 0, min: 0, max: 8, integer: true }),
+            clock: new fields.NumberField({ initial: 0, min: 0, max: 12, integer: true }),
             linked: new fields.BooleanField({required:true}),
             traits: new fields.ArrayField(new fields.StringField({required:true}), { validate: (value) => {
                     while (value.length < 3) {
