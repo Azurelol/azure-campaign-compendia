@@ -1,13 +1,16 @@
 # Azure's Campaign Compendia
 
-A Foundry VTT compendia with tools and material for running campaigns.
+A Foundry VTT system-agnostic module with compendia that includes a toolkit for GMs to help run campaigns.
 
 `https://github.com/Azurelol/azure-campaign-compendia/releases/latest/download/module.json`
 
 ## Features
 
 ### Story Kits
-A collection of one-page modular inspirations for running adventures in a location or beyond.
+A collection of one-page modular inspirations for running adventures in a location or beyond. The concept for this
+and most of the current entries was sourced from the excellent [Grimwild](https://www.drivethrurpg.com/en/product/507201/grimwild-free-edition) system.
+
+![acc_story_kit.jpg](assets/images/acc_story_kit.jpg)
 
 ## Installation
 
