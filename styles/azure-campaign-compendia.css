@@ -67,7 +67,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 8px;
         border: none;
-        margin: 6px 0 10px;
+        margin: 6px 0 2px;
     }
 
     .hook {

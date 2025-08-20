@@ -3,6 +3,8 @@
     <ul class="sk-tri">
         <li>{{data.entry1}}</li>
         <li>{{data.entry2}}</li>
-        <li>{{data.entry3}}</li>
+        {{#if data.entry3}}
+            <li>{{data.entry3}}</li>
+        {{/if}}
     </ul>
 </article>

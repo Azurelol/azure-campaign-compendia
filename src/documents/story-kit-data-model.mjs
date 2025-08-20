@@ -24,7 +24,7 @@ export class ThreadDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
             label: new fields.StringField({ required: true, initial: "Label" }),
-            description: new fields.StringField({ required: true, initial: "" }),
+            description: new fields.StringField({ required: true }),
             entry1: new fields.StringField({ required: true, initial: "" }),
             entry2: new fields.StringField({ required: true, initial: "" }),
             entry3: new fields.StringField({ required: true, initial: "" }),
@@ -43,7 +43,7 @@ export class SetupDataModel extends foundry.abstract.DataModel {
                 checked: new fields.BooleanField()
             }),  { required: true, validate: (value, model) => {
                     if (model.source.extended) {
-                        while (value.length < 10) {
+                        while (value.length < 12) {
                             value.push({ text: "", checked: false });
                         }
                     }

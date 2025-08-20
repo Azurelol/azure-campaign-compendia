@@ -2,6 +2,11 @@
 
 A Foundry VTT compendia with tools and material for running campaigns.
 
+## Features
+
+### Story Kits
+A collection of one-page modular inspirations for running adventures in a location or beyond.
+
 ## Installation
 
 1. Open the Foundry Setup screen and navigate to the "Add-on Modules" tab.
