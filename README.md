@@ -2,6 +2,8 @@
 
 A Foundry VTT compendia with tools and material for running campaigns.
 
+`https://github.com/Azurelol/azure-campaign-compendia/releases/latest/download/module.json`
+
 ## Features
 
 ### Story Kits
