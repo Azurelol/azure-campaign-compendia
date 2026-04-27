@@ -1,0 +1,37 @@
+/* ============================================================
+   TIER 1 — Primitives
+   Raw values only. No semantic meaning. Never used in
+   components directly.
+   ============================================================ */
+:root {
+    /* color */
+    --acc-primitive-color-brown-dark:       #5a2d2d;
+    --acc-primitive-color-parchment:        #f5f2e8;
+    --acc-primitive-color-parchment-light:  #e8e4d8;
+    --acc-primitive-color-parchment-pale:   #dedad0;
+    --acc-primitive-color-stone:            #b0aca2;
+    --acc-primitive-color-taupe:            #8c8478;
+    --acc-primitive-color-border-panel:     #7a7268;
+    --acc-primitive-color-border-kit:       #a09890;
+    --acc-primitive-color-border-title:     #aaaaaa;
+    --acc-primitive-color-text:             #1a1a1a;
+    --acc-primitive-color-white:            #ffffff;
+    --acc-primitive-color-black:            #000000;
+    --acc-primitive-color-dim:              dimgrey;
+
+    /* font family */
+    --acc-primitive-font-title:             'Impact', sans-serif;
+    --acc-primitive-font-heading:           'Cinzel', serif;
+    --acc-primitive-font-body:              'EB Garamond', serif;
+
+    /* font size */
+    --acc-primitive-size-text-xs:           0.7rem;
+    --acc-primitive-size-text-sm:           0.8rem;
+    --acc-primitive-size-text-md:           0.85rem;
+    --acc-primitive-size-text-base:         13px;
+    --acc-primitive-size-text-lg:           1rem;
+    --acc-primitive-size-text-xl:           2rem;
+
+    /* spacing */
+    --acc-primitive-size-space-60:          60px;
+}

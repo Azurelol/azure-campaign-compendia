@@ -1,0 +1,39 @@
+/* ============================================================
+   TIER 2 — Semantic tokens
+   What a value is *for*. References Tier 1 only.
+   Never used in components directly.
+   ============================================================ */
+:root {
+    /* backgrounds */
+    --acc-color-bg:                         var(--acc-primitive-color-parchment);
+    --acc-color-bg-sunken:                  var(--acc-primitive-color-parchment-light);
+    --acc-color-bg-raised:                  var(--acc-primitive-color-parchment-pale);
+    --acc-color-bg-panel:                   var(--acc-primitive-color-parchment);
+    --acc-color-bg-panel-head:              var(--acc-primitive-color-taupe);
+
+    /* text */
+    --acc-color-text:                       var(--acc-primitive-color-text);
+    --acc-color-text-heading:               var(--acc-primitive-color-brown-dark);
+    --acc-color-text-muted:                 var(--acc-primitive-color-dim);
+    --acc-color-text-inverted:              var(--acc-primitive-color-white);
+    --acc-color-text-bullet:                var(--acc-primitive-color-black);
+
+    /* borders */
+    --acc-color-border:                     var(--acc-primitive-color-stone);
+    --acc-color-border-kit:                 var(--acc-primitive-color-border-kit);
+    --acc-color-border-title:               var(--acc-primitive-color-border-title);
+    --acc-color-border-panel:               var(--acc-primitive-color-border-panel);
+
+    /* typography */
+    --acc-font-title:                       var(--acc-primitive-font-title);
+    --acc-font-heading:                     var(--acc-primitive-font-heading);
+    --acc-font-body:                        var(--acc-primitive-font-body);
+
+    /* text sizes */
+    --acc-text-size-xs:                     var(--acc-primitive-size-text-xs);
+    --acc-text-size-sm:                     var(--acc-primitive-size-text-sm);
+    --acc-text-size-md:                     var(--acc-primitive-size-text-md);
+    --acc-text-size-base:                   var(--acc-primitive-size-text-base);
+    --acc-text-size-lg:                     var(--acc-primitive-size-text-lg);
+    --acc-text-size-xl:                     var(--acc-primitive-size-text-xl);
+}
