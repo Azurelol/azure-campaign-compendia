@@ -1,15 +1,15 @@
-<article class="sk-event">
-    <header class="sk-event-header">
+<article class="acc-story-kit__event">
+    <header class="acc-story-kit__header">
         {{#if data.clock}}
             <span class="die">{{data.clock}}D</span>
         {{/if}}
         {{data.label}}
     </header>
-    <section class="sk-event-content">
+    <section class="acc-story-kit__content">
         {{#if data.description}}
             {{{data.description}}}
         {{/if}}
-        <ul class="sk-event-list sk-star">
+        <ul class="acc-story-kit__event__list acc-story-kit__star">
             {{#each data.traits as |entry|}}
                 {{#if entry}}
                     <li><i>{{entry}}</i></li>
@@ -19,7 +19,7 @@
 
         {{#if data.hasMoves}}
             <hr>
-            <ul class="sk-event-list sk-dot bold" style="text-transform: uppercase;">
+            <ul class="acc-story-kit__event__list acc-story-kit__dot bold" style="text-transform: uppercase;">
                 {{#each data.moves as |entry|}}
                     {{#if entry}}
                         <li>{{entry}}</li>
@@ -30,7 +30,7 @@
 
         {{#if data.hasFailState}}
             <hr>
-            <div class="sk-fail">✘ {{data.failState}}</div>
+            <div class="acc-story-kit__fail">✘ {{data.failState}}</div>
         {{/if}}
     </section>
 </article>

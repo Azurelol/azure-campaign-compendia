@@ -1,6 +1,7 @@
 import {AzureCampaignCompendia} from "./azure-campaign-compendia.mjs";
 import {StoryKitSheet} from "./documents/story-kit-sheet.mjs";
 import {StoryKitDataModel} from "./documents/story-kit-data-model.mjs";
+import {AzureCampaignCompendiaUtils, AzureCompendiaDialogs} from "./dialogs.mjs";
 
 // Invoked by the foundry system
 Hooks.once('init', () => {
@@ -11,6 +12,10 @@ Hooks.once('init', () => {
         label: 'Story Kit Page',
         makeDefault: false,
     });
+    // Register API
+    game.modules.get(AzureCampaignCompendia.moduleId).api = {
+        dialogs: AzureCompendiaDialogs
+    };
     // Emit salutations
     AzureCampaignCompendia.log('Azure Compendia says... hello world!');
 });
