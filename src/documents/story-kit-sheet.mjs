@@ -1,13 +1,13 @@
 import {AzureCampaignCompendia} from "../azure-campaign-compendia.mjs";
 
-export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet   {
+export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {
     /** @override */
     static DEFAULT_OPTIONS = {
-        classes: ["azure-compendia", "sk"],
-        viewClasses: ["azure-compendia", "sk"],
+        classes: ["azure-compendia", "acc-story-kit"],
+        viewClasses: ["azure-compendia", "acc-story-kit"],
         window: {
             icon: "fa-brands fa-markdown",
-            contentClasses: ['sk']
+            contentClasses: ['acc-story-kit']
         },
         form: {
             submitOnChange: false,
@@ -40,7 +40,7 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
                 AzureCampaignCompendia.getTemplatePath("partials/setup-view"),
                 AzureCampaignCompendia.getTemplatePath("partials/challenge-view"),
             ],
-            classes: ["sk"],
+            classes: ["acc-story-kit"],
             root: true
         }
     };

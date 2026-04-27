@@ -4,6 +4,12 @@
    ============================================================ */
 .acc-story-kit {
     --acc-mix-label-width: var(--acc-primitive-size-space-60);
+
+    & p, & li {
+        font-family: var(--acc-font-body);
+        font-size: unset;
+    !important;
+    }
 }
 
 /* ============================================================
@@ -34,7 +40,8 @@
 /* --- title banner --- */
 .acc-story-kit__titlebar {
     border: 2px solid var(--acc-color-border-title);
-    background: var(--acc-color-bg-raised);
+    background: var(--acc-color-bg-title);
+    color: var(--acc-color-text-title);
     padding: 4px;
     position: relative;
     margin-bottom: 8px;
@@ -43,6 +50,7 @@
         text-align: center;
         text-transform: uppercase;
         font-family: var(--acc-font-title);
+        color: var(--acc-color-text-title);
         font-weight: 900;
         font-size: var(--acc-text-size-xl);
         margin: 8px 0 0;
@@ -66,6 +74,7 @@
 
     .intro {
         padding: 10px 12px;
+        color: var(--acc-color-text);
     }
 }
 
@@ -102,6 +111,8 @@
 .acc-story-kit__event {
     padding: 4px 6px;
     position: relative;
+    background: var(--acc-color-bg-panel);
+    color: var(--acc-color-text);
 }
 
 .acc-story-kit__header {
@@ -124,7 +135,7 @@
 }
 
 .acc-story-kit__content {
-    background: var(--acc-color-bg-sunken);
+    background: var(--acc-color-bg-content);
     padding: 0.2rem;
 }
 
@@ -160,6 +171,7 @@
 .acc-story-kit__panel {
     margin: 12px 0;
     background: var(--acc-color-bg-panel);
+    color: var(--acc-color-text-panel);
 }
 
 .acc-story-kit__panel__head {
@@ -170,6 +182,7 @@
     font-weight: bolder;
     letter-spacing: .08em;
     background: var(--acc-color-bg-panel-head);
+    color: var(--acc-color-text-panel-head);
     border-radius: 8px 8px 0 0;
 }
 
@@ -185,7 +198,7 @@
 
 .acc-story-kit__box {
     padding: 2px;
-    border-left: 1px solid var(--acc-color-bg-sunken);
+    border-left: 1px solid var(--acc-color-bg-content);
 }
 
 .acc-story-kit__box h4 {
@@ -289,7 +302,7 @@
 
 .acc-story-kit__mix__label {
     font-weight: 800;
-    background: var(--acc-color-bg-raised);
+    background: var(--acc-color-bg-title);
     letter-spacing: .08em;
 }
 
@@ -326,7 +339,7 @@
         gap: 12px;
     }
 
-    .acc-story-kit__events .sk-connector {
+    .acc-story-kit__events .acc-story-kit__connector {
         display: none;
     }
 

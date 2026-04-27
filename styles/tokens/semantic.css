@@ -1,22 +1,25 @@
 /* ============================================================
    TIER 2 — Semantic tokens
    What a value is *for*. References Tier 1 only.
-   Never used in components directly.
+   - Never used in components directly.
+   - The convention is TYPE-CATEGORY-ROLE. (Where type are essentially CSS property families)
    ============================================================ */
 :root {
     /* backgrounds */
     --acc-color-bg:                         var(--acc-primitive-color-parchment);
-    --acc-color-bg-sunken:                  var(--acc-primitive-color-parchment-light);
-    --acc-color-bg-raised:                  var(--acc-primitive-color-parchment-pale);
+    --acc-color-bg-content:                 var(--acc-primitive-color-parchment-light);
+    --acc-color-bg-title:                   var(--acc-primitive-color-parchment-pale);
     --acc-color-bg-panel:                   var(--acc-primitive-color-parchment);
     --acc-color-bg-panel-head:              var(--acc-primitive-color-taupe);
 
     /* text */
     --acc-color-text:                       var(--acc-primitive-color-text);
-    --acc-color-text-heading:               var(--acc-primitive-color-brown-dark);
+    --acc-color-text-title:               var(--acc-primitive-color-brown-dark);
     --acc-color-text-muted:                 var(--acc-primitive-color-dim);
     --acc-color-text-inverted:              var(--acc-primitive-color-white);
     --acc-color-text-bullet:                var(--acc-primitive-color-black);
+    --acc-color-text-panel:                   var(--acc-primitive-color-text);
+    --acc-color-text-panel-head:              var(--acc-primitive-color-white);
 
     /* borders */
     --acc-color-border:                     var(--acc-primitive-color-stone);
