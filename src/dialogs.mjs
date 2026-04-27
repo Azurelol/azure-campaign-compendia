@@ -186,7 +186,7 @@ async function prompt(options = {}) {
     return await foundry.applications.api.DialogV2.input(result);
 }
 
-export const AzureCompendiaDialogs = {
+export const Dialogs = {
     confirm,
     input,
     popout,
