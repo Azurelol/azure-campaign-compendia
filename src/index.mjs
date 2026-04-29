@@ -3,6 +3,7 @@ import {StoryKitSheet} from "./documents/story-kit-sheet.mjs";
 import {StoryKitDataModel} from "./documents/story-kit-data-model.mjs";
 import {Dialogs} from "./dialogs.mjs";
 import {moduleId} from "./utils.mjs";
+import {GMScreen} from "./applications/screen.mjs";
 
 // Invoked by the foundry system
 Hooks.once('init', () => {
@@ -31,10 +32,8 @@ Hooks.once('init', () => {
             visible: game.user.isGM,
             onChange: () => {
                 ui.notifications.info("First action triggered!");
-                Dialogs.confirm({
-                    title: "Boop",
-                    message: "Boop?"
-                });
+                const app = new GMScreen();
+                app.render(true);
             }
         };
 
