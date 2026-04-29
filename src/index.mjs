@@ -2,6 +2,7 @@ import {AzureCampaignCompendia} from "./azure-campaign-compendia.mjs";
 import {StoryKitSheet} from "./documents/story-kit-sheet.mjs";
 import {StoryKitDataModel} from "./documents/story-kit-data-model.mjs";
 import {Dialogs} from "./dialogs.mjs";
+import {moduleId} from "./utils.mjs";
 
 // Invoked by the foundry system
 Hooks.once('init', () => {
@@ -16,6 +17,41 @@ Hooks.once('init', () => {
     game.modules.get(AzureCampaignCompendia.moduleId).api = {
         dialogs: Dialogs
     };
+    // TODO: Figure out how to register without errors
+    // Register Tools
+    Hooks.on("getSceneControlButtons", (controls) => {
+
+        // Add GM Screen to Notes controls
+        controls.tokens.tools[`${moduleId}.screen`] = {
+            name: `${moduleId}.screen`,
+            title: "GM Screen",
+            icon: "fa-solid fa-screen-users",
+            order: 100,
+            button: true,
+            visible: game.user.isGM,
+            onChange: () => {
+                ui.notifications.info("First action triggered!");
+                Dialogs.confirm({
+                    title: "Boop",
+                    message: "Boop?"
+                });
+            }
+        };
+
+        // TODO: Provide mechanism implementation?
+        // Add Random Target to Token controls
+        // controls.tokens.tools[`${moduleId}.randomTarget`] = {
+        //     name: `${moduleId}.randomTarget`,
+        //     title: "Random Target",
+        //     icon: "fa-solid fa-crosshairs",
+        //     order: 100,
+        //     button: true,
+        //     visible: game.user.isGM,
+        //     onChange: () => {
+        //         ui.notifications.info("Randomly targeting a PC!");
+        //     }
+        // };
+    });
     // Emit salutations
     AzureCampaignCompendia.log('Azure Compendia says... hello world!');
 });

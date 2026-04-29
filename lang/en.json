@@ -3,5 +3,8 @@
     "JournalEntryPage": {
       "azure-campaign-compendia.storyKit": "Story Kit"
     }
+  },
+  "ACC": {
+    "GMScreen": "GM Screen"
   }
 }

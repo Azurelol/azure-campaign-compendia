@@ -1,4 +1,6 @@
-const { api, fields, handlebars } = foundry.applications;
+import {moduleTemplatePath, Utils} from "./utils.mjs";
+
+const {api, fields, handlebars} = foundry.applications;
 
 /**
  * @typedef FormSelectOption
@@ -56,15 +58,25 @@ const { api, fields, handlebars } = foundry.applications;
 
 const DIALOG_CLASSES = []
 
-async function confirm() {
+/**
+ * @typedef AzureDialogOptions
+ * @property title
+ * @property message
+ */
+
+/**
+ * @param {AzureDialogOptions} options
+ * @returns {Promise<*|boolean|boolean>}
+ */
+async function confirm(options) {
     return foundry.applications.api.DialogV2.confirm({
         window: {
-            title: title,
+            title: options.title,
             icon: 'fas fa-comment',
         },
         classes: DIALOG_CLASSES,
-        content: await this.renderTemplate('dialog/dialog-common', {
-            message: message,
+        content: await Utils.renderTemplate(moduleTemplatePath('dialogs/common'), {
+            message: options.message,
         }),
         rejectClose: false,
         yes: {
@@ -84,7 +96,7 @@ async function confirm() {
  */
 async function input(title, content, options = {}) {
     let defaultOptions = {
-        window: { title: title, icon: 'fas fa-comment' },
+        window: {title: title, icon: 'fas fa-comment'},
         content: content,
         classes: DIALOG_CLASSES,
         rejectClose: false,
@@ -105,11 +117,11 @@ async function input(title, content, options = {}) {
 async function popout(title, content, options = {}) {
     const [mergedOptions] = ObjectUtils.mergeRecursive(
         {
-            window: { title, icon: 'fas fa-eye', resizable: true },
+            window: {title, icon: 'fas fa-eye', resizable: true},
             classes: DIALOG_CLASSES,
             rejectClose: false,
             content,
-            buttons: [{ label: 'Close', action: 'close' }],
+            buttons: [{label: 'Close', action: 'close'}],
         },
         options,
     );
@@ -123,13 +135,13 @@ async function popout(title, content, options = {}) {
 async function prompt(options = {}) {
     const [result] = ObjectUtils.mergeRecursive(
         {
-            window: { icon: 'fas fa-comment' },
+            window: {icon: 'fas fa-comment'},
             classes: DIALOG_CLASSES,
             rejectClose: false,
             actions: {
                 // Image Picker: Browse
                 browseImage: (event, target) => {
-                    const { name } = target.dataset;
+                    const {name} = target.dataset;
                     const imagePicker = event.currentTarget.querySelector('.image-picker');
                     if (!imagePicker) {
                         return;
@@ -149,7 +161,7 @@ async function prompt(options = {}) {
                 },
                 // Generic File
                 browse: (event, target, dialog) => {
-                    const { name, type } = target.dataset;
+                    const {name, type} = target.dataset;
                     const input = event.currentTarget.querySelector(`input[name="${name}"]`);
                     new FilePicker({
                         type: type,
@@ -163,7 +175,7 @@ async function prompt(options = {}) {
                     if (!options.context) {
                         return;
                     }
-                    const { path, tag } = target.dataset;
+                    const {path, tag} = target.dataset;
                     const tags = ObjectUtils.getProperty(options.context, path);
                     if (!tags) {
                         return;
