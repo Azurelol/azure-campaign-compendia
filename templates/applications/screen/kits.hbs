@@ -1,0 +1,33 @@
+<section class="tab kits {{tab.cssClass}}" data-tab="kits" data-group="primary">
+    <div class="acc-browser">
+        <div class="acc-browser__controls">
+            <div class="acc-browser__toolbar">
+                <label class="acc-browser__toolbar__search">
+                    <input type="text" placeholder="..."/>
+                </label>
+            </div>
+        </div>
+
+        <ul class="acc-browser__content">
+            {{#each kits as |kit|}}
+                <li class="acc-browser__entry-basic">
+                    <div class="header">
+						<span class="name">
+                            {{kit.name}}
+                        </span>
+                        <div class="acc-tags">
+                            {{#each kit.tags as |tag|}}
+                                <div class="acc-tag">{{tag}}</div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <span class="description">
+                        {{{kit.text}}}
+                    </span>
+                </li>
+
+            {{/each}}
+        </ul>
+    </div>
+</section>
+    

@@ -1,6 +1,6 @@
 const fields = foundry.data.fields;
 
-const stringOptions = { required: true };
+const stringOptions = {required: true};
 
 /**
  * @description Acts as a timer, rolled to build escalation and keep things moving
@@ -8,11 +8,11 @@ const stringOptions = { required: true };
 export class PressurePoolDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            label: new fields.StringField({ required: true, initial: "" }),
-            clock: new fields.NumberField({ initial: 6, min: 0, max: 12, integer: true }),
-            event1: new fields.StringField({ required: true, initial: "" }),
-            event2: new fields.StringField({ required: true, initial: "" }),
-            event3: new fields.StringField({ required: true, initial: "" }),
+            label: new fields.StringField({required: true, initial: ""}),
+            clock: new fields.NumberField({initial: 6, min: 0, max: 12, integer: true}),
+            event1: new fields.StringField({required: true, initial: ""}),
+            event2: new fields.StringField({required: true, initial: ""}),
+            event3: new fields.StringField({required: true, initial: ""}),
         };
     }
 }
@@ -23,11 +23,11 @@ export class PressurePoolDataModel extends foundry.abstract.DataModel {
 export class ThreadDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            label: new fields.StringField({ required: true, initial: "Label" }),
-            description: new fields.StringField({ required: true }),
-            entry1: new fields.StringField({ required: true, initial: "" }),
-            entry2: new fields.StringField({ required: true, initial: "" }),
-            entry3: new fields.StringField({ required: true, initial: "" }),
+            label: new fields.StringField({required: true, initial: "Label"}),
+            description: new fields.StringField({required: true}),
+            entry1: new fields.StringField({required: true, initial: ""}),
+            entry2: new fields.StringField({required: true, initial: ""}),
+            entry3: new fields.StringField({required: true, initial: ""}),
         };
     }
 }
@@ -35,27 +35,28 @@ export class ThreadDataModel extends foundry.abstract.DataModel {
 export class SetupDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            label: new fields.StringField({ required: true, initial: "" }),
-            description: new fields.StringField({ required: true, initial: "" }),
-            extended: new fields.BooleanField({required:true}),
+            label: new fields.StringField({required: true, initial: ""}),
+            description: new fields.StringField({required: true, initial: ""}),
+            extended: new fields.BooleanField({required: true}),
             choices: new fields.ArrayField(new fields.SchemaField({
-                text: new fields.StringField({required:true}),
+                text: new fields.StringField({required: true}),
                 checked: new fields.BooleanField()
-            }),  { required: true, validate: (value, model) => {
+            }), {
+                required: true, validate: (value, model) => {
                     if (model.source.extended) {
                         while (value.length < 12) {
-                            value.push({ text: "", checked: false });
+                            value.push({text: "", checked: false});
                         }
-                    }
-                    else {
+                    } else {
                         while (value.length < 5) {
-                            value.push({ text: "", checked: false });
+                            value.push({text: "", checked: false});
                         }
                         if (value.length > 5) {
                             value.splice(5);
                         }
                     }
-                },},),
+                },
+            },),
         };
     }
 }
@@ -63,21 +64,25 @@ export class SetupDataModel extends foundry.abstract.DataModel {
 export class ChallengeDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
-            label: new fields.StringField({ required: true, initial: "" }),
-            clock: new fields.NumberField({ initial: 0, min: 0, max: 12, integer: true }),
-            linked: new fields.BooleanField({required:true}),
-            traits: new fields.ArrayField(new fields.StringField({required:true}), { validate: (value) => {
+            label: new fields.StringField({required: true, initial: ""}),
+            clock: new fields.NumberField({initial: 0, min: 0, max: 12, integer: true}),
+            linked: new fields.BooleanField({required: true}),
+            traits: new fields.ArrayField(new fields.StringField({required: true}), {
+                validate: (value) => {
                     while (value.length < 3) {
                         value.push("");
                     }
-                }}),
-            moves: new fields.ArrayField(new fields.StringField({required:true}), { validate: (value) => {
+                }
+            }),
+            moves: new fields.ArrayField(new fields.StringField({required: true}), {
+                validate: (value) => {
                     while (value.length < 3) {
                         value.push("");
                     }
-                }}),
-            failState: new fields.StringField({required:true}),
-            description: new fields.HTMLField({ required: true, initial: "" }),
+                }
+            }),
+            failState: new fields.StringField({required: true}),
+            description: new fields.HTMLField({required: true, initial: ""}),
         };
     }
 
@@ -89,21 +94,20 @@ export class ChallengeDataModel extends foundry.abstract.DataModel {
         return this.moves.filter(t => t.length > 0).length > 0;
     }
 
-    get hasFailState(){
+    get hasFailState() {
         return this.failState !== ""
     }
 }
 
 export class StoryKitDataModel extends foundry.abstract.TypeDataModel {
     static defineSchema() {
-
         return {
             // Hooks
             hook1: new fields.StringField(stringOptions),
             hook2: new fields.StringField(stringOptions),
             hook3: new fields.StringField(stringOptions),
             // Introduction blurb
-            introduction: new fields.HTMLField({ required: true }),
+            introduction: new fields.HTMLField({required: true}),
             // Pressure Pools
             prelude: new fields.EmbeddedDataField(PressurePoolDataModel, {}),
             escalation: new fields.EmbeddedDataField(PressurePoolDataModel, {}),

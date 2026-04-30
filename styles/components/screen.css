@@ -6,6 +6,10 @@
     background: var(--acc-color-bg);
     color: var(--acc-color-text);
 
+    .tab {
+        padding: 8px;
+    }
+
     .tab,
     .active {
         grid-area: active-tab;
@@ -14,6 +18,10 @@
     .nav {
         grid-area: nav;
         padding: 8px;
+    }
+
+    .kits {
+        overflow-y: hidden;
     }
 
     .widgets {
@@ -37,7 +45,7 @@
 
     &.theme-classic {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 100px 100px;
+        grid-template-rows: 1fr 100px 50px;
         grid-template-areas:
 			'active-tab'
 			'nav'

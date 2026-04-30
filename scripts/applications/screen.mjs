@@ -31,8 +31,8 @@ export class GMScreen extends ACApplication {
         overview: {
             template: moduleTemplatePath('applications/screen/overview'),
         },
-        storyKits: {
-            template: moduleTemplatePath('applications/screen/story-kits'),
+        kits: {
+            template: moduleTemplatePath('applications/screen/kits'),
         },
     };
 
@@ -43,7 +43,7 @@ export class GMScreen extends ACApplication {
         primary: {
             tabs: [
                 {id: 'overview', label: 'Overview', icon: 'ra ra-double-team'},
-                {id: 'storyKits', label: 'Story Kits', icon: 'ra ra-hand'},
+                {id: 'kits', label: 'Story Kits', icon: 'fas fa-book'},
             ],
             initial: 'overview',
         },
@@ -64,8 +64,8 @@ export class GMScreen extends ACApplication {
             case 'tabs':
                 context.tabs = this._prepareTabs('primary');
                 break;
-            case 'storyKits':
-                context.storyKits = await StoryKitSheet.getStoryKits()
+            case 'kits':
+                context.kits = await StoryKitSheet.getStoryKits()
                 break;
         }
         return context;

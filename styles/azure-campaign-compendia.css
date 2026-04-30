@@ -2,6 +2,9 @@
 @import "tokens/primitives.css";
 @import "tokens/semantic.css";
 
+/* GLOBAL */
+@import "global/layout.css";
+
 /* COMPONENTS */
 @import "components/story-kit.css";
 @import "components/screen.css";

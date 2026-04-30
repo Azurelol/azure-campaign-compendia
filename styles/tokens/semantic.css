@@ -9,8 +9,19 @@
     --acc-color-bg: var(--acc-primitive-color-parchment);
     --acc-color-bg-content: var(--acc-primitive-color-parchment-light);
     --acc-color-bg-title: var(--acc-primitive-color-parchment-pale);
+
+    /* controls */
+    --acc-color-control: var(--acc-primitive-color-grey-mid); /* label/icon tint */
+    --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-grey-mid), white 25%);
+    --acc-color-bg-control: var(--acc-primitive-color-grey-light); /* fill/background */
+    --acc-color-shadow-control: var(--acc-primitive-color-shadow); /* drop shadow */
+    --acc-color-border-control: var(--acc-primitive-color-grey-mid); /* border/outline */
+
+    /* panels */
     --acc-color-bg-panel: var(--acc-primitive-color-parchment);
     --acc-color-bg-panel-head: var(--acc-primitive-color-taupe);
+    --acc-color-text-panel: var(--acc-primitive-color-text);
+    --acc-color-text-panel-head: var(--acc-primitive-color-white);
 
     /* icons */
     --acc-color-icon: var(--acc-primitive-color-azure);
@@ -23,8 +34,7 @@
     --acc-color-text-muted: var(--acc-primitive-color-dim);
     --acc-color-text-inverted: var(--acc-primitive-color-white);
     --acc-color-text-bullet: var(--acc-primitive-color-black);
-    --acc-color-text-panel: var(--acc-primitive-color-text);
-    --acc-color-text-panel-head: var(--acc-primitive-color-white);
+
 
     /* borders */
     --acc-color-border: var(--acc-primitive-color-stone);
