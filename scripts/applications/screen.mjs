@@ -1,5 +1,6 @@
 import ACApplication from "./application.mjs";
 import {moduleTemplatePath} from "../utils.mjs";
+import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
 
 export class GMScreen extends ACApplication {
 
@@ -29,6 +30,8 @@ export class GMScreen extends ACApplication {
     /** @override */
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
+
+        const storyKits = await StoryKitSheet.getStoryKits()
         return context;
     }
 }

@@ -1,6 +1,10 @@
 import {AzureCampaignCompendia} from "../azure-campaign-compendia.mjs";
+import {Utils} from "../utils.mjs";
 
 export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {
+
+    static TYPE = AzureCampaignCompendia.prefixed("storyKit");
+
     /** @override */
     static DEFAULT_OPTIONS = {
         classes: ["azure-compendia", "acc-story-kit"],
@@ -77,5 +81,25 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
     _attachFrameListeners() {
         super._attachFrameListeners();
         const html = this.element;
+    }
+
+    /**
+     * @type {JournalEntryPageData[]}
+     */
+    static #storyKits;
+
+    /**
+     * @returns {Promise<JournalEntryPageData[]>}
+     */
+    static async getStoryKits(cached = true) {
+        if (!cached || StoryKitSheet.#storyKits === undefined) {
+            const journalEntries = await Utils.getDocumentsOfType('JournalEntry')
+            StoryKitSheet.#storyKits = (
+                await Promise.all(
+                    journalEntries.map(entry => fromUuid(entry.uuid))
+                )
+            ).flatMap(entry => entry?.pages.filter(page => page.type === StoryKitSheet.TYPE) ?? []);
+        }
+        return StoryKitSheet.#storyKits;
     }
 }

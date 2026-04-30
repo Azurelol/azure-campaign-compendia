@@ -2,7 +2,7 @@ import {AzureCampaignCompendia} from "./azure-campaign-compendia.mjs";
 import {StoryKitSheet} from "./documents/story-kit-sheet.mjs";
 import {StoryKitDataModel} from "./documents/story-kit-data-model.mjs";
 import {Dialogs} from "./dialogs.mjs";
-import {moduleId} from "./utils.mjs";
+import {moduleId, Utils} from "./utils.mjs";
 import {GMScreen} from "./applications/screen.mjs";
 
 // Invoked by the foundry system
@@ -10,18 +10,17 @@ Hooks.once('init', () => {
     // Register documents
     CONFIG.JournalEntryPage.dataModels[AzureCampaignCompendia.prefixed("storyKit")] = StoryKitDataModel;
     foundry.applications.apps.DocumentSheetConfig.registerSheet(JournalEntryPage, AzureCampaignCompendia.moduleId, StoryKitSheet, {
-        types: [AzureCampaignCompendia.prefixed("storyKit")],
+        types: [StoryKitSheet.TYPE],
         label: 'Story Kit Page',
         makeDefault: false,
     });
     // Register API
     game.modules.get(AzureCampaignCompendia.moduleId).api = {
-        dialogs: Dialogs
+        dialogs: Dialogs,
+        utils: Utils,
     };
-    // TODO: Figure out how to register without errors
     // Register Tools
     Hooks.on("getSceneControlButtons", (controls) => {
-
         // Add GM Screen to Notes controls
         controls.tokens.tools[`${moduleId}.screen`] = {
             name: `${moduleId}.screen`,
