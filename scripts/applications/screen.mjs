@@ -9,12 +9,12 @@ export class GMScreen extends ACApplication {
      * @override
      */
     static DEFAULT_OPTIONS = {
-        classes: ['acc-screen'],
         window: {
             title: 'GM Screen',
             resizable: true,
+            contentClasses: ['acc-screen'],
         },
-        position: {width: 750, height: 'auto'},
+        position: {width: 800, height: 600},
         actions: {},
     };
 
@@ -22,16 +22,74 @@ export class GMScreen extends ACApplication {
      * @override
      */
     static PARTS = {
-        main: {
-            template: moduleTemplatePath('applications/screen'),
+        nav: {
+            template: moduleTemplatePath('applications/nav'),
+        },
+        widgets: {
+            template: moduleTemplatePath(`applications/screen/widgets`),
+        },
+        overview: {
+            template: moduleTemplatePath('applications/screen/overview'),
+        },
+        storyKits: {
+            template: moduleTemplatePath('applications/screen/story-kits'),
+        },
+    };
+
+    /** @override
+     * @type Record<ApplicationTab>
+     * */
+    static TABS = {
+        primary: {
+            tabs: [
+                {id: 'overview', label: 'Overview', icon: 'ra ra-double-team'},
+                {id: 'storyKits', label: 'Story Kits', icon: 'ra ra-hand'},
+            ],
+            initial: 'overview',
         },
     };
 
     /** @override */
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
-
-        const storyKits = await StoryKitSheet.getStoryKits()
         return context;
+    }
+
+    /** @inheritdoc */
+    async _preparePartContext(partId, ctx, options) {
+        const context = await super._preparePartContext(partId, ctx, options);
+        // IMPORTANT: Set the active tab
+        if (partId in context.tabs) context.tab = context.tabs[partId];
+        switch (partId) {
+            case 'tabs':
+                context.tabs = this._prepareTabs('primary');
+                break;
+            case 'storyKits':
+                context.storyKits = await StoryKitSheet.getStoryKits()
+                break;
+        }
+        return context;
+    }
+
+    // TODO: More themes?
+    /**
+     * @returns {String}
+     */
+    get theme() {
+        return 'classic';
+    }
+
+    /** @inheritDoc */
+    async _onFirstRender(context, options) {
+        await super._onFirstRender(context, options);
+
+        // Set current theme classes
+        const windowContent = this.element.querySelector('.window-content');
+        if (!windowContent) return;
+        windowContent.classList.forEach((cls) => {
+            if (cls.startsWith('theme-')) windowContent.classList.remove(cls);
+        });
+        const theme = this.theme;
+        windowContent.classList.add(`theme-${theme}`);
     }
 }

@@ -1,0 +1,118 @@
+.acc-screen {
+    display: grid;
+    height: 100%;
+    padding: 0;
+
+    background: var(--acc-color-bg);
+    color: var(--acc-color-text);
+
+    .tab,
+    .active {
+        grid-area: active-tab;
+    }
+
+    .nav {
+        grid-area: nav;
+        padding: 8px;
+    }
+
+    .widgets {
+        grid-area: widgets;
+        display: flex;
+        gap: 3rem;
+        padding: 8px;
+        justify-content: center;
+        align-items: center;
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+
+    &.theme-classic {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 100px 100px;
+        grid-template-areas:
+			'active-tab'
+			'nav'
+			'widgets';
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+
+            .tabs {
+                flex-direction: row;
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                border-top: none;
+                border-bottom: none;
+            }
+
+            .button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                min-width: 100px;
+                height: 100px;
+                padding: 8px;
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                background: transparent;
+                border: 1px solid transparent;
+                border-radius: 3px;
+                box-shadow: none;
+                text-shadow: none;
+                color: var(--acc-color-icon);
+                transition: background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+
+                i {
+                    color: var(--acc-color-icon);
+                    font-size: 32px;
+                    transition: color 0.2s ease,
+                    filter 0.2s ease;
+                }
+
+                &.active {
+                    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.35) 100%);
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    border-top-color: rgba(255, 255, 255, 0.3);
+                    border-radius: 3px;
+                    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                    inset 0 0 24px rgba(0, 0, 0, 0.5),
+                    0 0 8px rgba(0, 0, 0, 0.4);
+                    color: var(--acc-color-icon-active);
+
+                    i {
+                        color: var(--acc-color-icon-active);
+                        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+                    }
+                }
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.06);
+                    border-color: rgba(255, 255, 255, 0.1);
+                    color: var(--acc-color-icon-hover);
+
+                    i {
+                        color: var(--acc-color-icon-hover);
+                    }
+                }
+            }
+        }
+    }
+}
