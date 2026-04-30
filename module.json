@@ -18,7 +18,7 @@
     }
   ],
   "esmodules": [
-    "src/index.mjs"
+    "scripts/index.mjs"
   ],
   "scripts": [
   ],
@@ -29,12 +29,18 @@
     "JournalEntryPage": {
       "storyKit": {
         "label": "Story Kit",
-        "htmlFields": ["description"]
+        "htmlFields": [
+          "description"
+        ]
       }
     }
   },
   "languages": [
-    {"lang": "en", "name": "English", "path": "lang/en.json"}
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
   ],
   "packs": [
     {
@@ -81,13 +87,12 @@
       "name": "Azure Campaign Compendia",
       "sorting": "m",
       "color": "#08718c",
-      "packs":
-      [
+      "packs": [
         "journals",
         "tables",
         "scenes",
         "macros"
-      ]      
+      ]
     }
-  ]  
+  ]
 }
