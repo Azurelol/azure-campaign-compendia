@@ -26,8 +26,11 @@
 
     .acc-browser__entry-basic {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
+
+        .icon {
+        }
 
         .header {
             display: flex;

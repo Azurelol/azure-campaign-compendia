@@ -1,21 +1,27 @@
-import {AzureCampaignCompendia} from "./azure-campaign-compendia.mjs";
+import {AzureCampaignCompendia} from "./logger.mjs";
 import {StoryKitSheet} from "./documents/story-kit-sheet.mjs";
 import {StoryKitDataModel} from "./documents/story-kit-data-model.mjs";
 import {Dialogs} from "./dialogs.mjs";
-import {moduleId, Utils} from "./utils.mjs";
+import {modulePrefixed, Utils} from "./utils.mjs";
 import {GMScreen} from "./applications/screen.mjs";
+import {Constants, moduleId} from "./constants.mjs";
+import {ACHandlebars} from "./handlebars.mjs";
 
 // Invoked by the foundry system
-Hooks.once('init', () => {
+Hooks.once('init', async () => {
     // Register documents
-    CONFIG.JournalEntryPage.dataModels[AzureCampaignCompendia.prefixed("storyKit")] = StoryKitDataModel;
-    foundry.applications.apps.DocumentSheetConfig.registerSheet(JournalEntryPage, AzureCampaignCompendia.moduleId, StoryKitSheet, {
+    CONFIG.JournalEntryPage.dataModels[modulePrefixed("storyKit")] = StoryKitDataModel;
+    foundry.applications.apps.DocumentSheetConfig.registerSheet(JournalEntryPage, moduleId, StoryKitSheet, {
         types: [StoryKitSheet.TYPE],
         label: 'Story Kit Page',
         makeDefault: false,
     });
+    // Register helpers
+    await ACHandlebars.loadTemplates();
+    ACHandlebars.registerHelpers();
     // Register API
-    game.modules.get(AzureCampaignCompendia.moduleId).api = {
+    game.modules.get(moduleId).api = {
+        constants: Constants,
         dialogs: Dialogs,
         utils: Utils,
     };

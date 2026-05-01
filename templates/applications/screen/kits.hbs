@@ -11,6 +11,9 @@
         <ul class="acc-browser__content">
             {{#each kits as |kit|}}
                 <li class="acc-browser__entry-basic">
+                    <div class="icon">
+                        {{accDocumentAnchor kit size='l'}}
+                    </div>
                     <div class="header">
 						<span class="name">
                             {{kit.name}}
@@ -21,9 +24,6 @@
                             {{/each}}
                         </div>
                     </div>
-                    <span class="description">
-                        {{{kit.text}}}
-                    </span>
                 </li>
 
             {{/each}}

@@ -1,3 +1,5 @@
+import {Constants} from "../constants.mjs";
+
 const fields = foundry.data.fields;
 
 const stringOptions = {required: true};
@@ -9,11 +11,18 @@ export class PressurePoolDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
             label: new fields.StringField({required: true, initial: ""}),
-            clock: new fields.NumberField({initial: 6, min: 0, max: 12, integer: true}),
+            clock: new fields.StringField({initial: '', blank: true, choices: Object.keys(Constants.clockSize)}),
             event1: new fields.StringField({required: true, initial: ""}),
             event2: new fields.StringField({required: true, initial: ""}),
             event3: new fields.StringField({required: true, initial: ""}),
         };
+    }
+
+    static migrateData(source) {
+        if (Number.isInteger(source.clock)) {
+            source.clock = "";
+        }
+        return super.migrateData(source);
     }
 }
 
@@ -65,7 +74,7 @@ export class ChallengeDataModel extends foundry.abstract.DataModel {
     static defineSchema() {
         return {
             label: new fields.StringField({required: true, initial: ""}),
-            clock: new fields.NumberField({initial: 0, min: 0, max: 12, integer: true}),
+            clock: new fields.StringField({initial: '', blank: true, choices: Object.keys(Constants.clockSize)}),
             linked: new fields.BooleanField({required: true}),
             traits: new fields.ArrayField(new fields.StringField({required: true}), {
                 validate: (value) => {
@@ -84,6 +93,13 @@ export class ChallengeDataModel extends foundry.abstract.DataModel {
             failState: new fields.StringField({required: true}),
             description: new fields.HTMLField({required: true, initial: ""}),
         };
+    }
+
+    static migrateData(source) {
+        if (Number.isInteger(source.clock)) {
+            source.clock = "";
+        }
+        return super.migrateData(source);
     }
 
     get valid() {
@@ -127,7 +143,9 @@ export class StoryKitDataModel extends foundry.abstract.TypeDataModel {
             challenge4: new fields.EmbeddedDataField(ChallengeDataModel, {}),
             // Mix it up
             twist: new fields.StringField(),
-            author: new fields.StringField()
+            author: new fields.StringField(),
+            // Tags
+            tags: new fields.SetField(new fields.StringField())
         };
     }
 }

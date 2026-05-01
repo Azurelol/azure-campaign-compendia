@@ -1,3 +1,5 @@
+import {moduleId} from "./constants.mjs";
+
 const {api, fields, handlebars} = foundry.applications;
 
 /**
@@ -37,17 +39,20 @@ const {api, fields, handlebars} = foundry.applications;
  */
 
 /**
- * @type {string} The unique module identifier used in the package and throughout.
- */
-export const moduleId = "azure-campaign-compendia";
-
-/**
  * @param {String} path
  * @returns {string}
  * @remarks File extension already included.
  */
 export function moduleTemplatePath(path) {
     return `modules/${moduleId}/templates/${path}.hbs`;
+}
+
+/**
+ * @param {String} name
+ * @returns {string}
+ */
+export function modulePrefixed(name) {
+    return `${moduleId}.${name}`;
 }
 
 /**
@@ -78,6 +83,19 @@ async function getPackEntries(name, module = moduleId) {
     return await pack.getIndex();
 }
 
+/**
+ * Behaves like C# string format
+ * @param {*} s
+ * @param  {...any} args
+ * @returns
+ */
+function fmt(s, ...args) {
+    for (var arg in args) {
+        s = s.replace("{" + arg + "}", args[arg]);
+    }
+    return s;
+};
+
 const collectionMap = {
     Actor: game.actors,
     Item: game.items,
@@ -92,9 +110,10 @@ let documentCache = {};
 /**
  * @param {"Actor"|"Item"|"JournalEntry"} type
  * @param {Boolean} cached
+ * @param {string[]} fields
  * @returns {Promise<CompendiumIndexEntry[]>}
  */
-async function getDocumentsOfType(type, cached = true) {
+async function getDocumentsOfType(type, cached = true, fields = []) {
     if (cached && documentCache[type]) return documentCache[type];
 
     const worldDocuments = collectionMap[type]?.contents ?? [];
@@ -103,7 +122,9 @@ async function getDocumentsOfType(type, cached = true) {
         await Promise.all(
             game.packs
                 .filter(pack => pack.documentName === type)
-                .map(pack => pack.getIndex())
+                .map(pack => pack.getIndex({
+                    fields: ['name', 'img', 'type'].concat(fields),
+                }))
         )
     ).flatMap(index => index.contents);
 
@@ -118,6 +139,7 @@ async function getDocumentsOfType(type, cached = true) {
 }
 
 export const Utils = Object.freeze({
+    fmt,
     renderTemplate,
     getPackEntries,
     getDocumentsOfType

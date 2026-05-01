@@ -38,6 +38,11 @@
                 <input type="text" name="system.author" maxlength="50" value="{{system.author}}" data-dtype="String"/>
             </label>
 
+            <label>
+                Tags
+                {{formGroup system.schema.fields.tags value=system.tags name=(pfuConcat path ".tags")}}
+            </label>
+
         </details>
     </div>
 

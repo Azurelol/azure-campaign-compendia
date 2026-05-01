@@ -1,9 +1,8 @@
-import {AzureCampaignCompendia} from "../azure-campaign-compendia.mjs";
-import {Utils} from "../utils.mjs";
+import {modulePrefixed, moduleTemplatePath, Utils} from "../utils.mjs";
 
 export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {
 
-    static TYPE = AzureCampaignCompendia.prefixed("storyKit");
+    static TYPE = modulePrefixed("storyKit");
 
     /** @override */
     static DEFAULT_OPTIONS = {
@@ -22,12 +21,12 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
     static EDIT_PARTS = {
         header: super.EDIT_PARTS.header,
         content: {
-            template: AzureCampaignCompendia.getTemplatePath("journal/pages/story-kit-edit"),
+            template: moduleTemplatePath("journal/pages/story-kit-edit"),
             templates: [
-                AzureCampaignCompendia.getTemplatePath("partials/pressure-pool-edit"),
-                AzureCampaignCompendia.getTemplatePath("partials/thread-edit"),
-                AzureCampaignCompendia.getTemplatePath("partials/setup-edit"),
-                AzureCampaignCompendia.getTemplatePath("partials/challenge-edit"),
+                moduleTemplatePath("partials/pressure-pool-edit"),
+                moduleTemplatePath("partials/thread-edit"),
+                moduleTemplatePath("partials/setup-edit"),
+                moduleTemplatePath("partials/challenge-edit"),
             ],
             classes: ['scrollable']
         },
@@ -37,12 +36,12 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
     /** @override */
     static VIEW_PARTS = {
         content: {
-            template: AzureCampaignCompendia.getTemplatePath("journal/pages/story-kit-view"),
+            template: moduleTemplatePath("journal/pages/story-kit-view"),
             templates: [
-                AzureCampaignCompendia.getTemplatePath("partials/pressure-pool-view"),
-                AzureCampaignCompendia.getTemplatePath("partials/thread-view"),
-                AzureCampaignCompendia.getTemplatePath("partials/setup-view"),
-                AzureCampaignCompendia.getTemplatePath("partials/challenge-view"),
+                moduleTemplatePath("partials/pressure-pool-view"),
+                moduleTemplatePath("partials/thread-view"),
+                moduleTemplatePath("partials/setup-view"),
+                moduleTemplatePath("partials/challenge-view"),
             ],
             classes: ["acc-story-kit"],
             root: true
@@ -89,11 +88,16 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
     static #storyKits;
 
     /**
+     * @type {[string]}
+     */
+    static storyKitFields = ['system.tags']
+
+    /**
      * @returns {Promise<JournalEntryPageData[]>}
      */
     static async getStoryKits(cached = true) {
         if (!cached || StoryKitSheet.#storyKits === undefined) {
-            const journalEntries = await Utils.getDocumentsOfType('JournalEntry')
+            const journalEntries = await Utils.getDocumentsOfType('JournalEntry', true, StoryKitSheet.storyKitFields)
             StoryKitSheet.#storyKits = (
                 await Promise.all(
                     journalEntries.map(entry => fromUuid(entry.uuid))

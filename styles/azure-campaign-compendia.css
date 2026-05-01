@@ -4,6 +4,7 @@
 
 /* GLOBAL */
 @import "global/layout.css";
+@import "global/icons.css";
 
 /* COMPONENTS */
 @import "components/story-kit.css";

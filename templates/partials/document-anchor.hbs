@@ -1,0 +1,13 @@
+<a data-link draggable="true"
+   data-uuid="{{uuid}}"
+   data-item-id="{{id}}"
+   data-pack="{{pack}}"
+   class="{{classes}}"
+   data-type="{{type}}" data-tooltip="{{name}}">
+    {{#if img}}
+        <img src="{{img}}" class="item-img acc-icon --{{size}}">
+    {{else}}
+        <i class="item-img acc-icon --{{size}} {{accIconClass 'compendium'}}"
+           style="color: var(--pfu-color-app-section-content-secondary)"></i>
+    {{/if}}
+</a>

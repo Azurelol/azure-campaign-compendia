@@ -1,0 +1,50 @@
+.acc-icon {
+    --icon-size: 100%;
+    display: inline-block;
+    line-height: 1;
+    font-size: var(--icon-size);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+    object-fit: contain;
+
+    .--xs {
+        --icon-size: 16px;
+    }
+
+    .--s {
+        --icon-size: 24px;
+    }
+
+    .-sm {
+        --icon-size: 36px;
+    }
+
+    .--m {
+        --icon-size: 48px;
+    }
+
+    .--l {
+        --icon-size: 64px;
+    }
+
+    &.--xl {
+        --icon-size: 96px;
+    }
+
+    &.glow {
+        filter: drop-shadow(0 0 4px var(--acc-color-shadow-control));
+    }
+
+    &.warn {
+        color: var(--acc-primitive-color-warning);
+    }
+
+    &.center {
+        align-self: center;
+        justify-self: center;
+    }
+}
