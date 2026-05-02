@@ -28,8 +28,11 @@
         display: flex;
         flex-direction: row;
         width: 100%;
+        gap: 1rem;
 
         .icon {
+            display: flex;
+            align-items: center;
         }
 
         .header {

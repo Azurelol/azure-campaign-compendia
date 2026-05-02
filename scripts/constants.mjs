@@ -82,14 +82,15 @@ Constants.story = {
 }
 
 Constants.storyTags = {
-    ...Constants.storyTags.tone,
-    ...Constants.storyTags.setting,
-    ...Constants.storyTags.theme,
-    ...Constants.storyTags.threat,
+    ...Constants.story.tone,
+    ...Constants.story.setting,
+    ...Constants.story.theme,
+    ...Constants.story.threat,
 };
 
 Constants.icons = {
     compendium: 'fas fa-book',
+    inspect: 'fa fa-eye',
     info: 'fas fa-circle-info',
     warning: 'fas fa-triangle-exclamation',
     help: 'fas fa-circle-question',

@@ -40,7 +40,8 @@
 
             <label>
                 Tags
-                {{formGroup system.schema.fields.tags value=system.tags name=(pfuConcat path ".tags")}}
+                {{formGroup system.schema.fields.tags value=system.tags name='system.tags'
+                            options=(accFormOptions 'storyTags')}}
             </label>
 
         </details>

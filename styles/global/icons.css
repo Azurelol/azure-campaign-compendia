@@ -11,23 +11,23 @@
     pointer-events: none;
     object-fit: contain;
 
-    .--xs {
+    &.--xs {
         --icon-size: 16px;
     }
 
-    .--s {
+    &.--s {
         --icon-size: 24px;
     }
 
-    .-sm {
+    &.-sm {
         --icon-size: 36px;
     }
 
-    .--m {
+    &.--m {
         --icon-size: 48px;
     }
 
-    .--l {
+    &.--l {
         --icon-size: 64px;
     }
 

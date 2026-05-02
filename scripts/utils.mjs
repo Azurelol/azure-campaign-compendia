@@ -94,7 +94,25 @@ function fmt(s, ...args) {
         s = s.replace("{" + arg + "}", args[arg]);
     }
     return s;
-};
+}
+
+/**
+ * @param {Object} obj The object to resolve the property from
+ * @param {String} path The path to the property, in dot notation
+ * @returns {undefined|*} The value of the property
+ */
+function getProperty(obj, path) {
+    return foundry.utils.getProperty(obj, path);
+}
+
+/**
+ * @param {Object} obj The object to set the property on
+ * @param {String} path The path to the property, in dot notation
+ * @param {*} value The value to set on the property.
+ */
+function setProperty(obj, path, value) {
+    return foundry.utils.setProperty(obj, path, value);
+}
 
 const collectionMap = {
     Actor: game.actors,
@@ -138,9 +156,47 @@ async function getDocumentsOfType(type, cached = true, fields = []) {
     return documentCache[type];
 }
 
+/**
+ * Localizes a given key using the game's i18n system.
+ * @param {string} key - The localization key to look up.
+ * @param {Object} [data] - Optional interpolation data for formatted strings.
+ * @returns {string} The localized string, or an empty string if key is absent.
+ */
+function localize(key, data) {
+    if (!key) return '';
+    if (data) return game.i18n.format(key, data) || key;
+    return (typeof key === 'string' ? game.i18n.localize(key) : key.toString()) || key;
+}
+
+/**
+ * @typedef FormSelectOption
+ * @property {string} [value]
+ * @property {string} [label]
+ * @property {string} [group]
+ * @property {boolean} [disabled]
+ * @property {boolean} [selected]
+ * @property {boolean} [rule]
+ * @property {Record<string, string>} [dataset]
+ */
+
+/**
+ * @param {Record<String, String>} record
+ * @returns {FormSelectOption[]}
+ * @remarks To be used with specific records.
+ */
+function getFormSelectOptions(record) {
+    return Object.entries(record).map(([key, value]) => ({
+        label: localize(value),
+        value: key,
+    }));
+}
+
 export const Utils = Object.freeze({
     fmt,
     renderTemplate,
+    getProperty,
+    setProperty,
     getPackEntries,
-    getDocumentsOfType
+    getDocumentsOfType,
+    getFormSelectOptions
 })

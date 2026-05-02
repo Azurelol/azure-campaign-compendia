@@ -6,7 +6,7 @@
  * @property {'xs'|'s'|'m'|'l'|'xl'} size
  */
 
-import {moduleTemplatePath} from "./utils.mjs";
+import {moduleTemplatePath, Utils} from "./utils.mjs";
 import {Constants} from "./constants.mjs";
 
 /**
@@ -50,6 +50,11 @@ export const ACHandlebars = Object.freeze({
         ]);
     },
     registerHelpers: () => {
+        Handlebars.registerHelper('accFormOptions', function (constant) {
+            const record = Utils.getProperty(Constants, constant);
+            const options = Utils.getFormSelectOptions(record);
+            return options;
+        });
         Handlebars.registerHelper('accDocumentAnchor', documentAnchor);
         Handlebars.registerHelper('accIconClass', function (icon) {
             if (!icon) {

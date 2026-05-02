@@ -115,6 +115,9 @@ export class ChallengeDataModel extends foundry.abstract.DataModel {
     }
 }
 
+/**
+ * @property {String} hook1
+ */
 export class StoryKitDataModel extends foundry.abstract.TypeDataModel {
     static defineSchema() {
         return {
@@ -145,7 +148,16 @@ export class StoryKitDataModel extends foundry.abstract.TypeDataModel {
             twist: new fields.StringField(),
             author: new fields.StringField(),
             // Tags
-            tags: new fields.SetField(new fields.StringField())
+            tone: new fields.SetField(new fields.StringField({})),
+            setting: new fields.SetField(new fields.StringField({})),
+            theme: new fields.SetField(new fields.StringField({}))
         };
+    }
+
+    /**
+     * @returns {String[]}
+     */
+    get tags() {
+        return [...this.tone, ...this.setting, ...this.theme]
     }
 }
