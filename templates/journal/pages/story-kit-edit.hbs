@@ -39,9 +39,19 @@
             </label>
 
             <label>
-                Tags
-                {{formGroup system.schema.fields.tags value=system.tags name='system.tags'
-                            options=(accFormOptions 'storyTags')}}
+                Tone
+                {{log 'tone' (accFormOptions 'story.tone')}}
+                {{formGroup system.schema.fields.tone value=system.tone options=(accFormOptions 'story.tone')}}
+            </label>
+
+            <label>
+                Setting
+                {{formGroup system.schema.fields.setting value=system.setting options=(accFormOptions 'story.setting')}}
+            </label>
+
+            <label>
+                Theme
+                {{formGroup system.schema.fields.theme value=system.theme options=(accFormOptions 'story.theme')}}
             </label>
 
         </details>

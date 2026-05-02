@@ -1,3 +1,4 @@
+// This module should have no imports beyond constants
 import {moduleId} from "./constants.mjs";
 
 const {api, fields, handlebars} = foundry.applications;
@@ -84,19 +85,6 @@ async function getPackEntries(name, module = moduleId) {
 }
 
 /**
- * Behaves like C# string format
- * @param {*} s
- * @param  {...any} args
- * @returns
- */
-function fmt(s, ...args) {
-    for (var arg in args) {
-        s = s.replace("{" + arg + "}", args[arg]);
-    }
-    return s;
-}
-
-/**
  * @param {Object} obj The object to resolve the property from
  * @param {String} path The path to the property, in dot notation
  * @returns {undefined|*} The value of the property
@@ -157,6 +145,31 @@ async function getDocumentsOfType(type, cached = true, fields = []) {
 }
 
 /**
+ * @desc Recursively merges source into target, mutating target in place.
+ * @param {Object} target The object being merged into.
+ * @param {Object} source
+ * @returns {boolean} Whether any changes were made.
+ */
+function mergeRecursive(target, source) {
+    let changed = false;
+
+    for (const [key, value] of Object.entries(source)) {
+        if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+            if (!(key in target)) {
+                target[key] = {};
+                changed = true;
+            }
+            if (mergeRecursive(target[key], value)) changed = true;
+        } else if (!(key in target) || target[key] !== value) {
+            target[key] = value;
+            changed = true;
+        }
+    }
+
+    return changed;
+}
+
+/**
  * Localizes a given key using the game's i18n system.
  * @param {string} key - The localization key to look up.
  * @param {Object} [data] - Optional interpolation data for formatted strings.
@@ -192,10 +205,10 @@ function getFormSelectOptions(record) {
 }
 
 export const Utils = Object.freeze({
-    fmt,
     renderTemplate,
     getProperty,
     setProperty,
+    mergeRecursive,
     getPackEntries,
     getDocumentsOfType,
     getFormSelectOptions

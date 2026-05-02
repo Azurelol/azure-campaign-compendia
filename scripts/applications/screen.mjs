@@ -1,7 +1,11 @@
 import ACApplication from "./application.mjs";
 import {moduleTemplatePath} from "../utils.mjs";
 import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
+import {Dialogs} from "../dialogs.mjs";
 
+/**
+ * @property
+ */
 export class GMScreen extends ACApplication {
 
     /**
@@ -15,8 +19,12 @@ export class GMScreen extends ACApplication {
             contentClasses: ['acc-screen'],
         },
         position: {width: 800, height: 600},
-        actions: {},
+        actions: {
+            viewStoryKit: this.#viewStoryKit
+        },
     };
+
+    // TODO: Add widgets
 
     /**
      * @override
@@ -25,9 +33,9 @@ export class GMScreen extends ACApplication {
         nav: {
             template: moduleTemplatePath('applications/nav'),
         },
-        widgets: {
-            template: moduleTemplatePath(`applications/screen/widgets`),
-        },
+        // widgets: {
+        //     template: moduleTemplatePath(`applications/screen/widgets`),
+        // },
         overview: {
             template: moduleTemplatePath('applications/screen/overview'),
         },
@@ -49,6 +57,9 @@ export class GMScreen extends ACApplication {
         },
     };
 
+    /** JournalEntryPage[] **/
+    #kits;
+
     /** @override */
     async _prepareContext(options) {
         let context = await super._prepareContext(options);
@@ -65,7 +76,8 @@ export class GMScreen extends ACApplication {
                 context.tabs = this._prepareTabs('primary');
                 break;
             case 'kits':
-                context.kits = await StoryKitSheet.getStoryKits()
+                this.#kits = await StoryKitSheet.getStoryKits()
+                context.kits = this.#kits;
                 break;
         }
         return context;
@@ -91,5 +103,23 @@ export class GMScreen extends ACApplication {
         });
         const theme = this.theme;
         windowContent.classList.add(`theme-${theme}`);
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #viewStoryKit(event, target) {
+        const {id} = target.dataset;
+        // TODO: Reference
+        if (this.#kits) {
+            const kit = this.#kits.find(k => k.id === id);
+            if (kit) {
+                await Dialogs.popout(kit.name, "boop");
+            }
+        }
+
     }
 }

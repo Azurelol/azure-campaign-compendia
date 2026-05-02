@@ -1,7 +1,7 @@
 .acc-screen {
     display: grid;
     height: 100%;
-    padding: 0;
+    padding: 8px;
 
     background: var(--acc-color-bg);
     color: var(--acc-color-text);
@@ -45,11 +45,11 @@
 
     &.theme-classic {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 100px 50px;
+        grid-template-rows: 1fr 100px /**50px**/;
         grid-template-areas:
 			'active-tab'
-			'nav'
-			'widgets';
+			'nav';
+        /*'widgets';*/
 
         .nav {
             display: flex;

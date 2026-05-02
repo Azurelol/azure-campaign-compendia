@@ -91,6 +91,8 @@ Constants.storyTags = {
 Constants.icons = {
     compendium: 'fas fa-book',
     inspect: 'fa fa-eye',
+    link: 'fa fa-link',
+    popout: 'fa fa-external-link',
     info: 'fas fa-circle-info',
     warning: 'fas fa-triangle-exclamation',
     help: 'fas fa-circle-question',

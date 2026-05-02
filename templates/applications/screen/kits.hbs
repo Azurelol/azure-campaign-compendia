@@ -12,7 +12,12 @@
             {{#each kits as |kit|}}
                 <li class="acc-browser__entry-basic">
                     <div class="icon">
-                        {{accDocumentAnchor kit size='s'}}
+                        {{accDocumentAnchor kit size='xs'}}
+                    </div>
+                    <div class="icon">
+                        <a data-action="viewStoryKit" data-id="{{kit.id}}">
+                            <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                        </a>
                     </div>
                     <div class="header">
 						<span class="name">

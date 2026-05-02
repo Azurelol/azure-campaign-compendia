@@ -95,7 +95,7 @@ async function confirm(options) {
  * @returns {Promise<*>}
  */
 async function input(title, content, options = {}) {
-    let defaultOptions = {
+    const defaultOptions = {
         window: {title: title, icon: 'fas fa-comment'},
         content: content,
         classes: DIALOG_CLASSES,
@@ -104,7 +104,7 @@ async function input(title, content, options = {}) {
             label: 'FU.Confirm',
         },
     };
-    ObjectUtils.mergeRecursive(defaultOptions, options);
+    Utils.mergeRecursive(defaultOptions, options);
     return await foundry.applications.api.DialogV2.input(defaultOptions);
 }
 
@@ -115,17 +115,15 @@ async function input(title, content, options = {}) {
  * @returns {Promise}
  */
 async function popout(title, content, options = {}) {
-    const [mergedOptions] = ObjectUtils.mergeRecursive(
-        {
-            window: {title, icon: 'fas fa-eye', resizable: true},
-            classes: DIALOG_CLASSES,
-            rejectClose: false,
-            content,
-            buttons: [{label: 'Close', action: 'close'}],
-        },
-        options,
-    );
-    await foundry.applications.api.DialogV2.wait(mergedOptions);
+    const defaultOptions = {
+        window: {title, icon: 'fas fa-eye', resizable: true},
+        classes: DIALOG_CLASSES,
+        rejectClose: false,
+        content,
+        buttons: [{label: 'Close', action: 'close'}],
+    };
+    Utils.mergeRecursive(defaultOptions, options);
+    await foundry.applications.api.DialogV2.wait(defaultOptions);
 }
 
 /**
@@ -133,69 +131,66 @@ async function popout(title, content, options = {}) {
  * @returns {Promise<*>}
  */
 async function prompt(options = {}) {
-    const [result] = ObjectUtils.mergeRecursive(
-        {
-            window: {icon: 'fas fa-comment'},
-            classes: DIALOG_CLASSES,
-            rejectClose: false,
-            actions: {
-                // Image Picker: Browse
-                browseImage: (event, target) => {
-                    const {name} = target.dataset;
-                    const imagePicker = event.currentTarget.querySelector('.image-picker');
-                    if (!imagePicker) {
-                        return;
-                    }
-                    const preview = imagePicker.querySelector('img');
-                    const input = imagePicker.querySelector(`input[name="${name}"]`);
-                    new FilePicker({
-                        type: 'image',
-                        current: input?.value,
-                        callback: (path) => {
-                            if (input) {
-                                input.value = path;
-                                preview.src = path;
-                            }
-                        },
-                    }).render(true);
-                },
-                // Generic File
-                browse: (event, target, dialog) => {
-                    const {name, type} = target.dataset;
-                    const input = event.currentTarget.querySelector(`input[name="${name}"]`);
-                    new FilePicker({
-                        type: type,
-                        current: input?.value,
-                        callback: (path) => {
-                            if (input) input.value = path;
-                        },
-                    }).render(true);
-                },
-                toggleTag: (event, target) => {
-                    if (!options.context) {
-                        return;
-                    }
-                    const {path, tag} = target.dataset;
-                    const tags = ObjectUtils.getProperty(options.context, path);
-                    if (!tags) {
-                        return;
-                    }
+    const defaultOptions = {
+        window: {icon: 'fas fa-comment'},
+        classes: DIALOG_CLASSES,
+        rejectClose: false,
+        actions: {
+            // Image Picker: Browse
+            browseImage: (event, target) => {
+                const {name} = target.dataset;
+                const imagePicker = event.currentTarget.querySelector('.image-picker');
+                if (!imagePicker) {
+                    return;
+                }
+                const preview = imagePicker.querySelector('img');
+                const input = imagePicker.querySelector(`input[name="${name}"]`);
+                new FilePicker({
+                    type: 'image',
+                    current: input?.value,
+                    callback: (path) => {
+                        if (input) {
+                            input.value = path;
+                            preview.src = path;
+                        }
+                    },
+                }).render(true);
+            },
+            // Generic File
+            browse: (event, target, dialog) => {
+                const {name, type} = target.dataset;
+                const input = event.currentTarget.querySelector(`input[name="${name}"]`);
+                new FilePicker({
+                    type: type,
+                    current: input?.value,
+                    callback: (path) => {
+                        if (input) input.value = path;
+                    },
+                }).render(true);
+            },
+            toggleTag: (event, target) => {
+                if (!options.context) {
+                    return;
+                }
+                const {path, tag} = target.dataset;
+                const tags = ObjectUtils.getProperty(options.context, path);
+                if (!tags) {
+                    return;
+                }
 
-                    const index = tags.indexOf(tag);
-                    if (index === -1) {
-                        tags.push(tag);
-                        target.classList.add('active');
-                    } else {
-                        tags.splice(index, 1);
-                        target.classList.remove('active');
-                    }
-                },
+                const index = tags.indexOf(tag);
+                if (index === -1) {
+                    tags.push(tag);
+                    target.classList.add('active');
+                } else {
+                    tags.splice(index, 1);
+                    target.classList.remove('active');
+                }
             },
         },
-        options,
-    );
-
-    return await foundry.applications.api.DialogV2.input(result);
+    };
+    Utils.mergeRecursive(defaultOptions, options);
+    return await foundry.applications.api.DialogV2.input(defaultOptions);
 }
 
 export const Dialogs = {

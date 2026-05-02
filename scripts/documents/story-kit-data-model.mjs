@@ -116,7 +116,28 @@ export class ChallengeDataModel extends foundry.abstract.DataModel {
 }
 
 /**
- * @property {String} hook1
+ * @property {string} hook1 - The first story hook.
+ * @property {string} hook2 - The second story hook.
+ * @property {string} hook3 - The third story hook.
+ * @property {string} introduction - HTML introduction blurb for the story kit.
+ * @property {PressurePoolDataModel} prelude - Pressure pool for the prelude phase.
+ * @property {PressurePoolDataModel} escalation - Pressure pool for the escalation phase.
+ * @property {PressurePoolDataModel} climax - Pressure pool for the climax phase.
+ * @property {ThreadDataModel} thread1 - The first story thread.
+ * @property {ThreadDataModel} thread2 - The second story thread.
+ * @property {ThreadDataModel} thread3 - The third story thread.
+ * @property {SetupDataModel} setup1 - The first setup.
+ * @property {SetupDataModel} setup2 - The second setup.
+ * @property {SetupDataModel} setup3 - The third setup.
+ * @property {ChallengeDataModel} challenge1 - The first challenge.
+ * @property {ChallengeDataModel} challenge2 - The second challenge.
+ * @property {ChallengeDataModel} challenge3 - The third challenge.
+ * @property {ChallengeDataModel} challenge4 - The fourth challenge.
+ * @property {string} twist - A "mix it up" twist for the story.
+ * @property {string} author - The author of the story kit.
+ * @property {Set<string>} tone - Tone tags associated with the story kit.
+ * @property {Set<string>} setting - Setting tags associated with the story kit.
+ * @property {Set<string>} theme - Theme tags associated with the story kit.
  */
 export class StoryKitDataModel extends foundry.abstract.TypeDataModel {
     static defineSchema() {
