@@ -20,7 +20,7 @@ Constants.clockSize = {
 
 Constants.story = {
     tone: {
-        dark: 'Dark', // Texture: bleakness, low survival odds
+        dark: 'ACC.STORY.TONE.Dark', // Texture: bleakness, low survival odds
         grim: 'Grim', // Subject: death, evil, moral corruption
         tragic: 'Tragic',
         whimsical: 'Whimsical',
@@ -94,6 +94,8 @@ Constants.icons = {
     link: 'fa fa-link',
     popout: 'fa fa-external-link',
     info: 'fas fa-circle-info',
+    pin: 'fa fa-thumb-tack',
+    bookmark: 'fa fa-bookmark-o',
     warning: 'fas fa-triangle-exclamation',
     help: 'fas fa-circle-question',
 }

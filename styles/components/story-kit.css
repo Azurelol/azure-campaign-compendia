@@ -2,6 +2,9 @@
    Local component variables — scoped to .acc-story-kit,
    not on :root. Only for values with no semantic equivalent.
    ============================================================ */
+.acc-story-kit__frame {
+}
+
 .acc-story-kit {
     --acc-mix-label-width: var(--acc-primitive-size-space-60);
 
@@ -20,6 +23,7 @@
 
 /* --- palette & base --- */
 .acc-story-kit {
+    overflow: auto;
     font-family: var(--acc-font-body), serif;
     max-width: 900px;
     margin: 0 auto;
@@ -205,7 +209,7 @@
     letter-spacing: .05em;
 }
 
-.acc-story-kit__tri, .acc-story-kit__check {
+.acc-story-kit__tri, .acc-story-kit__checklist {
     margin: .25rem 0 0;
     padding-left: 0.1rem;
 }
@@ -219,25 +223,26 @@
     content: "▸ ";
 }
 
-.acc-story-kit__check li {
-    list-style: none;
-    margin: .22rem 0;
-}
+.acc-story-kit__checklist {
+    li {
+        list-style: none;
+        margin: .22rem 0;
+    }
 
-.acc-story-kit__check li::before {
-    content: "☐ ";
-}
+    li::before {
+        content: "☐ ";
+    }
 
-/* two-column checklist */
-.acc-story-kit__check.sk-two {
-    columns: 2;
-    column-gap: 20px;
-    padding-left: 0;
-    margin-top: .4rem;
-}
+    &.--extended {
+        columns: 2;
+        column-gap: 20px;
+        padding-left: 0;
+        margin-top: .4rem;
 
-.acc-story-kit__check.sk-two li {
-    break-inside: avoid;
+        li {
+            break-inside: avoid;
+        }
+    }
 }
 
 /* --- small action cards row --- */

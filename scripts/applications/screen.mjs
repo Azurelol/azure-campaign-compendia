@@ -17,7 +17,7 @@ export class GMScreen extends ACApplication {
             resizable: true,
             contentClasses: ['acc-screen'],
         },
-        position: {width: 800, height: 600},
+        position: {width: 1024, height: 768},
         actions: {
             viewStoryKit: this.#viewStoryKit
         },
@@ -116,13 +116,8 @@ export class GMScreen extends ACApplication {
         if (this.#kits) {
             const kit = this.#kits.find(k => k.id === id);
             if (kit) {
-                const sheet = kit.sheet;
-                if (sheet) {
-                    sheet.render({
-                        force: true,
-                        mode: "view",
-                    });
-                }
+                const sheetClass = kit._getSheetClass();
+                new sheetClass({document: kit, mode: "view"}).render(true);
             }
         }
     }

@@ -1,6 +1,6 @@
 <article class="acc-story-kit__box">
     <p><em><b>{{data.label}}</b>: {{data.description}}</em></p>
-    <ul class="{{#if data.extended}}sk-two{{/if}}">
+    <ul class="acc-story-kit__checklist {{#if data.extended}}--extended{{/if}}">
         {{#each data.choices as |choice index|}}
             {{#if choice.text}}
                 <li>

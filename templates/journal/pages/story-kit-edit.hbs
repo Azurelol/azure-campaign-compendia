@@ -40,8 +40,7 @@
 
             <label>
                 Tone
-                {{log 'tone' (accFormOptions 'story.tone')}}
-                {{formGroup system.schema.fields.tone value=system.tone options=(accFormOptions 'story.tone')}}
+                {{formGroup system.schema.fields.tone value=system.tone options=toneOptions}}
             </label>
 
             <label>

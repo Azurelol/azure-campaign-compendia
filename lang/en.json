@@ -5,6 +5,11 @@
     }
   },
   "ACC": {
-    "GMScreen": "GM Screen"
+    "GMScreen": "GM Screen",
+    "STORY": {
+      "TONE": {
+        "Dark": "Dark"
+      }
+    }
   }
 }
