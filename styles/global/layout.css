@@ -38,6 +38,7 @@
         .header {
             display: flex;
             flex-direction: row;
+            gap: 1rem;
             justify-content: space-between;
 
             .name {
@@ -55,6 +56,8 @@
 }
 
 .acc-tags {
+    display: flex;
+    align-items: center;
     margin: 0;
     padding: 0.125rem 0;
 }

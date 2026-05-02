@@ -1,4 +1,5 @@
 import {modulePrefixed, moduleTemplatePath, Utils} from "../utils.mjs";
+import {Constants} from "../constants.mjs";
 
 export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {
 
@@ -54,6 +55,8 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
         /** @type StoryKitDataModel **/
         context.system = this.document.system;
         context.enrichedIntroduction = await TextEditor.enrichHTML(context.system.introduction, {async: true});
+        context.constants = Constants;
+        //context.
         return context;
     }
 

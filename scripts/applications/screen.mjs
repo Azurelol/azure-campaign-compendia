@@ -1,7 +1,6 @@
 import ACApplication from "./application.mjs";
 import {moduleTemplatePath} from "../utils.mjs";
 import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
-import {Dialogs} from "../dialogs.mjs";
 
 /**
  * @property
@@ -117,9 +116,14 @@ export class GMScreen extends ACApplication {
         if (this.#kits) {
             const kit = this.#kits.find(k => k.id === id);
             if (kit) {
-                await Dialogs.popout(kit.name, "boop");
+                const sheet = kit.sheet;
+                if (sheet) {
+                    sheet.render({
+                        force: true,
+                        mode: "view",
+                    });
+                }
             }
         }
-
     }
 }
