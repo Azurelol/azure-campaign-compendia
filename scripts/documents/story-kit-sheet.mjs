@@ -13,7 +13,7 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
             icon: "fa-brands fa-markdown",
             contentClasses: ['acc-story-kit']
         },
-        position: {width: 800, height: 1040},
+        position: {width: 885, height: 1080},
         form: {
             submitOnChange: false,
         },
@@ -58,7 +58,6 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
         context.enrichedIntroduction = await TextEditor.enrichHTML(context.system.introduction, {async: true});
         context.constants = Constants;
         context.toneOptions = Utils.getFormSelectOptions(Constants.story.tone);
-        //context.
         return context;
     }
 

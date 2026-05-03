@@ -12,8 +12,9 @@
 
     /* controls */
     --acc-color-control: var(--acc-primitive-color-white); /* label/icon tint */
-    --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-grey-mid), white 25%);
+    --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-white), white 25%);
     --acc-color-bg-control: var(--acc-primitive-color-grey-light); /* fill/background */
+    --acc-color-bg-control-hover: var(--acc-primitive-color-azure); /* fill/background */
     --acc-color-shadow-control: var(--acc-primitive-color-shadow); /* drop shadow */
     --acc-color-border-control: var(--acc-primitive-color-grey-mid); /* border/outline */
 

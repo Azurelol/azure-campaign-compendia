@@ -1,4 +1,25 @@
 <section class="main">
+
+    <div class="acc-property-section">
+        <div class="acc-property-group --row --stretch">
+            <label class="acc-property">
+                Tone
+                {{formGroup system.schema.fields.tone value=system.tone localize=true
+                            options=(accFormOptions 'story.tone')}}
+            </label>
+
+            <label class="acc-property">
+                Setting
+                {{formGroup system.schema.fields.setting value=system.setting options=(accFormOptions 'story.setting')}}
+            </label>
+
+            <label class="acc-property">
+                Theme
+                {{formGroup system.schema.fields.theme value=system.theme options=(accFormOptions 'story.theme')}}
+            </label>
+        </div>
+    </div>
+
     <details class="acc-details">
         <summary>Overview</summary>
         <h3>Hooks</h3>
@@ -36,23 +57,6 @@
             Author
             <input type="text" name="system.author" maxlength="50" value="{{system.author}}" data-dtype="String"/>
         </label>
-
-        <div class="acc-property-group --row --stretch">
-            <label class="acc-property">
-                Tone
-                {{formGroup system.schema.fields.tone value=system.tone options=toneOptions}}
-            </label>
-
-            <label class="acc-property">
-                Setting
-                {{formGroup system.schema.fields.setting value=system.setting options=(accFormOptions 'story.setting')}}
-            </label>
-
-            <label class="acc-property">
-                Theme
-                {{formGroup system.schema.fields.theme value=system.theme options=(accFormOptions 'story.theme')}}
-            </label>
-        </div>
     </details>
 
     <details class="acc-details">

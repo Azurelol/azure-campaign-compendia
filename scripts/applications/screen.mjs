@@ -19,7 +19,8 @@ export class GMScreen extends ACApplication {
         },
         position: {width: 1024, height: 768},
         actions: {
-            viewStoryKit: this.#viewStoryKit
+            viewStoryKit: this.#viewStoryKit,
+            editStoryKit: this.#editStoryKit
         },
     };
 
@@ -112,12 +113,28 @@ export class GMScreen extends ACApplication {
      */
     static async #viewStoryKit(event, target) {
         const {id} = target.dataset;
-        // TODO: Reference
         if (this.#kits) {
             const kit = this.#kits.find(k => k.id === id);
             if (kit) {
                 const sheetClass = kit._getSheetClass();
                 new sheetClass({document: kit, mode: "view"}).render(true);
+            }
+        }
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #editStoryKit(event, target) {
+        const {id} = target.dataset;
+        if (this.#kits) {
+            const kit = this.#kits.find(k => k.id === id);
+            if (kit) {
+                const sheetClass = kit._getSheetClass();
+                new sheetClass({document: kit, mode: "edit"}).render(true);
             }
         }
     }

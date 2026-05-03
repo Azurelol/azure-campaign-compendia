@@ -20,7 +20,8 @@
     },
     "STORY": {
       "TONE": {
-        "Dark": "Dark"
+        "Dark": "Dark",
+        "Grim": "Grim"
       }
     }
   }

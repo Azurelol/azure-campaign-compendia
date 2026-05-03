@@ -35,7 +35,8 @@ Constants.clockIcons = {
 Constants.story = {
     tone: {
         dark: 'ACC.STORY.TONE.Dark', // Texture: bleakness, low survival odds
-        grim: 'Grim', // Subject: death, evil, moral corruption
+        light: 'Light',
+        grim: 'ACC.STORY.TONE.Grim', // Subject: death, evil, moral corruption
         tragic: 'Tragic',
         whimsical: 'Whimsical',
         mysterious: 'Mysterious',
@@ -43,10 +44,10 @@ Constants.story = {
         eerie: 'Eerie',
         comedic: 'Comedic',
         surreal: 'Surreal',
-        lighthearted: 'Lighthearted',
         epic: 'Epic',
     },
     setting: {
+        settlement: 'Settlement',
         urban: 'Urban',
         wilderness: 'Wilderness',
         underground: 'Underground',
@@ -66,6 +67,7 @@ Constants.story = {
         horror: 'Horror',
         exploration: 'Exploration',
         chase: 'Chase',
+        hunt: 'Hunt',
         investigation: 'Investigation',
         redemption: 'Redemption',
         sacrifice: 'Sacrifice',
@@ -73,6 +75,7 @@ Constants.story = {
         fate: 'Fate',
         legacy: 'Legacy',
         identity: 'Identity',
+        skirmish: "Skirmish",
         war: 'War',
         journey: 'Journey',
         loss: 'Loss',
@@ -106,6 +109,7 @@ Constants.icons = {
     compendium: 'fas fa-book',
     inspect: 'fa fa-eye',
     link: 'fa fa-link',
+    edit: 'fa fa-pencil',
     popout: 'fa fa-external-link',
     info: 'fas fa-circle-info',
     pin: 'fa fa-thumb-tack',
