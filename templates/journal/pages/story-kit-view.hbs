@@ -2,7 +2,14 @@
 
     <!-- Title banner -->
     <header class="acc-story-kit__titlebar">
-        <h1 class="title"><b>{{name}}</b></h1>
+        <div class="title">
+            <h1>{{name}}</h1>
+            <div class="acc-tags">
+                {{#each system.tags as |tag|}}
+                    <div class="acc-tag">{{tag}}</div>
+                {{/each}}
+            </div>
+        </div>
 
         <section class="hooks">
             <div class="hook">{{system.hook1}}</div>
@@ -17,7 +24,6 @@
             </p>
         </section>
     </header>
-
 
 
     <!-- PRESSURE POOLS (3 cards with dice + connectors) -->
@@ -60,9 +66,9 @@
     </section>
 
     <!-- Mix it up bar -->
-    <section class="acc-story-kit__mix">
-        <div class="acc-story-kit__mix__label">TWIST</div>
-        <div class="acc-story-kit__mix__text">{{system.twist}}</div>
+    <section class="acc-story-kit__twist">
+        <div class="acc-story-kit__twist__label">TWIST</div>
+        <div class="acc-story-kit__twist__text">{{system.twist}}</div>
     </section>
 
     <!-- Footer -->

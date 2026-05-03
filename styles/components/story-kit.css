@@ -27,6 +27,7 @@
     font-family: var(--acc-font-body), serif;
     max-width: 900px;
     background: var(--acc-color-bg);
+    padding: 8px;
     color: var(--acc-color-text);
     border: 1.5px solid var(--acc-color-border-kit);
     font-size: var(--acc-text-size-md);
@@ -53,13 +54,24 @@
     margin-bottom: 8px;
 
     .title {
-        text-align: center;
-        text-transform: uppercase;
-        font-family: var(--acc-font-title);
-        color: var(--acc-color-text-title);
-        font-weight: 900;
-        font-size: var(--acc-text-size-xl);
-        margin: 8px 0 0;
+
+        h1 {
+            text-align: center;
+            color: var(--acc-color-text-title);
+            font-size: var(--acc-text-size-xl);
+            margin: 8px 0 0;
+
+            font-family: var(--acc-primitive-font-title);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
     }
 
     .hooks {
@@ -81,6 +93,7 @@
     .intro {
         padding: 10px 12px;
         color: var(--acc-color-text);
+        font-size: var(--acc-text-size-m);
     }
 }
 
@@ -165,7 +178,7 @@
     align-items: center;
     justify-content: center;
     padding: 4px;
-    background: var(--acc-color-icon-active);
+    background: var(--acc-color-icon);
 }
 
 .acc-story-kit__content {
@@ -328,20 +341,20 @@
 }
 
 /* --- Mix it up bar --- */
-.acc-story-kit__mix {
+.acc-story-kit__twist {
     display: grid;
     grid-template-columns: var(--acc-mix-label-width) 1fr;
     align-items: center;
     padding: 6px 8px;
 }
 
-.acc-story-kit__mix__label {
+.acc-story-kit__twist__label {
     font-weight: 800;
     background: var(--acc-color-bg-title);
     letter-spacing: .08em;
 }
 
-.acc-story-kit__mix__text {
+.acc-story-kit__twist__text {
     font-style: italic;
     background: var(--acc-color-bg);
 }
@@ -386,7 +399,7 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .acc-story-kit__mix {
+    .acc-story-kit__twist {
         grid-template-columns: 1fr;
     }
 }

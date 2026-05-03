@@ -21,10 +21,10 @@
     --acc-color-bg-panel: var(--acc-primitive-color-parchment-light);
     --acc-color-bg-panel-head: var(--acc-primitive-color-taupe);
     --acc-color-text-panel: var(--acc-primitive-color-text);
-    --acc-color-text-panel-head: var(--acc-primitive-color-white);
+    --acc-color-text-panel-head: var(--acc-primitive-color-dim);
 
     /* icons */
-    --acc-color-icon: var(--acc-primitive-color-azure);
+    --acc-color-icon: var(--acc-primitive-color-ink-blue);
     --acc-color-icon-active: var(--acc-primitive-color-azure);
     --acc-color-icon-hover: color-mix(in srgb, var(--acc-primitive-color-azure), white 30%);
 
@@ -50,7 +50,7 @@
     /* text sizes */
     --acc-text-size-xs: var(--acc-primitive-size-text-xs);
     --acc-text-size-sm: var(--acc-primitive-size-text-sm);
-    --acc-text-size-md: var(--acc-primitive-size-text-md);
+    --acc-text-size-m: var(--acc-primitive-size-text-m);
     --acc-text-size-base: var(--acc-primitive-size-text-base);
     --acc-text-size-lg: var(--acc-primitive-size-text-lg);
     --acc-text-size-xl: var(--acc-primitive-size-text-xl);

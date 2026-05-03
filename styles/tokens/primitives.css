@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 /* ============================================================
    TIER 1 — Primitives
    Raw values only. No semantic meaning. Never used in
@@ -5,7 +7,6 @@
    ============================================================ */
 :root {
     /* color */
-    --acc-primitive-color-brown-dark: #5a2d2d;
     --acc-primitive-color-parchment: #f5f2e8;
     --acc-primitive-color-parchment-light: #e8e4d8;
     --acc-primitive-color-parchment-pale: #dedad0;
@@ -17,21 +18,31 @@
     --acc-primitive-color-text: #1a1a1a;
     --acc-primitive-color-white: #ffffff;
     --acc-primitive-color-black: #000000;
-    --acc-primitive-color-dim: dimgrey;
+    --acc-primitive-color-dim: #262424;
     --acc-primitive-color-azure: #1C63AA;
+    --acc-primitive-color-brown: #712C1C;
     --acc-primitive-color-grey-mid: #8C8680;
     --acc-primitive-color-grey-light: #B5B0AA;
     --acc-primitive-color-shadow: #3D3830;
     --acc-primitive-color-warning: yellow;
+    --acc-primitive-color-brown-saddle: #5C3317;
+    --acc-primitive-color-brown-medium: #6B4226;
+    --acc-primitive-color-brown-dark: #4A2C0A;
+    --acc-primitive-color-sepia: #704214;
+    --acc-primitive-color-sepia-light: #8B5E3C;
+    --acc-primitive-color-burgundy: #7B2D2D;
+    --acc-primitive-color-burgundy-dark: #6B1E1E;
+    --acc-primitive-color-ink-blue: #2C3E6B;
 
     /* font family */
-    --acc-primitive-font-title: 'Impact', sans-serif;
+    --acc-primitive-font-title: 'Alfa Slab One', sans-serif;
     --acc-primitive-font-heading: 'Cinzel', serif;
     --acc-primitive-font-body: 'EB Garamond', serif;
 
     /* font size */
     --acc-primitive-size-text-xs: 0.7rem;
     --acc-primitive-size-text-sm: 0.8rem;
+    --acc-primitive-size-text-m: 0.9rem;
     --acc-primitive-size-text-md: 0.85rem;
     --acc-primitive-size-text-base: 13px;
     --acc-primitive-size-text-lg: 1rem;
