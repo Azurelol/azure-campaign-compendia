@@ -11,19 +11,24 @@
         <ul class="acc-browser__content">
             {{#each kits as |kit|}}
                 <li class="acc-browser__entry --basic">
-                    <div class="icon">
-                        {{accDocumentAnchor kit size='xs'}}
+                    <div class="controls">
+                        <div class="icon">
+                            {{accDocumentAnchor kit size='xs'}}
+                        </div>
+                        <div class="icon">
+                            <a data-action="viewStoryKit" data-id="{{kit.id}}">
+                                <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                            </a>
+                        </div>
+                        {{#if kit.isOwner}}
+                            <div class="icon">
+                                <a data-action="editStoryKit" data-id="{{kit.id}}">
+                                    <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
+                                </a>
+                            </div>
+                        {{/if}}
                     </div>
-                    <div class="icon">
-                        <a data-action="viewStoryKit" data-id="{{kit.id}}">
-                            <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <a data-action="editStoryKit" data-id="{{kit.id}}">
-                            <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
-                        </a>
-                    </div>
+
                     <div class="header">
 						<span class="name">
                             {{kit.name}}

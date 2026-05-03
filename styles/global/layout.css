@@ -38,6 +38,7 @@
             width: 100%;
             gap: 1rem;
             padding-left: 1rem;
+            justify-content: space-between;
 
             .icon {
                 display: flex;
@@ -45,11 +46,18 @@
                 color: var(--acc-color-icon);
             }
 
+            .controls {
+                display: flex;
+                flex-direction: row;
+                gap: 0.4rem;
+            }
+
             .header {
                 display: flex;
                 flex-direction: row;
                 gap: 1rem;
                 justify-content: space-between;
+                width: 100%;
 
                 .name {
                     font-family: 'CreditValleybold';
