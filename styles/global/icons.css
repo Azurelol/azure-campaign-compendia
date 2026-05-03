@@ -1,3 +1,27 @@
+/* ============================================================
+   CUSTOM ICONS
+   ============================================================ */
+:root {
+    --icon-acc-d2: url(../static/icons/dice-six-faces-two.svg);
+    --icon-acc-d4: url(../static/icons/dice-six-faces-four.svg);
+    --icon-acc-d6: url(../static/icons/dice-six-faces-six.svg);
+}
+
+.acc-d2 {
+    background-image: var(--icon-acc-d2);
+}
+
+.acc-d4 {
+    background-image: var(--icon-acc-d4);
+}
+
+.acc-d6 {
+    background-image: var(--icon-acc-d6);
+}
+
+/* ============================================================
+   ICON CLASS
+   ============================================================ */
 .acc-icon {
     --icon-size: 100%;
     display: inline-block;

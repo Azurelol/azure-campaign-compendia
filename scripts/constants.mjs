@@ -27,9 +27,9 @@ Constants.clockSize = {
 }
 
 Constants.clockIcons = {
-    short: 'fa-solid fa-circle-dot',
-    medium: 'fa-solid fa-circle-half-stroke',
-    long: 'fa-solid fa-circle',
+    short: 'acc-d2',
+    medium: 'acc-d4',
+    long: 'acc-d6',
 }
 
 Constants.story = {

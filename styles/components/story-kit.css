@@ -128,13 +128,16 @@
     text-transform: uppercase;
     height: 20px;
     padding: 8px;
-    gap: 4px;
+    gap: 8px;
 }
 
 .acc-story-kit__clock {
     color: var(--acc-color-text-inverted);
     font-size: var(--acc-text-size-sm);
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .acc-story-kit__content {

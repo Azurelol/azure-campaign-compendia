@@ -1,7 +1,7 @@
 <article class="acc-story-kit__event">
     <header class="acc-story-kit__header">
         {{#if data.clock}}
-            <span class="acc-story-kit__clock">
+            <span class="acc-story-kit__clock" data-tooltip="{{data.clock}}">
                 {{#if data.clock}}
                     <i class="acc-icon --xs {{lookup constants.clockIcons data.clock}}"></i>
                 {{/if}}
