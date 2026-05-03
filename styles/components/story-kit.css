@@ -37,6 +37,10 @@
         border: none;
         border-top: 0.1rem dashed rgba(0, 0, 0, 0.25);
     }
+
+    .main {
+        height: 100%;
+    }
 }
 
 /* --- title banner --- */
@@ -126,18 +130,18 @@
     font-weight: 800;
     font-size: var(--acc-text-size-xs);
     text-transform: uppercase;
-    height: 20px;
-    padding: 8px;
+    height: 24px;
     gap: 8px;
 }
 
 .acc-story-kit__clock {
     color: var(--acc-color-text-inverted);
     font-size: var(--acc-text-size-sm);
-    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 4px;
+    background: var(--acc-color-icon-active);
 }
 
 .acc-story-kit__content {

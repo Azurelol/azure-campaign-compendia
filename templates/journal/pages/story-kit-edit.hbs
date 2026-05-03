@@ -1,22 +1,21 @@
-<section>
-    <div class="form-group">
-        <details>
-            <summary>Overview</summary>
-            <h3>Hooks</h3>
-            <ol>
-                <li>
-                    {{formInput system.schema.fields.hook1 name="system.hook1" value=system.hook1
-                                dataset=(object maxlength=40)}}
-                </li>
-                <li>
-                    {{formInput system.schema.fields.hook2 name="system.hook2" value=system.hook2}}
-                </li>
-                <li>
-                    {{formInput system.schema.fields.hook3 name="system.hook3" value=system.hook3}}
-                </li>
-            </ol>
+<section class="main">
+    <details class="acc-details">
+        <summary>Overview</summary>
+        <h3>Hooks</h3>
+        <ol>
+            <li>
+                {{formInput system.schema.fields.hook1 name="system.hook1" value=system.hook1
+                            dataset=(object maxlength=40)}}
+            </li>
+            <li>
+                {{formInput system.schema.fields.hook2 name="system.hook2" value=system.hook2}}
+            </li>
+            <li>
+                {{formInput system.schema.fields.hook3 name="system.hook3" value=system.hook3}}
+            </li>
+        </ol>
 
-            <label class="acc-story-kit__field">
+        <label class="acc-story-kit__field">
               <textarea
                       name="system.introduction"
                       class="acc-story-kit__textarea"
@@ -26,39 +25,39 @@
                       placeholder="Up to 315 characters…">
                   {{~system.introduction}}
               </textarea>
-            </label>
+        </label>
 
-            <label>
-                Twist
-                <input type="text" name="system.twist" value="{{system.twist}}" data-dtype="String"/>
-            </label>
+        <label>
+            Twist
+            <input type="text" name="system.twist" value="{{system.twist}}" data-dtype="String"/>
+        </label>
 
-            <label>
-                Author
-                <input type="text" name="system.author" maxlength="50" value="{{system.author}}" data-dtype="String"/>
-            </label>
+        <label>
+            Author
+            <input type="text" name="system.author" maxlength="50" value="{{system.author}}" data-dtype="String"/>
+        </label>
 
-            <label>
+        <div class="acc-property-group">
+            <label class="acc-property">
                 Tone
                 {{formGroup system.schema.fields.tone value=system.tone options=toneOptions}}
             </label>
 
-            <label>
+            <label class="acc-property">
                 Setting
                 {{formGroup system.schema.fields.setting value=system.setting options=(accFormOptions 'story.setting')}}
             </label>
 
-            <label>
+            <label class="acc-property">
                 Theme
                 {{formGroup system.schema.fields.theme value=system.theme options=(accFormOptions 'story.theme')}}
             </label>
+        </div>
+    </details>
 
-        </details>
-    </div>
-
-    <div class="form-group">
-        <details>
-            <summary>Pressure Pools</summary>
+    <details class="acc-details">
+        <summary>Pressure Pools</summary>
+        <div class="acc-details__content">
             <h3>Prelude</h3>
             {{> "modules/azure-campaign-compendia/templates/partials/pressure-pool-edit.hbs" path="system.prelude" pool=system.prelude}}
             <hr>
@@ -67,35 +66,32 @@
             <hr>
             <h3>Climax</h3>
             {{> "modules/azure-campaign-compendia/templates/partials/pressure-pool-edit.hbs" path="system.climax" pool=system.climax}}
-        </details>
-    </div>
+        </div>
+    </details>
 
-    <div class="form-group">
-        <details>
-            <summary>Threads</summary>
+    <details class="acc-details">
+        <summary>Threads</summary>
+        <div class="acc-details__content">
             {{> "modules/azure-campaign-compendia/templates/partials/thread-edit.hbs" path="system.thread1" thread=system.thread1}}
             <hr>
             {{> "modules/azure-campaign-compendia/templates/partials/thread-edit.hbs" path="system.thread2" thread=system.thread2}}
             <hr>
             {{> "modules/azure-campaign-compendia/templates/partials/thread-edit.hbs" path="system.thread3" thread=system.thread3}}
-        </details>
+        </div>
+    </details>
 
-    </div>
+    <details class="acc-details">
+        <summary>Setup</summary>
+        {{> "modules/azure-campaign-compendia/templates/partials/setup-edit.hbs" path="system.setup1" data=system.setup1}}
+        <hr>
+        {{> "modules/azure-campaign-compendia/templates/partials/setup-edit.hbs" path="system.setup2" data=system.setup2}}
+        <hr>
+        {{> "modules/azure-campaign-compendia/templates/partials/setup-edit.hbs" path="system.setup3" data=system.setup3}}
+    </details>
 
-    <div class="form-group">
-        <details>
-            <summary>Setup</summary>
-            {{> "modules/azure-campaign-compendia/templates/partials/setup-edit.hbs" path="system.setup1" data=system.setup1}}
-            <hr>
-            {{> "modules/azure-campaign-compendia/templates/partials/setup-edit.hbs" path="system.setup2" data=system.setup2}}
-            <hr>
-            {{> "modules/azure-campaign-compendia/templates/partials/setup-edit.hbs" path="system.setup3" data=system.setup3}}
-        </details>
-    </div>
-
-    <div class="form-group">
-        <details>
-            <summary>Challenges</summary>
+    <details class="acc-details">
+        <summary>Challenges</summary>
+        <div class="acc-details__content">
             {{> "modules/azure-campaign-compendia/templates/partials/challenge-edit.hbs" path="system.challenge1" data=system.challenge1}}
             <hr>
             {{> "modules/azure-campaign-compendia/templates/partials/challenge-edit.hbs" path="system.challenge2" data=system.challenge2}}
@@ -103,6 +99,6 @@
             {{> "modules/azure-campaign-compendia/templates/partials/challenge-edit.hbs" path="system.challenge3" data=system.challenge3}}
             <hr>
             {{> "modules/azure-campaign-compendia/templates/partials/challenge-edit.hbs" path="system.challenge4" data=system.challenge4}}
-        </details>
-    </div>
+        </div>
+    </details>
 </section>

@@ -21,9 +21,9 @@ Constants.dieSize = {
  */
 
 Constants.clockSize = {
-    short: 'ACC.CLOCK.Short',
-    medium: 'ACC.CLOCK.Medium',
-    long: 'ACC.CLOCK.Long'
+    short: 'ACC.CLOCK.Short', // d2
+    medium: 'ACC.CLOCK.Medium', // d4
+    long: 'ACC.CLOCK.Long' // d6
 }
 
 Constants.clockIcons = {

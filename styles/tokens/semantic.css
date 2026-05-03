@@ -18,7 +18,7 @@
     --acc-color-border-control: var(--acc-primitive-color-grey-mid); /* border/outline */
 
     /* panels */
-    --acc-color-bg-panel: var(--acc-primitive-color-parchment);
+    --acc-color-bg-panel: var(--acc-primitive-color-parchment-light);
     --acc-color-bg-panel-head: var(--acc-primitive-color-taupe);
     --acc-color-text-panel: var(--acc-primitive-color-text);
     --acc-color-text-panel-head: var(--acc-primitive-color-white);

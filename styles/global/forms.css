@@ -1,0 +1,29 @@
+.acc-details {
+
+    background: var(--acc-color-bg-panel);
+    border: 2px solid var(--acc-color-border);
+
+    > summary {
+        font-size: var(--acc-text-size-lg);
+        background: var(--acc-color-bg-panel-head);
+    }
+
+    .acc-details__content {
+        padding: 8px;
+    }
+}
+
+.acc-property-group {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.acc-property {
+    display: flex;
+    flex-direction: row;
+
+    &.--stacked {
+        flex-direction: column;
+    }
+}
