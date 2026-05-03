@@ -7,7 +7,9 @@
 
         <label>
             Clock
-            <input type="number" name="{{path}}.clock" min="0" max="8" value="{{ pool.clock }}" data-dtype="Number"/>
+            <select name="{{path}}.clock" class="">
+                {{selectOptions constants.clockSize selected=pool.clock sort=true localize=true blank="-"}}
+            </select>
         </label>
     </div>
 

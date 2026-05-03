@@ -8,14 +8,28 @@ export const moduleId = "azure-campaign-compendia";
  */
 export const Constants = {};
 
+Constants.dieSize = {
+    d2: 'ACC.DIE.D2',
+    d4: 'ACC.DIE.D4',
+    d6: 'ACC.DIE.D6',
+    d8: 'ACC.DIE.D8',
+    d12: 'ACC.DIE.D12',
+}
+
 /**
  * @typedef {'short'|'medium'|'long'} ClockSize
  */
 
 Constants.clockSize = {
-    short: 'Low',
-    medium: 'Medium',
-    long: 'High'
+    short: 'ACC.CLOCK.Short',
+    medium: 'ACC.CLOCK.Medium',
+    long: 'ACC.CLOCK.Long'
+}
+
+Constants.clockIcons = {
+    short: 'fa-solid fa-circle-dot',
+    medium: 'fa-solid fa-circle-half-stroke',
+    long: 'fa-solid fa-circle',
 }
 
 Constants.story = {

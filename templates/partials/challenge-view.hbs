@@ -1,9 +1,13 @@
 <article class="acc-story-kit__event">
     <header class="acc-story-kit__header">
         {{#if data.clock}}
-            <span class="die">{{data.clock}}D</span>
+            <span class="acc-story-kit__clock">
+                {{#if data.clock}}
+                    <i class="acc-icon --xs {{lookup constants.clockIcons data.clock}}"></i>
+                {{/if}}
+            </span>
         {{/if}}
-        {{data.label}}
+        <span>{{data.label}}</span>
     </header>
     <section class="acc-story-kit__content">
         {{#if data.description}}

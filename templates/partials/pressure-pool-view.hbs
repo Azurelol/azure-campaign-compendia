@@ -1,7 +1,11 @@
 <article class="acc-story-kit__event">
     <header class="acc-story-kit__header">
-        <span class="die">{{data.clock}}D</span>
-        {{data.label}}
+        {{#if data.clock}}
+            <span class="acc-story-kit__clock">
+                <i class="acc-icon --xs {{lookup constants.clockIcons data.clock}}"></i>
+            </span>
+        {{/if}}
+        <span>{{data.label}}</span>
     </header>
     <ul class="acc-story-kit__event__list">
         <li>{{data.event1}}</li>

@@ -26,7 +26,6 @@
     overflow: auto;
     font-family: var(--acc-font-body), serif;
     max-width: 900px;
-    margin: 0 auto;
     background: var(--acc-color-bg);
     color: var(--acc-color-text);
     border: 1.5px solid var(--acc-color-border-kit);
@@ -127,14 +126,15 @@
     font-weight: 800;
     font-size: var(--acc-text-size-xs);
     text-transform: uppercase;
+    height: 20px;
+    padding: 8px;
+    gap: 4px;
 }
 
-.acc-story-kit__header .die {
+.acc-story-kit__clock {
     color: var(--acc-color-text-inverted);
     font-size: var(--acc-text-size-sm);
     font-weight: bold;
-    padding: 0.2rem 0.4rem;
-    border-radius: 2px;
 }
 
 .acc-story-kit__content {

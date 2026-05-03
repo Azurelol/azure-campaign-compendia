@@ -7,7 +7,7 @@ export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEn
 
     /** @override */
     static DEFAULT_OPTIONS = {
-        classes: ["azure-compendia", "acc-story-kit"],
+        classes: ["azure-compendia", "acc-story-kit_frame"],
         viewClasses: ["azure-compendia", "acc-story-kit"],
         window: {
             icon: "fa-brands fa-markdown",
