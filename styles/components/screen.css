@@ -2,6 +2,7 @@
     display: grid;
     height: 100%;
     padding: 8px;
+    gap: 8px;
 
     background: var(--acc-color-bg);
     color: var(--acc-color-text);
@@ -22,6 +23,9 @@
 
     .kits {
         overflow-y: hidden;
+    }
+
+    .overview {
     }
 
     .widgets {
@@ -45,11 +49,11 @@
 
     &.theme-classic {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 100px /**50px**/;
+        grid-template-rows: 1fr 100px 50px;
         grid-template-areas:
 			'active-tab'
-			'nav';
-        /*'widgets';*/
+			'nav'
+            'widgets';
 
         .nav {
             display: flex;
@@ -78,11 +82,9 @@
                 font-weight: 600;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
-                background: transparent;
-                border: 1px solid transparent;
-                border-radius: 3px;
-                box-shadow: none;
+                border: none;
                 text-shadow: none;
+                background: transparent;
                 color: var(--acc-color-icon);
                 transition: background 0.2s ease,
                 color 0.2s ease,
@@ -97,17 +99,10 @@
 
                 &.active {
                     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.35) 100%);
-                    border: 1px solid rgba(255, 255, 255, 0.15);
-                    border-top-color: rgba(255, 255, 255, 0.3);
-                    border-radius: 3px;
-                    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                    inset 0 0 24px rgba(0, 0, 0, 0.5),
-                    0 0 8px rgba(0, 0, 0, 0.4);
                     color: var(--acc-color-icon-active);
 
                     i {
                         color: var(--acc-color-icon-active);
-                        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
                     }
                 }
 

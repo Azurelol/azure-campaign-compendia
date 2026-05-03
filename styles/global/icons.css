@@ -22,6 +22,14 @@
 /* ============================================================
    ICON CLASS
    ============================================================ */
+.acc-anchor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+}
+
 .acc-icon {
     --icon-size: 100%;
     display: inline-block;
@@ -34,6 +42,7 @@
     background-size: contain;
     pointer-events: none;
     object-fit: contain;
+    color: var(--acc-color-icon);
 
     &.--xs {
         --icon-size: 16px;
@@ -43,7 +52,7 @@
         --icon-size: 24px;
     }
 
-    &.-sm {
+    &.--sm {
         --icon-size: 36px;
     }
 

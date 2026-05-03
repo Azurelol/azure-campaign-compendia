@@ -109,6 +109,7 @@ Constants.icons = {
     compendium: 'fas fa-book',
     inspect: 'fa fa-eye',
     link: 'fa fa-link',
+    poll: 'fa-solid fa-square-poll-vertical',
     edit: 'fa fa-pencil',
     popout: 'fa fa-external-link',
     info: 'fas fa-circle-info',

@@ -25,9 +25,9 @@
     --acc-color-text-panel-head: var(--acc-primitive-color-dim);
 
     /* icons */
-    --acc-color-icon: var(--acc-primitive-color-ink-blue);
-    --acc-color-icon-active: var(--acc-primitive-color-azure);
-    --acc-color-icon-hover: color-mix(in srgb, var(--acc-primitive-color-azure), white 30%);
+    --acc-color-icon: var(--acc-primitive-color-burgundy-dark);
+    --acc-color-icon-active: var(--acc-primitive-color-burgundy);
+    --acc-color-icon-hover: color-mix(in srgb, var(--acc-primitive-color-burgundy), white 40%);
 
     /* text */
     --acc-color-text: var(--acc-primitive-color-text);

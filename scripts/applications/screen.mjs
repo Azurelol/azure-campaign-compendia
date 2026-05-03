@@ -20,7 +20,8 @@ export class GMScreen extends ACApplication {
         position: {width: 1024, height: 768},
         actions: {
             viewStoryKit: this.#viewStoryKit,
-            editStoryKit: this.#editStoryKit
+            editStoryKit: this.#editStoryKit,
+            createPoll: this.#createPoll,
         },
     };
 
@@ -33,9 +34,9 @@ export class GMScreen extends ACApplication {
         nav: {
             template: moduleTemplatePath('applications/nav'),
         },
-        // widgets: {
-        //     template: moduleTemplatePath(`applications/screen/widgets`),
-        // },
+        widgets: {
+            template: moduleTemplatePath(`applications/screen/widgets`),
+        },
         overview: {
             template: moduleTemplatePath('applications/screen/overview'),
         },
@@ -137,5 +138,14 @@ export class GMScreen extends ACApplication {
                 new sheetClass({document: kit, mode: "edit"}).render(true);
             }
         }
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #createPoll(event, target) {
     }
 }

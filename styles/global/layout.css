@@ -12,6 +12,7 @@
         flex: 1;
         overflow-y: auto;
         min-height: 0;
+        padding: 8px;
     }
 
     .acc-browser__toolbar {
@@ -24,33 +25,43 @@
         }
     }
 
-    .acc-browser__entry-basic {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        gap: 1rem;
+    .acc-browser__entry {
+        color: var(--acc-color-text-panel);
+        border: 1px solid var(--acc-color-border-panel);
+        background: var(--acc-color-bg-panel);
+        background-blend-mode: multiply;
+        background-position: right top;
 
-        .icon {
-            display: flex;
-            align-items: center;
-        }
-
-        .header {
+        &.--basic {
             display: flex;
             flex-direction: row;
+            width: 100%;
             gap: 1rem;
-            justify-content: space-between;
+            padding-left: 1rem;
 
-            .name {
-                font-family: 'CreditValleybold';
-                font-size: xx-large;
-                font-weight: 700;
+            .icon {
+                display: flex;
+                align-items: center;
+                color: var(--acc-color-icon);
             }
-        }
 
-        .description {
-            overflow-y: auto;
-            user-select: text;
+            .header {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: space-between;
+
+                .name {
+                    font-family: 'CreditValleybold';
+                    font-size: xx-large;
+                    font-weight: 700;
+                }
+            }
+
+            .description {
+                overflow-y: auto;
+                user-select: text;
+            }
         }
     }
 }
