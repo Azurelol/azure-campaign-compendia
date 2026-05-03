@@ -11,17 +11,55 @@
     .acc-details__content {
         padding: 8px;
     }
+
+    prose-mirror.editor.prosemirror.active div.editor-container div.editor-content.ProseMirror {
+        background: var(--acc-primitive-color-white);
+        border: 1px solid var(--acc-color-border-control);
+    }
+}
+
+.acc-property-section {
+    background: var(--acc-section-bg, var(--acc-color-bg-panel));
+    padding: 4px;
+    border: 1px solid var(--acc-color-border-panel);
+
+    --acc-section-bg: color-mix(in srgb, var(--acc-color-bg-panel) 85%, black);
+
+    .acc-property-section {
+        --acc-section-bg: color-mix(in srgb, var(--acc-color-bg-panel) 70%, black);
+
+        .acc-property-section {
+            --acc-section-bg: color-mix(in srgb, var(--acc-color-bg-panel) 55%, black);
+        }
+    }
+
 }
 
 .acc-property-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
+
+    &.--row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &.--stretch {
+        width: 100%;
+    }
+
+    &.--three {
+
+    }
 }
 
 .acc-property {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 1rem;
 
     &.--stacked {
         flex-direction: column;

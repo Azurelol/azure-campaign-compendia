@@ -92,6 +92,30 @@
     color: var(--acc-color-text);
 }
 
+.acc-story-kit__element-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.acc-story-kit__element-header::before,
+.acc-story-kit__element-header::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    mask-image: url('../static/icons/quill.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    opacity: 0.6;
+}
+
+.acc-story-kit__element-header::after {
+    transform: scaleX(-1); /* mirror the icon for symmetry */
+}
+
 /* make the wrapper span the full line */
 .acc-story-kit__field {
     display: block;

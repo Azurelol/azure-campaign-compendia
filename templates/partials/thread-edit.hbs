@@ -1,40 +1,42 @@
-<div class="form-group">
-
-    <div class="inline-fields">
+<div class="acc-property-section">
+    <div class="acc-property-group">
         <label>
             Label
-            <input type="text" name="{{path}}.label" maxlength="25" value="{{ thread.label }}"  data-dtype="String"/>
+            <input type="text" name="{{path}}.label" maxlength="25" value="{{ thread.label }}" data-dtype="String"/>
+        </label>
+
+        <label class="acc-story-kit__field">
+            Description
+            <textarea
+                    name="{{path}}.description"
+                    class="acc-story-kit__textarea"
+                    maxlength="130"
+                    data-dtype="String"
+                    rows="2"
+                    placeholder="Up to 100 characters…">
+                {{~thread.description}}
+            </textarea>
         </label>
     </div>
-
-    <label class="acc-story-kit__field">
-        Description
-          <textarea
-                  name="{{path}}.description"
-                  class="acc-story-kit__textarea"
-                  maxlength="130"
-                  data-dtype="String"
-                  rows="2"
-                  placeholder="Up to 100 characters…">
-              {{~thread.description}}
-          </textarea>
-    </label>
 
     <h3>Entries</h3>
     <ol>
         <li>
             <label>
-                <input type="text" name="{{path}}.entry1" maxlength="65" value="{{ thread.entry1 }}" data-dtype="String" />
+                <input type="text" name="{{path}}.entry1" maxlength="65" value="{{ thread.entry1 }}"
+                       data-dtype="String"/>
             </label>
         </li>
         <li>
             <label>
-                <input type="text" name="{{path}}.entry2" maxlength="65" value="{{ thread.entry2 }}" data-dtype="String" />
+                <input type="text" name="{{path}}.entry2" maxlength="65" value="{{ thread.entry2 }}"
+                       data-dtype="String"/>
             </label>
         </li>
         <li>
             <label>
-                <input type="text" name="{{path}}.entry3" maxlength="65" value="{{ thread.entry3 }}" data-dtype="String" />
+                <input type="text" name="{{path}}.entry3" maxlength="65" value="{{ thread.entry3 }}"
+                       data-dtype="String"/>
             </label>
         </li>
     </ol>
