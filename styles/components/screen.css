@@ -8,7 +8,6 @@
     color: var(--acc-color-text);
 
     .tab {
-        padding: 8px;
     }
 
     .tab,
@@ -18,7 +17,6 @@
 
     .nav {
         grid-area: nav;
-        padding: 8px;
     }
 
     .kits {
@@ -32,7 +30,6 @@
         grid-area: widgets;
         display: flex;
         gap: 3rem;
-        padding: 8px;
         justify-content: center;
         align-items: center;
 
@@ -48,12 +45,11 @@
     }
 
     &.theme-classic {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 100px 50px;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr 100px;
         grid-template-areas:
-			'active-tab'
-			'nav'
-            'widgets';
+            'active-tab active-tab'
+            'nav widgets';
 
         .nav {
             display: flex;

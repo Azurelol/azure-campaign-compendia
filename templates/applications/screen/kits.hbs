@@ -2,19 +2,50 @@
     <div class="acc-browser">
         <div class="acc-browser__controls">
 
-            <div class="acc-tag__group">
-                {{#each browser.tones as |tag|}}
-                    <div class="acc-tag__filter {{#if (accContains ../browser.selected tag)}}active{{/if}}"
-                         data-tag="{{tag}}">
-                        {{accHumanize tag}}
-                    </div>
-                {{/each}}
-            </div>
-
             <div class="acc-browser__toolbar">
-                <label class="acc-browser__toolbar__search">
-                    <input type="text" placeholder="..."/>
-                </label>
+                <div class="acc-browser__toolbar__row">
+                    <label class="acc-browser__toolbar__search">
+                        <input type="text" placeholder="..."/>
+                    </label>
+                </div>
+                <div class="acc-browser__toolbar__row">
+                    <span class="acc-browser__toolbar__label">Tone</span>
+                    <div class="acc-tag__group">
+                        {{#each browser.tones as |tag|}}
+                            <div class="acc-tag__filter {{#if
+                                    (accContains ../browser.selected tag)}}active{{/if}}"
+                                 data-tag="{{tag}}">
+                                {{accHumanize tag}}
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="acc-browser__toolbar__row">
+                    <span class="acc-browser__toolbar__label">Setting</span>
+                    <div class="acc-tag__group">
+                        {{#each browser.settings as |tag|}}
+                            <div class="acc-tag__filter {{#if
+                                    (accContains ../browser.selected tag)}}active{{/if}}"
+                                 data-tag="{{tag}}">
+                                {{accHumanize tag}}
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <div class="acc-browser__toolbar__row">
+                    <span class="acc-browser__toolbar__label">Theme</span>
+                    <div class="acc-tag__group">
+                        {{#each browser.themes as |tag|}}
+                            <div class="acc-tag__filter {{#if
+                                    (accContains ../browser.selected tag)}}active{{/if}}"
+                                 data-tag="{{tag}}">
+                                {{accHumanize tag}}
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
         </div>
 

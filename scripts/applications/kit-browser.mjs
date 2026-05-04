@@ -120,11 +120,13 @@ export class StoryKitBrowser {
                 }
 
                 let visible = true;
+                /** @type StoryKitDataModel **/
+                const system = entry.system;
                 if (entry.hidden && !game.user.isGM) {
                     visible = false;
                 } else if (!entry.name.toLowerCase().includes(nameFilter)) {
                     visible = false;
-                } else if (tagFilter.size > 0 && ![...tagFilter].every((tag) => entry.tags.includes(tag))) {
+                } else if (tagFilter.size > 0 && ![...tagFilter].every((tag) => system.tags.includes(tag))) {
                     visible = false;
                 }
 

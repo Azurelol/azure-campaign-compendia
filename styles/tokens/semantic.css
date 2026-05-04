@@ -24,6 +24,10 @@
     --acc-color-text-panel: var(--acc-primitive-color-text);
     --acc-color-text-panel-head: var(--acc-primitive-color-dim);
 
+    /* tables */
+    --acc-color-bg-table-row: var(--acc-primitive-color-grey-850);
+    --acc-color-bg-table-row-alt: var(--acc-primitive-color-grey-800);
+
     /* icons */
     --acc-color-icon: var(--acc-primitive-color-burgundy-dark);
     --acc-color-icon-active: var(--acc-primitive-color-burgundy);

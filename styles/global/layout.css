@@ -6,6 +6,8 @@
 
     .acc-browser__controls {
         flex-shrink: 0;
+        display: flex;
+        gap: 4px;
     }
 
     .acc-browser__content {
@@ -17,8 +19,7 @@
 
     .acc-browser__toolbar {
         display: flex;
-        flex-direction: row;
-        gap: 8px;
+        flex-direction: column;
 
         .acc-browser__toolbar__search {
             flex: 2;
@@ -80,6 +81,28 @@
     margin: 0;
     gap: 4px;
     padding: 0.125rem 0;
+}
+
+.acc-browser__toolbar__row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--acc-color-border);
+}
+
+.acc-browser__toolbar__row:nth-child(odd) {
+    background: var(--acc-color-bg-table-row);
+}
+
+.acc-browser__toolbar__row:nth-child(even) {
+    background: var(--acc-color-bg-table-row-alt);
+}
+
+.acc-browser__toolbar__label {
+    min-width: 6rem;
+    color: var(--acc-color-text);
+    font-size: 1rem;
 }
 
 .acc-tag {
