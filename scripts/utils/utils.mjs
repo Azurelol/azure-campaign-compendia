@@ -1,5 +1,6 @@
 // This module should have no imports beyond constants
-import {moduleId} from "./constants.mjs";
+import {moduleId} from "../constants.mjs";
+import {StringUtils} from "./string-utils.mjs";
 
 const {api, fields, handlebars} = foundry.applications;
 
@@ -170,18 +171,6 @@ function mergeRecursive(target, source) {
 }
 
 /**
- * Localizes a given key using the game's i18n system.
- * @param {string} key - The localization key to look up.
- * @param {Object} [data] - Optional interpolation data for formatted strings.
- * @returns {string} The localized string, or an empty string if key is absent.
- */
-function localize(key, data) {
-    if (!key) return '';
-    if (data) return game.i18n.format(key, data) || key;
-    return (typeof key === 'string' ? game.i18n.localize(key) : key.toString()) || key;
-}
-
-/**
  * @typedef FormSelectOption
  * @property {string} [value]
  * @property {string} [label]
@@ -199,7 +188,7 @@ function localize(key, data) {
  */
 function getFormSelectOptions(record) {
     return Object.entries(record).map(([key, value]) => ({
-        label: localize(value),
+        label: StringUtils.localize(value),
         value: key,
     }));
 }

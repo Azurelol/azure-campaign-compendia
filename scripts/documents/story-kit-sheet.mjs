@@ -1,4 +1,4 @@
-import {modulePrefixed, moduleTemplatePath, Utils} from "../utils.mjs";
+import {modulePrefixed, moduleTemplatePath, Utils} from "../utils/utils.mjs";
 import {Constants} from "../constants.mjs";
 
 export class StoryKitSheet extends foundry.applications.sheets.journal.JournalEntryPageHandlebarsSheet {

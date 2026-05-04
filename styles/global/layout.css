@@ -74,7 +74,7 @@
     }
 }
 
-.acc-tags {
+.acc-tag__group {
     display: flex;
     align-items: center;
     margin: 0;
@@ -116,5 +116,29 @@
         & i {
             color: var(--acc-color-control-hover);
         }
+    }
+}
+
+.acc-tag__filter {
+    cursor: pointer;
+    padding: 0.4em;
+    border: 1px solid grey;
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    border-radius: 0;
+    color: var(--acc-color-control);
+    background: var(--acc-color-bg-control);
+    user-select: none;
+    transition: background 0.1s,
+    color 0.1s,
+    border-color 0.1s;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+
+    &.active {
+        background: color-mix(in srgb, var(--acc-color-shadow-control) 70%, white);
+        color: color-mix(in srgb, var(--acc-color-control) 70%, white);
     }
 }

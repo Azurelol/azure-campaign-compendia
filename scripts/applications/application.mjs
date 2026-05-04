@@ -21,6 +21,10 @@ export default class ACApplication extends HandlebarsApplicationMixin(Applicatio
         },
     };
 
+    constructor(options = {}) {
+        super(options)
+    }
+
     static async filePicker(event, target) {
         const field = target.dataset.target;
         const current = this.element.querySelector(`[name="${field}"]`)?.value ?? '';

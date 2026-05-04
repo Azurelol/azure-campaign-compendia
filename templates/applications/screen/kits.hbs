@@ -1,6 +1,16 @@
 <section class="tab kits {{tab.cssClass}}" data-tab="kits" data-group="primary">
     <div class="acc-browser">
         <div class="acc-browser__controls">
+
+            <div class="acc-tag__group">
+                {{#each browser.tones as |tag|}}
+                    <div class="acc-tag__filter {{#if (accContains ../browser.selected tag)}}active{{/if}}"
+                         data-tag="{{tag}}">
+                        {{accHumanize tag}}
+                    </div>
+                {{/each}}
+            </div>
+
             <div class="acc-browser__toolbar">
                 <label class="acc-browser__toolbar__search">
                     <input type="text" placeholder="..."/>
@@ -10,7 +20,7 @@
 
         <ul class="acc-browser__content">
             {{#each kits as |kit|}}
-                <li class="acc-browser__entry --basic">
+                <li class="acc-browser__entry --basic" data-index="{{@index}}">
                     <div class="controls">
                         <div class="icon">
                             {{accDocumentAnchor kit size='xs'}}
@@ -33,7 +43,7 @@
 						<span class="name">
                             {{kit.name}}
                         </span>
-                        <div class="acc-tags">
+                        <div class="acc-tag__group">
                             {{#each kit.system.tags as |tag|}}
                                 <div class="acc-tag">{{tag}}</div>
                             {{/each}}

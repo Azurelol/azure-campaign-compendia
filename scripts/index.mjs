@@ -2,7 +2,7 @@ import {AzureCampaignCompendia} from "./logger.mjs";
 import {StoryKitSheet} from "./documents/story-kit-sheet.mjs";
 import {StoryKitDataModel} from "./documents/story-kit-data-model.mjs";
 import {Dialogs} from "./dialogs.mjs";
-import {modulePrefixed, Utils} from "./utils.mjs";
+import {modulePrefixed, Utils} from "./utils/utils.mjs";
 import {GMScreen} from "./applications/screen.mjs";
 import {Constants, moduleId} from "./constants.mjs";
 import {ACHandlebars} from "./handlebars.mjs";

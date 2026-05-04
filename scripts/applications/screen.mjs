@@ -1,6 +1,7 @@
 import ACApplication from "./application.mjs";
-import {moduleTemplatePath} from "../utils.mjs";
+import {moduleTemplatePath} from "../utils/utils.mjs";
 import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
+import {StoryKitBrowser} from "./kit-browser.mjs";
 
 /**
  * @property
@@ -16,6 +17,10 @@ export class GMScreen extends ACApplication {
             title: 'GM Screen',
             resizable: true,
             contentClasses: ['acc-screen'],
+        },
+        form: {
+            submitOnChange: true,
+            closeOnSubmit: false,
         },
         position: {width: 1024, height: 768},
         actions: {
@@ -58,8 +63,17 @@ export class GMScreen extends ACApplication {
         },
     };
 
-    /** JournalEntryPage[] **/
+
+    /** @type StoryKitBrowser */
+    #kitBrowser;
+
+    /** @type JournalEntryPageData[] **/
     #kits;
+
+    constructor(options = {}) {
+        super(options)
+        this.#kitBrowser = new StoryKitBrowser(this);
+    }
 
     /** @override */
     async _prepareContext(options) {
@@ -79,9 +93,26 @@ export class GMScreen extends ACApplication {
             case 'kits':
                 this.#kits = await StoryKitSheet.getStoryKits()
                 context.kits = this.#kits;
+                context.browser = this.#kitBrowser;
                 break;
         }
         return context;
+    }
+
+    /**
+     * Attach event listeners to rendered template parts.
+     * @param {string} partId The id of the part being rendered
+     * @param {HTMLElement} html The rendered HTML element for the part
+     * @param {ApplicationRenderOptions} options Rendering options passed to the render method
+     * @protected
+     */
+    _attachPartListeners(partId, html, options) {
+        super._attachPartListeners(partId, html, options);
+        switch (partId) {
+            case 'kits':
+                this.#kitBrowser.attachListeners(html);
+                break;
+        }
     }
 
     // TODO: More themes?
@@ -90,6 +121,13 @@ export class GMScreen extends ACApplication {
      */
     get theme() {
         return 'classic';
+    }
+
+    /**
+     * @returns {JournalEntryPageData[]}
+     */
+    get kits() {
+        return this.#kits;
     }
 
     /** @inheritDoc */
@@ -104,6 +142,12 @@ export class GMScreen extends ACApplication {
         });
         const theme = this.theme;
         windowContent.classList.add(`theme-${theme}`);
+    }
+
+    /** @inheritDoc */
+    async _onRender(context, options) {
+        await super._onRender(context, options);
+        this.#kitBrowser.refresh(this.element);
     }
 
     /**

@@ -6,8 +6,9 @@
  * @property {'xs'|'s'|'m'|'l'|'xl'} size
  */
 
-import {moduleTemplatePath, Utils} from "./utils.mjs";
+import {moduleTemplatePath, Utils} from "./utils/utils.mjs";
 import {Constants} from "./constants.mjs";
+import {StringUtils} from "./utils/string-utils.mjs";
 
 /**
  * @param {Object} document
@@ -61,6 +62,27 @@ export const ACHandlebars = Object.freeze({
                 return '';
             }
             return Constants.icons[icon];
+        });
+        Handlebars.registerHelper('accHumanize', function (str) {
+            if (str && typeof str === 'string') {
+                return StringUtils.humanize(str);
+            }
+            return str;
+        });
+        Handlebars.registerHelper('accContains', function (collection, item) {
+            if (Array.isArray(collection)) {
+                return collection.includes(item);
+            }
+            if (collection instanceof Map) {
+                return collection.has(item);
+            }
+            if (collection instanceof Set) {
+                return collection.has(item);
+            }
+            if (collection instanceof Object) {
+                return item in collection;
+            }
+            return false;
         });
     }
 });

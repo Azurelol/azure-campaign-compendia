@@ -1,4 +1,4 @@
-import {moduleTemplatePath, Utils} from "./utils.mjs";
+import {moduleTemplatePath, Utils} from "./utils/utils.mjs";
 
 const {api, fields, handlebars} = foundry.applications;
 
