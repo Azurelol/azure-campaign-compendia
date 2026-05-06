@@ -10,6 +10,10 @@
     --acc-color-bg-content: var(--acc-primitive-color-parchment-light);
     --acc-color-bg-title: var(--acc-primitive-color-parchment-pale);
 
+    /* cards */
+    --acc-color-bg-card: rgb(107, 107, 107);
+    --acc-color-card: #e4e3e3;
+
     /* controls */
     --acc-color-control: var(--acc-primitive-color-white); /* label/icon tint */
     --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-white), white 25%);
@@ -40,8 +44,8 @@
     --acc-color-text-inverted: var(--acc-primitive-color-white);
     --acc-color-text-bullet: var(--acc-primitive-color-black);
 
-
     /* borders */
+    --acc-border-radius: 4px;
     --acc-color-border: var(--acc-primitive-color-stone);
     --acc-color-border-kit: var(--acc-primitive-color-border-kit);
     --acc-color-border-title: var(--acc-primitive-color-border-title);

@@ -53,4 +53,8 @@
 
     /* spacing */
     --acc-primitive-size-space-60: 60px;
+
+    /* borders */
+    --acc-primitive-border-radius-md: 8px;
+    --acc-primitive-border-radius-lg: 12px;
 }

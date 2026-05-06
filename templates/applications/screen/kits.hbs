@@ -68,6 +68,12 @@
                                 </a>
                             </div>
                         {{/if}}
+                        <div class="icon">
+                            <a data-action="pinObject" data-id="{{kit.id}}" data-type="kit">
+                                <i class="acc-icon --xs {{accIconClass 'pin'}} {{#if
+                                        (lookup @root.pinned kit.id)}}invert{{/if}}"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="header">

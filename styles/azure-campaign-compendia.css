@@ -6,6 +6,7 @@
 @import "global/layout.css";
 @import "global/icons.css";
 @import "global/forms.css";
+@import "global/cards.css";
 
 /* COMPONENTS */
 @import "components/story-kit.css";

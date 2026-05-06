@@ -6,6 +6,7 @@ import {modulePrefixed, Utils} from "./utils/utils.mjs";
 import {GMScreen} from "./applications/screen.mjs";
 import {Constants, moduleId} from "./constants.mjs";
 import {ACHandlebars} from "./handlebars.mjs";
+import {Settings} from "./utils/settings.mjs";
 
 // Invoked by the foundry system
 Hooks.once('init', async () => {
@@ -25,6 +26,8 @@ Hooks.once('init', async () => {
         dialogs: Dialogs,
         utils: Utils,
     };
+    // Register settings
+    await Settings.register();
     // Register Tools
     Hooks.on("getSceneControlButtons", (controls) => {
         // Add GM Screen to Notes controls
@@ -36,7 +39,6 @@ Hooks.once('init', async () => {
             button: true,
             visible: game.user.isGM,
             onChange: () => {
-                ui.notifications.info("First action triggered!");
                 const app = new GMScreen();
                 app.render(true);
             }

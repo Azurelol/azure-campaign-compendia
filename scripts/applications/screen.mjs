@@ -2,6 +2,8 @@ import ACApplication from "./application.mjs";
 import {moduleTemplatePath} from "../utils/utils.mjs";
 import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
 import {StoryKitBrowser} from "./kit-browser.mjs";
+import {Settings} from "../utils/settings.mjs";
+import {ScreenDataModel} from "../documents/screen-data-model.mjs";
 
 /**
  * @property
@@ -27,6 +29,7 @@ export class GMScreen extends ACApplication {
             viewStoryKit: this.#viewStoryKit,
             editStoryKit: this.#editStoryKit,
             createPoll: this.#createPoll,
+            pinObject: this.#pinObject,
         },
     };
 
@@ -48,6 +51,9 @@ export class GMScreen extends ACApplication {
         kits: {
             template: moduleTemplatePath('applications/screen/kits'),
         },
+        scenes: {
+            template: moduleTemplatePath('applications/screen/scenes'),
+        },
     };
 
     /** @override
@@ -58,6 +64,7 @@ export class GMScreen extends ACApplication {
             tabs: [
                 {id: 'overview', label: 'Overview', icon: 'ra ra-double-team'},
                 {id: 'kits', label: 'Story Kits', icon: 'fas fa-book'},
+                {id: 'scenes', label: 'Scenes', icon: 'fas fa-clapperboard'},
             ],
             initial: 'overview',
         },
@@ -90,9 +97,20 @@ export class GMScreen extends ACApplication {
             case 'tabs':
                 context.tabs = this._prepareTabs('primary');
                 break;
+
+            case 'overview': {
+                context.pinned = await this.getPinnedObjects();
+            }
+                break;
+
+            case 'scenes': {
+
+                break;
+            }
+
             case 'kits':
-                this.#kits = await StoryKitSheet.getStoryKits()
-                context.kits = this.#kits;
+                context.kits = await this.getKits();
+                context.pinned = await this.getPinnedObjects();
                 context.browser = this.#kitBrowser;
                 break;
         }
@@ -114,6 +132,70 @@ export class GMScreen extends ACApplication {
                 break;
         }
     }
+
+    /**
+     * @returns {Promise<ScreenDataModel>}
+     */
+    async loadData() {
+        let data = await Settings.get(Settings.keys.screenData);
+        if (data === undefined) {
+            data = new ScreenDataModel();
+            await this.saveData(data);
+        }
+        return data;
+    }
+
+    /**
+     * @param {ScreenDataModel} data
+     * @returns {Promise<void>}
+     */
+    async saveData(data) {
+        await Settings.set(Settings.keys.screenData, data);
+    }
+
+    /**
+     * @returns {Promise<JournalEntryPageData[]>}
+     * @remarks To make sure the latest is always used.
+     */
+    async getKits() {
+        this.#kits = await StoryKitSheet.getStoryKits();
+        return this.#kits;
+    }
+
+    /**
+     * @typedef PinnedObject
+     * @property {String} type
+     * @property {String} id
+     * @property {String} object
+     */
+
+    /**
+     * @returns {Promise<Record<string, PinnedObject>>}>}
+     */
+    async getPinnedObjects() {
+        /** @type PinnedObject **/
+        let objects = {};
+        const data = await this.loadData();
+        const kits = await this.getKits();
+        for (const pin of data.pinned) {
+            switch (pin.type) {
+                case 'kit': {
+                    const object = kits.find(p => p.id === pin.id);
+                    if (object) {
+                        objects[pin.id] = {
+                            type: pin.type,
+                            id: pin.id,
+                            object: object,
+                        };
+                    }
+                }
+                    break;
+            }
+        }
+
+        return objects;
+    }
+
 
     // TODO: More themes?
     /**
@@ -191,5 +273,22 @@ export class GMScreen extends ACApplication {
      * @returns {Promise<void>}
      */
     static async #createPoll(event, target) {
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #pinObject(event, target) {
+        const {id, type} = target.dataset;
+        const data = await this.loadData();
+        data.pinned.push({
+            type: type,
+            id: id,
+        })
+        await this.saveData(data);
+        ui.notifications.info(`Pinned ${type} object ${id}`);
     }
 }

@@ -80,4 +80,12 @@
         align-self: center;
         justify-self: center;
     }
+
+    &.invert {
+        filter: invert(1);
+    }
+
+    &.invert.glow {
+        filter: invert(1) drop-shadow(0 0 4px var(--acc-color-shadow-control));
+    }
 }

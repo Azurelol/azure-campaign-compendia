@@ -1,4 +1,26 @@
 <section class="tab overview {{tab.cssClass}}" data-tab="overview" data-group="primary">
 
+    <div class="content">
+        <div class="pins">
+            {{#each pinned as |pin|}}
+                <div class="acc-card">
+                    <div class="acc-card__header">
+                        <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
+                        {{pin.object.name}}
+                    </div>
+                    <div class="acc-card__body">
+                        {{#if (eq pin.type 'kit')}}
+                        {{/if}}
+                    </div>
+                    <div class="acc-card__footer">
+                        <button class="acc-card__button" data-action="viewStoryKit" data-id="{{pin.id}}">
+                            <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                        </button>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
 </section>
     

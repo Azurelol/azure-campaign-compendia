@@ -114,6 +114,7 @@ Constants.icons = {
     popout: 'fa fa-external-link',
     info: 'fas fa-circle-info',
     pin: 'fa fa-thumb-tack',
+    kit: 'fa fa-book',
     bookmark: 'fa fa-bookmark-o',
     warning: 'fas fa-triangle-exclamation',
     help: 'fas fa-circle-question',
