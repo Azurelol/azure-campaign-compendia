@@ -284,11 +284,21 @@ export class GMScreen extends ACApplication {
     static async #pinObject(event, target) {
         const {id, type} = target.dataset;
         const data = await this.loadData();
-        data.pinned.push({
-            type: type,
-            id: id,
-        })
+
+        const currentIndex = data.pinned.findIndex(p => p.id === id);
+        if (currentIndex >= 0) {
+            data.pinned.splice(currentIndex, 1);
+            i.notifications.info(`Removed pin for ${type} object ${id}`);
+        } else {
+            data.pinned.push({
+                type: type,
+                id: id,
+            })
+            i.notifications.info(`Added pin for ${type} object ${id}`);
+        }
+
         await this.saveData(data);
-        ui.notifications.info(`Pinned ${type} object ${id}`);
+        this.render(true);
+
     }
 }
