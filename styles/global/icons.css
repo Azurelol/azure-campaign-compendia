@@ -85,7 +85,34 @@
         filter: invert(1);
     }
 
-    &.invert.glow {
-        filter: invert(1) drop-shadow(0 0 4px var(--acc-color-shadow-control));
+    &.outline {
+        filter: drop-shadow(0 0 0.5px var(--acc-color-shadow)) drop-shadow(0 0 0.5px var(--acc-color-shadow));
+    }
+
+    &.spin {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    &.muted {
+        opacity: 0.4;
+    }
+
+    &.pulse {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.4;
+        }
     }
 }

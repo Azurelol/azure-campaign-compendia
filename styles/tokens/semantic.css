@@ -19,8 +19,10 @@
     --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-white), white 25%);
     --acc-color-bg-control: var(--acc-primitive-color-grey-light); /* fill/background */
     --acc-color-bg-control-hover: var(--acc-primitive-color-azure); /* fill/background */
-    --acc-color-shadow-control: var(--acc-primitive-color-shadow); /* drop shadow */
+    --acc-color-shadow-control: var(--acc-primitive-color-warm-brown); /* drop shadow */
     --acc-color-border-control: var(--acc-primitive-color-grey-mid); /* border/outline */
+    --acc-color-shadow: var(--acc-primitive-color-warm-brown); /* drop shadow */
+    --acc-color-shadow-secondary: var(--acc-primitive-color-white); /* drop shadow */
 
     /* panels */
     --acc-color-bg-panel: var(--acc-primitive-color-parchment-light);

@@ -70,8 +70,8 @@
                         {{/if}}
                         <div class="icon">
                             <a data-action="pinObject" data-id="{{kit.id}}" data-type="kit">
-                                <i class="acc-icon --xs {{accIconClass 'pin'}} {{#if
-                                        (lookup @root.pinned kit.id)}}invert{{/if}}"></i>
+                                <i class="acc-icon --xs {{#unless
+                                        (lookup @root.pinned kit.id)}}muted{{/unless}} {{accIconClass 'pin'}}"></i>
                             </a>
                         </div>
                     </div>
