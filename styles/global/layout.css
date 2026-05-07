@@ -62,7 +62,7 @@
 
                 .name {
                     font-family: 'CreditValleybold';
-                    font-size: xx-large;
+                    font-size: x-large;
                     font-weight: 700;
                 }
             }
@@ -87,7 +87,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.75rem 1rem;
+    padding: 4px;
     border-bottom: 1px solid var(--acc-color-border);
 }
 
@@ -144,10 +144,9 @@
 
 .acc-tag__filter {
     cursor: pointer;
-    padding: 0.4em;
     border: 1px solid grey;
-    font-size: 1.1rem;
-    line-height: 1.2rem;
+    font-size: 14px;
+    padding: 4px;
     border-radius: 0;
     color: var(--acc-color-control);
     background: var(--acc-color-bg-control);
