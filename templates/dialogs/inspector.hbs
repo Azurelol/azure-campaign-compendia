@@ -1,0 +1,11 @@
+{{#each properties as |prop|}}
+    {{#if (eq prop.type 'string')}}
+        {{#if prop.options.style}}
+            {{#if (eq prop.options.style 'html')}}
+                <prose-mirror name="{{accConcat 'object.' path}}" value="{{lookup @root.object prop.path}}" toggled>
+                </prose-mirror>
+            {{/if}}
+        {{else}}
+        {{/if}}
+    {{/if}}
+{{/each}}

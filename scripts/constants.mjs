@@ -107,15 +107,23 @@ Constants.storyTags = {
 
 Constants.icons = {
     compendium: 'fas fa-book',
+
+    poll: 'fa-solid fa-square-poll-vertical',
+
+
+    planner: 'fa fa-notebook',
+    kit: 'fa fa-book',
+
+    popout: 'fa fa-external-link',
+    pin: 'fa fa-thumb-tack',
+    bookmark: 'fa fa-bookmark-o',
+    add: 'fa fa-plus-square',
+    remove: 'fa fa-minus-square',
+    edit: 'fa fa-pencil',
     inspect: 'fa fa-eye',
     link: 'fa fa-link',
-    poll: 'fa-solid fa-square-poll-vertical',
-    edit: 'fa fa-pencil',
-    popout: 'fa fa-external-link',
+
     info: 'fas fa-circle-info',
-    pin: 'fa fa-thumb-tack',
-    kit: 'fa fa-book',
-    bookmark: 'fa fa-bookmark-o',
     warning: 'fas fa-triangle-exclamation',
     help: 'fas fa-circle-question',
 }

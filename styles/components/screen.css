@@ -19,15 +19,48 @@
         grid-area: nav;
     }
 
-    .kits {
-        overflow-y: hidden;
-    }
-
     .overview {
         .content {
             .pins {
                 display: flex;
                 flex-direction: row;
+                gap: 8px;
+            }
+        }
+    }
+
+    .kits {
+        overflow-y: hidden;
+    }
+
+    .planner {
+        .content {
+            display: grid;
+            grid-template-columns: 300px 250px 1fr;
+            grid-template-areas:
+                    'notes scenes other';
+            height: 100%;
+
+            .notes {
+                grid-area: notes;
+                background-color: var(--acc-color-bg-panel-secondary);
+                border: 2px solid var(--acc-color-border-panel-secondary);
+                color: var(--acc-color-text-panel-secondary);
+                border-radius: 4px;
+                padding: 8px;
+
+                .title {
+                    font-size: 24px;
+                    font-family: Georgia serif;
+                }
+
+                .list {
+
+                }
+            }
+
+            .scenes {
+                grid-area: scenes;
             }
         }
     }

@@ -65,3 +65,8 @@
         flex-direction: column;
     }
 }
+
+.acc-form {
+    background: var(--acc-color-bg-panel);
+    color: var(--acc-color-text-panel);
+}

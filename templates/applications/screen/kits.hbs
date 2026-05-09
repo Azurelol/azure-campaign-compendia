@@ -2,13 +2,13 @@
     <div class="acc-browser">
         <div class="acc-browser__controls">
 
-            <div class="acc-browser__toolbar">
-                <div class="acc-browser__toolbar__row">
-                    <label class="acc-browser__toolbar__search">
+            <div class="acc-toolbar">
+                <div class="acc-toolbar__row">
+                    <label class="acc-toolbar__search">
                         <input type="text" placeholder="..."/>
                     </label>
                 </div>
-                <div class="acc-browser__toolbar__row">
+                <div class="acc-toolbar__row">
                     <span class="acc-browser__toolbar__label">Tone</span>
                     <div class="acc-tag__group">
                         {{#each browser.tones as |tag|}}
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="acc-browser__toolbar__row">
+                <div class="acc-toolbar__row">
                     <span class="acc-browser__toolbar__label">Setting</span>
                     <div class="acc-tag__group">
                         {{#each browser.settings as |tag|}}
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="acc-browser__toolbar__row">
+                <div class="acc-toolbar__row">
                     <span class="acc-browser__toolbar__label">Theme</span>
                     <div class="acc-tag__group">
                         {{#each browser.themes as |tag|}}

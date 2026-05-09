@@ -63,6 +63,10 @@ export const ACHandlebars = Object.freeze({
             }
             return Constants.icons[icon];
         });
+        Handlebars.registerHelper('accConcat', (...args) => {
+            args.pop();
+            return args.join('');
+        });
         Handlebars.registerHelper('accHumanize', function (str) {
             if (str && typeof str === 'string') {
                 return StringUtils.humanize(str);

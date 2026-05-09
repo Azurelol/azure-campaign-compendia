@@ -17,15 +17,6 @@
         padding: 8px;
     }
 
-    .acc-browser__toolbar {
-        display: flex;
-        flex-direction: column;
-
-        .acc-browser__toolbar__search {
-            flex: 2;
-        }
-    }
-
     .acc-browser__entry {
         color: var(--acc-color-text-panel);
         border: 1px solid var(--acc-color-border-panel);
@@ -75,34 +66,79 @@
     }
 }
 
-.acc-tag__group {
+.acc-button {
+    background: none;
+    border: none;
+
+    i {
+        color: var(--acc-color-icon);
+        transition: color 0.2s ease,
+        filter 0.2s ease;
+    }
+
+    &.active {
+        color: var(--acc-color-icon-active);
+
+        i {
+            color: var(--acc-color-icon-active);
+        }
+    }
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.1);
+        color: var(--acc-color-icon-hover);
+
+        i {
+            color: var(--acc-color-icon-hover);
+        }
+    }
+}
+
+
+.acc-toolbar {
     display: flex;
-    align-items: center;
-    margin: 0;
-    gap: 4px;
-    padding: 0.125rem 0;
-}
+    flex-direction: column;
 
-.acc-browser__toolbar__row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 4px;
-    border-bottom: 1px solid var(--acc-color-border);
-}
+    .acc-toolbar__search {
+        flex: 2;
+    }
 
-.acc-browser__toolbar__row:nth-child(odd) {
-    background: var(--acc-color-bg-table-row);
-}
+    .acc-toolbar__button {
+        background: none;
+        border: none;
 
-.acc-browser__toolbar__row:nth-child(even) {
-    background: var(--acc-color-bg-table-row-alt);
-}
+        i {
 
-.acc-browser__toolbar__label {
-    min-width: 6rem;
-    color: var(--acc-color-text);
-    font-size: 1rem;
+        }
+
+    }
+
+    .acc-toolbar__row__flat {
+        display: flex;
+        align-items: center;
+        padding: 4px;
+    }
+
+    .acc-toolbar__row {
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        border-bottom: 1px solid var(--acc-color-border);
+    }
+
+    .acc-toolbar__row:nth-child(odd) {
+        background: var(--acc-color-bg-table-row);
+    }
+
+    .acc-toolbar__row:nth-child(even) {
+        background: var(--acc-color-bg-table-row-alt);
+    }
+
+    .acc-browser__toolbar__label {
+        min-width: 6rem;
+        color: var(--acc-color-text);
+        font-size: 1rem;
+    }
 }
 
 .acc-tag {
@@ -163,4 +199,13 @@
         background: color-mix(in srgb, var(--acc-color-shadow-control) 70%, white);
         color: color-mix(in srgb, var(--acc-color-control) 70%, white);
     }
+}
+
+
+.acc-tag__group {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 4px;
+    padding: 0.125rem 0;
 }

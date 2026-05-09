@@ -19,8 +19,8 @@ export class StoryKitBrowser {
      */
     attachListeners(html) {
         const controls = html.querySelector('.acc-browser__controls');
-        const toolbar = controls.querySelector('.acc-browser__toolbar');
-        const searchInput = toolbar.querySelector('.acc-browser__toolbar__search').querySelector('input');
+        const toolbar = controls.querySelector('.acc-toolbar');
+        const searchInput = toolbar.querySelector('.acc-toolbar__search').querySelector('input');
         if (searchInput) {
             requestAnimationFrame(() => searchInput.removeAttribute('disabled'));
             searchInput.addEventListener(

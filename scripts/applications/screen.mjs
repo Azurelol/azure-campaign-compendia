@@ -4,6 +4,8 @@ import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
 import {StoryKitBrowser} from "./kit-browser.mjs";
 import {Settings} from "../utils/settings.mjs";
 import {ScreenDataModel} from "../documents/screen-data-model.mjs";
+import {StringUtils} from "../utils/string-utils.mjs";
+import {Dialogs} from "../dialogs.mjs";
 
 /**
  * @property
@@ -30,6 +32,8 @@ export class GMScreen extends ACApplication {
             editStoryKit: this.#editStoryKit,
             createPoll: this.#createPoll,
             pinObject: this.#pinObject,
+            addNote: this.#addNote,
+            editNote: this.#editNote,
         },
     };
 
@@ -51,8 +55,8 @@ export class GMScreen extends ACApplication {
         kits: {
             template: moduleTemplatePath('applications/screen/kits'),
         },
-        scenes: {
-            template: moduleTemplatePath('applications/screen/scenes'),
+        planner: {
+            template: moduleTemplatePath('applications/screen/planner'),
         },
     };
 
@@ -64,7 +68,7 @@ export class GMScreen extends ACApplication {
             tabs: [
                 {id: 'overview', label: 'Overview', icon: 'ra ra-double-team'},
                 {id: 'kits', label: 'Story Kits', icon: 'fas fa-book'},
-                {id: 'scenes', label: 'Scenes', icon: 'fas fa-clapperboard'},
+                {id: 'planner', label: 'Planner', icon: 'fas fa-notebook'},
             ],
             initial: 'overview',
         },
@@ -103,8 +107,11 @@ export class GMScreen extends ACApplication {
             }
                 break;
 
-            case 'scenes': {
+            case 'planner': {
+                {
+                    context.data = await this.loadData();
 
+                }
                 break;
             }
 
@@ -281,6 +288,59 @@ export class GMScreen extends ACApplication {
      * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
      * @returns {Promise<void>}
      */
+    static async #addNote(event, target) {
+        const data = await this.loadData();
+        let note = {
+            id: StringUtils.randomID(),
+            text: ""
+        };
+
+        const confirm = await GMScreen.#inspectNote(note);
+        if (confirm) {
+            data.notes.push(note);
+            await this.saveData(data);
+        }
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #editNote(event, target) {
+        const {index} = target.dataset;
+        const data = await this.loadData();
+        const note = data.notes[index];
+        if (note) {
+            const confirm = await GMScreen.#inspectNote(note);
+            if (confirm) {
+                data[index] = note;
+                await this.saveData(data);
+            }
+        }
+    }
+
+    /**
+     * @param {ScreenNoteData} note
+     * @returns {Promise<Boolean>}
+     */
+    static async #inspectNote(note) {
+        return await Dialogs.inspect('Edit Note', note, [{
+            path: 'text',
+            type: 'string',
+            options: {
+                style: 'html'
+            }
+        }]);
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
     static async #pinObject(event, target) {
         const {id, type} = target.dataset;
         const data = await this.loadData();
@@ -299,6 +359,5 @@ export class GMScreen extends ACApplication {
 
         await this.saveData(data);
         this.render(true);
-
     }
 }

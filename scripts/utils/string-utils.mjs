@@ -34,4 +34,20 @@ export class StringUtils {
         if (data) return game.i18n.format(key, data) || key;
         return (typeof key === 'string' ? game.i18n.localize(key) : key.toString()) || key;
     }
+
+    /**
+     * @returns {String} a 16-char random hex string e.g. "a3f8c2e1b4d7f9a2"
+     */
+    static randomID() {
+        return foundry.utils.randomID();
+    }
+
+    /**
+     * @param {String} text
+     * @param {EnrichmentOptions} options
+     * @returns {Promise<string>}
+     */
+    static async enrichText(text, options) {
+        return TextEditor.implementation.enrichHTML(text, options);
+    }
 }

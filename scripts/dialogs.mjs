@@ -56,7 +56,7 @@ const {api, fields, handlebars} = foundry.applications;
  * @property {"single"|"multi"|"checkboxes"} [type] Customize the type of select that is created
  */
 
-const DIALOG_CLASSES = []
+const DIALOG_CLASSES = ['acc-form']
 
 /**
  * @typedef AzureDialogOptions
@@ -103,38 +103,6 @@ async function input(title, content, options = {}) {
         ok: {
             label: 'FU.Confirm',
         },
-    };
-    Utils.mergeRecursive(defaultOptions, options);
-    return await foundry.applications.api.DialogV2.input(defaultOptions);
-}
-
-/**
- * @param {String} title
- * @param {String} content
- * @param {Object} options
- * @returns {Promise}
- */
-async function popout(title, content, options = {}) {
-    const defaultOptions = {
-        window: {title, icon: 'fas fa-eye', resizable: true},
-        classes: DIALOG_CLASSES,
-        rejectClose: false,
-        content,
-        buttons: [{label: 'Close', action: 'close'}],
-    };
-    Utils.mergeRecursive(defaultOptions, options);
-    await foundry.applications.api.DialogV2.wait(defaultOptions);
-}
-
-/**
- * @param options
- * @returns {Promise<*>}
- */
-async function prompt(options = {}) {
-    const defaultOptions = {
-        window: {icon: 'fas fa-comment'},
-        classes: DIALOG_CLASSES,
-        rejectClose: false,
         actions: {
             // Image Picker: Browse
             browseImage: (event, target) => {
@@ -193,9 +161,59 @@ async function prompt(options = {}) {
     return await foundry.applications.api.DialogV2.input(defaultOptions);
 }
 
+/**
+ * @param {String} title
+ * @param {String} content
+ * @param {Object} options
+ * @returns {Promise}
+ */
+async function popout(title, content, options = {}) {
+    const defaultOptions = {
+        window: {title, icon: 'fas fa-eye', resizable: true},
+        classes: DIALOG_CLASSES,
+        rejectClose: false,
+        content,
+        buttons: [{label: 'Close', action: 'close'}],
+    };
+    Utils.mergeRecursive(defaultOptions, options);
+    await foundry.applications.api.DialogV2.wait(defaultOptions);
+}
+
+/**
+ * @typedef {'string'|'number'} InspectorPropertyType
+ */
+
+/**
+ * @typedef InspectedPropertyOptions
+ * @property {String} style
+ */
+
+/**
+ * @typedef InspectorProperty
+ * @property {String} path
+ * @property {InspectorPropertyType} type
+ * @property {InspectedPropertyOptions} options
+ */
+
+/**
+ * @param {String} title
+ * @param {Object} object
+ * @param {InspectorProperty[]} properties
+ * @returns {Promise<boolean>}
+ */
+async function inspect(title, object, properties) {
+    const content = await Utils.renderTemplate(moduleTemplatePath('dialogs/inspector'), {
+        object: object,
+        properties: properties,
+    });
+    const options = {};
+    const result = await input(title, content, options);
+    return result !== undefined && result !== null;
+}
+
 export const Dialogs = {
     confirm,
     input,
     popout,
-    prompt
+    inspect
 };
