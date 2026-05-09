@@ -209,7 +209,12 @@ async function inspect(title, object, properties) {
     });
     const options = {};
     const result = await input(title, content, options);
-    return result !== undefined && result !== null;
+    if (result !== null) {
+        const expanded = foundry.utils.expandObject(result);
+        foundry.utils.mergeObject(object, expanded.object);
+        return true;
+    }
+    return false;
 }
 
 export const Dialogs = {
