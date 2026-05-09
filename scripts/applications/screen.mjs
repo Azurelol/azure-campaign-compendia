@@ -34,6 +34,7 @@ export class GMScreen extends ACApplication {
             pinObject: this.#pinObject,
             addNote: this.#addNote,
             editNote: this.#editNote,
+            removeNote: this.#removeNote
         },
     };
 
@@ -158,6 +159,7 @@ export class GMScreen extends ACApplication {
      */
     async saveData(data) {
         await Settings.set(Settings.keys.screenData, data);
+        return this.refresh();
     }
 
     /**
@@ -240,6 +242,23 @@ export class GMScreen extends ACApplication {
     }
 
     /**
+     * @returns {Promise<*>}
+     */
+    async refresh() {
+        return this.render(true);
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #refresh(event, target) {
+        return this.refresh();
+    }
+
+    /**
      * @this GMScreen
      * @param {PointerEvent} event   The originating click event
      * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
@@ -297,8 +316,12 @@ export class GMScreen extends ACApplication {
 
         const confirm = await GMScreen.#inspectNote(note);
         if (confirm) {
+            if (!data.notes) {
+                data.notes = [];
+            }
             data.notes.push(note);
             await this.saveData(data);
+            ui.notifications.info(`Added GM screen note.`)
         }
     }
 
@@ -317,7 +340,25 @@ export class GMScreen extends ACApplication {
             if (confirm) {
                 data[index] = note;
                 await this.saveData(data);
+                ui.notifications.info(`Edited GM screen note.`)
             }
+        }
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #removeNote(event, target) {
+        const {index} = target.dataset;
+        const data = await this.loadData();
+        const note = data.notes[index];
+        if (note) {
+            data.notes.splice(Number.parseInt(index), 1);
+            await this.saveData(data);
+            ui.notifications.info(`Removed GM screen note.`)
         }
     }
 
@@ -326,13 +367,15 @@ export class GMScreen extends ACApplication {
      * @returns {Promise<Boolean>}
      */
     static async #inspectNote(note) {
-        return await Dialogs.inspect('Edit Note', note, [{
+        const confirm = await Dialogs.inspect('Edit Note', note, [{
+            label: "Text",
             path: 'text',
             type: 'string',
             options: {
-                style: 'html'
+                style: 'textarea'
             }
         }]);
+        return confirm && note.text;
     }
 
     /**

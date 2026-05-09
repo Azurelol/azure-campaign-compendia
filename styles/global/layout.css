@@ -78,6 +78,7 @@
 
     &.active {
         color: var(--acc-color-icon-active);
+        background: none;
 
         i {
             color: var(--acc-color-icon-active);

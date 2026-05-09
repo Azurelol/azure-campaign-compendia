@@ -68,7 +68,7 @@
     .widgets {
         grid-area: widgets;
         display: flex;
-        gap: 3rem;
+        gap: 4px;
         justify-content: center;
         align-items: center;
 

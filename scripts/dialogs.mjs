@@ -190,6 +190,7 @@ async function popout(title, content, options = {}) {
 
 /**
  * @typedef InspectorProperty
+ * @property {String} label The display name of the property.
  * @property {String} path
  * @property {InspectorPropertyType} type
  * @property {InspectedPropertyOptions} options

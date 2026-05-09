@@ -122,6 +122,7 @@ Constants.icons = {
     edit: 'fa fa-pencil',
     inspect: 'fa fa-eye',
     link: 'fa fa-link',
+    refresh: 'fa fa-refresh',
 
     info: 'fas fa-circle-info',
     warning: 'fas fa-triangle-exclamation',

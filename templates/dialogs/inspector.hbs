@@ -1,11 +1,18 @@
-{{#each properties as |prop|}}
-    {{#if (eq prop.type 'string')}}
-        {{#if prop.options.style}}
-            {{#if (eq prop.options.style 'html')}}
-                <prose-mirror name="{{accConcat 'object.' path}}" value="{{lookup @root.object prop.path}}" toggled>
-                </prose-mirror>
+<div class="acc-property-group">
+    {{#each properties as |prop|}}
+        <label class="acc-property">
+            <span>{{prop.label}}</span>
+            {{#if (eq prop.type 'string')}}
+                {{#if prop.options.style}}
+                    {{#if (eq prop.options.style 'textarea')}}
+                        <textarea name="{{accConcat 'object.' path}}">{{~lookup @root.object prop.path}}</textarea>
+                    {{/if}}
+
+                    {{#if (eq prop.options.style 'html')}}
+                    {{/if}}
+                {{else}}
+                {{/if}}
             {{/if}}
-        {{else}}
-        {{/if}}
-    {{/if}}
-{{/each}}
+        </label>
+    {{/each}}
+</div>

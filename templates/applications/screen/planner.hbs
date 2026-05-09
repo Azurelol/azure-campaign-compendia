@@ -19,6 +19,19 @@
 
             <div class="list">
                 {{#each data.notes as |note|}}
+                    <div class="acc-card --note">
+                        <div class="acc-card__header">
+                            <button class="acc-button" data-action="editNote" data-index="{{@index}}">
+                                <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
+                            </button>
+                            <button class="acc-button" data-action="removeNote" data-index="{{@index}}">
+                                <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
+                            </button>
+                        </div>
+                        <div class="acc-card__body">
+                            {{note.text}}
+                        </div>
+                    </div>
 
                 {{/each}}
             </div>

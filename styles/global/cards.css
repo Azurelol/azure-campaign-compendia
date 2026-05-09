@@ -71,4 +71,11 @@
             color: var(--color-text-primary);
         }
     }
+
+    &.--note {
+        .acc-card__header {
+            border-top: 1px solid yellow;
+            justify-content: flex-end;
+        }
+    }
 }
