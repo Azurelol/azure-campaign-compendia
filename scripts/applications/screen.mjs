@@ -31,10 +31,11 @@ export class GMScreen extends ACApplication {
             viewStoryKit: this.#viewStoryKit,
             editStoryKit: this.#editStoryKit,
             createPoll: this.#createPoll,
+
+            addObject: this.#addObject,
+            editObject: this.#editObject,
+            removeObject: this.#removeObject,
             pinObject: this.#pinObject,
-            addNote: this.#addNote,
-            editNote: this.#editNote,
-            removeNote: this.#removeNote
         },
     };
 
@@ -322,21 +323,88 @@ export class GMScreen extends ACApplication {
      * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
      * @returns {Promise<void>}
      */
-    static async #addNote(event, target) {
+    static async #addObject(event, target) {
+        const {type} = target.dataset;
         const data = await this.loadData();
-        let note = {
-            id: StringUtils.randomID(),
-            text: ""
-        };
+        switch (type) {
+            case 'kit':
+                break;
 
-        const confirm = await GMScreen.#inspectNote(note);
-        if (confirm) {
-            if (!data.notes) {
-                data.notes = [];
+            case 'event': {
+                /** @type ScreenEventData **/
+                let event = {
+                    id: StringUtils.randomID(),
+                    title: "",
+                    details: "",
+                    status: 'pending'
+                };
+                const confirm = await GMScreen.#inspectEvent(event);
+                if (confirm) {
+                    if (!data.events) {
+                        data.events = [];
+                    }
+                    data.events.push(event);
+                    await this.saveData(data);
+                    ui.notifications.info(`Added GM screen event.`)
+                }
             }
-            data.notes.push(note);
-            await this.saveData(data);
-            ui.notifications.info(`Added GM screen note.`)
+                break;
+
+            case 'note': {
+                /** @type ScreenNoteData **/
+                let note = {
+                    id: StringUtils.randomID(),
+                    text: ""
+                };
+                const confirm = await GMScreen.#inspectNote(note);
+                if (confirm) {
+                    if (!data.notes) {
+                        data.notes = [];
+                    }
+                    data.notes.push(note);
+                    await this.saveData(data);
+                    ui.notifications.info(`Added GM screen note.`)
+                }
+            }
+                break;
+        }
+
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #removeObject(event, target) {
+        const {index, type} = target.dataset;
+        const data = await this.loadData();
+        switch (type) {
+            case 'note': {
+                const note = data.notes[index];
+                if (note) {
+                    data.notes.splice(Number.parseInt(index), 1);
+                    await this.saveData(data);
+                    ui.notifications.info(`Removed GM screen note.`)
+                }
+            }
+                break;
+
+            case 'event': {
+                const event = data.events[index];
+                if (event) {
+                    data.event.splice(Number.parseInt(index), 1);
+                    await this.saveData(data);
+                    ui.notifications.info(`Removed GM screen event.`)
+                }
+            }
+                break;
+
+            case 'kit': {
+
+            }
+                break;
         }
     }
 
@@ -346,35 +414,61 @@ export class GMScreen extends ACApplication {
      * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
      * @returns {Promise<void>}
      */
-    static async #editNote(event, target) {
-        const {index} = target.dataset;
+    static async #editObject(event, target) {
+        const {index, type} = target.dataset;
         const data = await this.loadData();
-        const note = data.notes[index];
-        if (note) {
-            const confirm = await GMScreen.#inspectNote(note);
-            if (confirm) {
-                data[index] = note;
-                await this.saveData(data);
-                ui.notifications.info(`Edited GM screen note.`)
+        switch (type) {
+            case 'note': {
+                const note = data.notes[index];
+                if (note) {
+                    const confirm = await GMScreen.#inspectNote(note);
+                    if (confirm) {
+                        data[index] = note;
+                        await this.saveData(data);
+                        ui.notifications.info(`Edited GM screen note.`)
+                    }
+                }
+            }
+                break;
+
+            case 'event': {
+                const event = data.events[index];
+                if (event) {
+                    const confirm = await GMScreen.#inspectEvent(event);
+                    if (confirm) {
+                        data[index] = event;
+                        await this.saveData(data);
+                        ui.notifications.info(`Edited GM screen event.`)
+                    }
+                }
+                break;
             }
         }
     }
 
     /**
-     * @this GMScreen
-     * @param {PointerEvent} event   The originating click event
-     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
-     * @returns {Promise<void>}
+     * @param {ScreenEventData} event
+     * @returns {Promise<Boolean>}
      */
-    static async #removeNote(event, target) {
-        const {index} = target.dataset;
-        const data = await this.loadData();
-        const note = data.notes[index];
-        if (note) {
-            data.notes.splice(Number.parseInt(index), 1);
-            await this.saveData(data);
-            ui.notifications.info(`Removed GM screen note.`)
-        }
+    static async #inspectEvent(event) {
+        /** @type InspectorProperty[] **/
+        const properties = [
+            {
+                label: "Title",
+                path: 'title',
+                type: 'string',
+            },
+            {
+                label: "Details",
+                path: 'details',
+                type: 'string',
+                options: {
+                    style: 'textarea'
+                }
+            }
+        ];
+        const confirm = await Dialogs.inspect('Edit Event', event, properties);
+        return confirm && event.title;
     }
 
     /**

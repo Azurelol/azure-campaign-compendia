@@ -16,53 +16,32 @@
         min-height: 0;
         padding: 8px;
     }
+}
 
-    .acc-browser__entry {
-        color: var(--acc-color-text-panel);
-        border: 1px solid var(--acc-color-border-panel);
-        background: var(--acc-color-bg-panel);
-        background-blend-mode: multiply;
-        background-position: right top;
+.acc-board {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    grid-area: notes;
+    border: 2px solid var(--acc-color-border-panel-secondary);
+    background: #aaa79f;
+    color: var(--acc-color-text-panel);
+    border-radius: 4px;
+    padding: 8px;
 
-        &.--basic {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            gap: 1rem;
-            padding-left: 1rem;
-            justify-content: space-between;
+    .acc-board__header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-            .icon {
-                display: flex;
-                align-items: center;
-                color: var(--acc-color-icon);
-            }
+    .acc-board__title {
+        font-size: 24px;
+        font-family: Segoe UI serif;
+        font-weight: bold;
+    }
 
-            .controls {
-                display: flex;
-                flex-direction: row;
-                gap: 0.4rem;
-            }
-
-            .header {
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                justify-content: space-between;
-                width: 100%;
-
-                .name {
-                    font-family: 'CreditValleybold';
-                    font-size: x-large;
-                    font-weight: 700;
-                }
-            }
-
-            .description {
-                overflow-y: auto;
-                user-select: text;
-            }
-        }
+    .acc-board__list {
     }
 }
 

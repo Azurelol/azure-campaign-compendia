@@ -21,20 +21,17 @@ const {ArrayField, StringField, HTMLField} = foundry.applications.fields;
  */
 
 /**
- * @typedef SceneData
+ * @typedef ScreenEventData
  * @property {String} id
- * @property {String} text
- */
-
-/**
- * @typedef SceneQueue
- * @property {SceneData[]} current
- * @property {SceneData[]} current
+ * @property {String} title The title of the event, fitting one line.
+ * @property {String} details Further details of the event.
+ * @property {'pending'|'completed'} status Whether the event has been run.
  */
 
 /**
  * @property {PinReference[]} pinned
  * @property {ScreenNoteData[]} notes
+ * @property {ScreenEventData[]} events
  */
 export class ScreenDataModel extends VersionedDataModel {
     static defineSchema() {
@@ -44,6 +41,10 @@ export class ScreenDataModel extends VersionedDataModel {
                 id: new StringField(),
             })),
             notes: new ArrayField(new SchemaField({
+                id: new StringField(),
+                text: new HTMLField()
+            })),
+            events: new ArrayField(new SchemaField({
                 id: new StringField(),
                 text: new HTMLField()
             }))

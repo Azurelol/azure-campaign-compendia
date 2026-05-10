@@ -11,6 +11,7 @@
                     {{#if (eq prop.options.style 'html')}}
                     {{/if}}
                 {{else}}
+                    <input type="text" name="{{accConcat 'object.' path}}" value="{{~lookup @root.object prop.path}}">
                 {{/if}}
             {{/if}}
         </label>

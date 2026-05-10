@@ -1,27 +1,28 @@
 <section class="tab planner {{tab.cssClass}}" data-tab="planner" data-group="primary">
 
     <div class="content">
-        <div class="notes">
-            <div class="title">
-                <span>Notes</span>
+        <div class="notes acc-board">
+            <div class="acc-board__header">
+                <span class="acc-board__title">Notes</span>
             </div>
 
-            <div class="toolbar acc-toolbar">
+            <div class="acc-toolbar">
                 <div class="acc-toolbar__row__flat">
                     <label class="acc-toolbar__search">
                         <input type="text" placeholder="..."/>
                     </label>
-                    <button class="acc-button" data-action="addNote">
+                    <button class="acc-button" data-action="addObject" data-type="note">
                         <i class="acc-icon --s {{accIconClass 'add'}}"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="list">
+            <div class="acc-board__list">
                 {{#each data.notes as |note|}}
                     <div class="acc-card --note">
                         <div class="acc-card__header">
-                            <button class="acc-button" data-action="editNote" data-index="{{@index}}">
+                            <button class="acc-button" data-action="editObject" data-index="{{@index}}"
+                                    data-type="note">
                                 <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
                             </button>
                             <button class="acc-button" data-action="pinObject" data-type="note" data-id="{{note.id}}"
@@ -29,7 +30,8 @@
                                 <i class="acc-icon --xs {{#unless
                                         (lookup @root.pinned note.id)}}muted{{/unless}} {{accIconClass 'pin'}}"></i>
                             </button>
-                            <button class="acc-button" data-action="removeNote" data-index="{{@index}}">
+                            <button class="acc-button" data-action="removeObject" data-index="{{@index}}"
+                                    data-type="note">
                                 <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
                             </button>
                         </div>
@@ -42,8 +44,48 @@
             </div>
         </div>
 
-        <div class="scenes">
+        <div class="events acc-board">
+            <div class="acc-board__header">
+                <span class="acc-board__title">Events</span>
+                <div class="toolbar acc-toolbar">
+                    <div class="acc-toolbar__row__flat">
+                        <button class="acc-button" data-action="addObject" data-type="event">
+                            <i class="acc-icon --s {{accIconClass 'add'}}"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="acc-board__list acc-list">
+                {{#each data.events as |event|}}
+                    <div class="acc-list__entry --basic" data-index="{{@index}}">
+                        <div class="acc-list__entry__controls">
+                            <div class="acc-list__entry__icon">
+                                <a data-action="viewEvent" data-id="{{event.id}}">
+                                    <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                                </a>
+                            </div>
+                            <div class="acc-list__entry__icon">
+                                <a data-action="editObject" data-id="{{event.id}}" data-type="event"
+                                   data-index="{{@index}}">
+                                    <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
+                                </a>
+                            </div>
+                            <div class="acc-list__entry__icon">
+                                <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
+                                   data-index="{{@index}}">
+                                    <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="acc-list__entry__header">
+						<span class="acc-list__entry__name">
+                            {{event.title}}
+                        </span>
+                        </div>
 
+                    </div>
+                {{/each}}
+            </div>
         </div>
     </div>
 </section>

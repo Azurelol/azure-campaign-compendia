@@ -86,7 +86,7 @@ export class StoryKitBrowser {
     #sortEntries(element) {
         const entries = element.querySelector('.acc-browser__content');
         if (entries) {
-            const items = [...entries.querySelectorAll('li.acc-browser__entry')];
+            const items = [...entries.querySelectorAll('li.acc-list__entry')];
             const kits = this.sheet.kits;
             items
                 .sort((a, b) => {
@@ -112,7 +112,7 @@ export class StoryKitBrowser {
             const nameFilter = this.nameFilter ? this.nameFilter.toLowerCase() : '';
             const kits = this.sheet.kits;
 
-            for (const li of entries.querySelectorAll('li.acc-browser__entry')) {
+            for (const li of entries.querySelectorAll('li.acc-list__entry')) {
                 const index = li.dataset.index;
                 const entry = kits[index];
                 if (!entry) {

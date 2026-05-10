@@ -49,26 +49,26 @@
             </div>
         </div>
 
-        <ul class="acc-browser__content">
+        <ul class="acc-browser__content acc-list">
             {{#each kits as |kit|}}
-                <li class="acc-browser__entry --basic" data-index="{{@index}}">
-                    <div class="controls">
-                        <div class="icon">
+                <li class="acc-list__entry --basic" data-index="{{@index}}">
+                    <div class="acc-list__entry__controls">
+                        <div class="acc-list__entry__icon">
                             {{accDocumentAnchor kit size='xs'}}
                         </div>
-                        <div class="icon">
+                        <div class="acc-list__entry__icon">
                             <a data-action="viewStoryKit" data-id="{{kit.id}}">
                                 <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
                             </a>
                         </div>
                         {{#if kit.isOwner}}
-                            <div class="icon">
+                            <div class="acc-list__entry__icon">
                                 <a data-action="editStoryKit" data-id="{{kit.id}}">
                                     <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
                                 </a>
                             </div>
                         {{/if}}
-                        <div class="icon">
+                        <div class="acc-list__entry__icon">
                             <a data-action="pinObject" data-id="{{kit.id}}" data-type="kit">
                                 <i class="acc-icon --xs {{#unless
                                         (lookup @root.pinned kit.id)}}muted{{/unless}} {{accIconClass 'pin'}}"></i>
@@ -76,8 +76,8 @@
                         </div>
                     </div>
 
-                    <div class="header">
-						<span class="name">
+                    <div class="acc-list__entry__header">
+						<span class="acc-list__entry__name">
                             {{kit.name}}
                         </span>
                         <div class="acc-tag__group">
