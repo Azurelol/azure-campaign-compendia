@@ -24,6 +24,11 @@
                             <button class="acc-button" data-action="editNote" data-index="{{@index}}">
                                 <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
                             </button>
+                            <button class="acc-button" data-action="pinObject" data-type="note" data-id="{{note.id}}"
+                                    data-index="{{@index}}">
+                                <i class="acc-icon --xs {{#unless
+                                        (lookup @root.pinned note.id)}}muted{{/unless}} {{accIconClass 'pin'}}"></i>
+                            </button>
                             <button class="acc-button" data-action="removeNote" data-index="{{@index}}">
                                 <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
                             </button>

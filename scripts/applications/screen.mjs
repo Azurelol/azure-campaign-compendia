@@ -26,7 +26,7 @@ export class GMScreen extends ACApplication {
             submitOnChange: true,
             closeOnSubmit: false,
         },
-        position: {width: 1024, height: 768},
+        position: {width: 850, height: 800},
         actions: {
             viewStoryKit: this.#viewStoryKit,
             editStoryKit: this.#editStoryKit,
@@ -111,7 +111,7 @@ export class GMScreen extends ACApplication {
             case 'planner': {
                 {
                     context.data = await this.loadData();
-
+                    context.pinned = await this.getPinnedObjects();
                 }
                 break;
             }
@@ -187,6 +187,7 @@ export class GMScreen extends ACApplication {
         const data = await this.loadData();
         const kits = await this.getKits();
         for (const pin of data.pinned) {
+            // TODO: Add preview text field, custom for each
             switch (pin.type) {
                 case 'kit': {
                     const object = kits.find(p => p.id === pin.id);
@@ -195,10 +196,24 @@ export class GMScreen extends ACApplication {
                             type: pin.type,
                             id: pin.id,
                             object: object,
+                            preview: object.system.introduction,
                         };
                     }
-                }
                     break;
+                }
+
+                case 'note': {
+                    const object = data.notes.find(p => p.id === pin.id);
+                    if (object) {
+                        objects[pin.id] = {
+                            type: pin.type,
+                            id: pin.id,
+                            preview: object.text,
+                            object: object,
+                        };
+                    }
+                    break;
+                }
             }
         }
 
@@ -400,7 +415,7 @@ export class GMScreen extends ACApplication {
             ui.notifications.info(`Added pin for ${type} object ${id}`);
         }
 
+
         await this.saveData(data);
-        this.render(true);
     }
 }

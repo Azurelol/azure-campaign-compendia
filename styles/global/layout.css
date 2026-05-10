@@ -69,6 +69,7 @@
 .acc-button {
     background: none;
     border: none;
+    padding: 2px;
 
     i {
         color: var(--acc-color-icon);
@@ -102,6 +103,10 @@
 
     .acc-toolbar__search {
         flex: 2;
+
+        input {
+            background: #404040;
+        }
     }
 
     .acc-toolbar__button {

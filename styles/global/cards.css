@@ -12,6 +12,11 @@
         height: 160px;
     }
 
+    &.--m {
+        width: 200px;
+        height: 200px;
+    }
+
     i {
         color: var(--acc-color-card);
     }
@@ -58,7 +63,7 @@
 
     .acc-card__button {
         background: none;
-        border: 2px solid var(--acc-color-border);
+        border: none;
         cursor: pointer;
         padding: 4px;
         font-size: 15px;
@@ -68,11 +73,14 @@
         }
 
         &:hover {
-            color: var(--color-text-primary);
+            color: var(--acc-color-icon-active);
         }
     }
 
     &.--note {
+
+        background: #333333;
+
         .acc-card__header {
             border-top: 1px solid yellow;
             justify-content: flex-end;

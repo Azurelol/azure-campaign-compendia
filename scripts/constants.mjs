@@ -113,6 +113,7 @@ Constants.icons = {
 
     planner: 'fa fa-notebook',
     kit: 'fa fa-book',
+    note: 'fa fa-sticky-note',
 
     popout: 'fa fa-external-link',
     pin: 'fa fa-thumb-tack',
