@@ -44,48 +44,50 @@
             </div>
         </div>
 
-        <div class="events acc-board">
-            <div class="acc-board__header">
-                <span class="acc-board__title">Events</span>
-                <div class="toolbar acc-toolbar">
-                    <div class="acc-toolbar__row__flat">
-                        <button class="acc-button" data-action="addObject" data-type="event">
-                            <i class="acc-icon --s {{accIconClass 'add'}}"></i>
-                        </button>
-                    </div>
+        <div class="events acc-list__container">
+
+            <div class="acc-list__container__header">
+                <span class="acc-list__container__header__title">Events</span>
+                <div>
+                    <button class="acc-button" data-action="addObject" data-type="event">
+                        <i class="acc-icon --s {{accIconClass 'add'}}"></i>
+                    </button>
                 </div>
             </div>
-            <div class="acc-board__list acc-list">
-                {{#each data.events as |event|}}
-                    <div class="acc-list__entry --basic" data-index="{{@index}}">
-                        <div class="acc-list__entry__controls">
-                            <div class="acc-list__entry__icon">
-                                <a data-action="viewEvent" data-id="{{event.id}}">
-                                    <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
-                                </a>
+
+            <div class="acc-list__container__body">
+                <ul class="acc-board__list acc-list">
+                    {{#each data.events as |event|}}
+                        <li class="acc-list__entry --basic" data-index="{{@index}}">
+                            <div class="acc-list__entry__controls">
+                                <div class="acc-list__entry__icon">
+                                    <a data-action="viewEvent" data-id="{{event.id}}">
+                                        <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                                    </a>
+                                </div>
+                                <div class="acc-list__entry__icon">
+                                    <a data-action="editObject" data-id="{{event.id}}" data-type="event"
+                                       data-index="{{@index}}">
+                                        <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
+                                    </a>
+                                </div>
+                                <div class="acc-list__entry__icon">
+                                    <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
+                                       data-index="{{@index}}">
+                                        <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="acc-list__entry__icon">
-                                <a data-action="editObject" data-id="{{event.id}}" data-type="event"
-                                   data-index="{{@index}}">
-                                    <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
-                                </a>
-                            </div>
-                            <div class="acc-list__entry__icon">
-                                <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
-                                   data-index="{{@index}}">
-                                    <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="acc-list__entry__header">
+                            <div class="acc-list__entry__header">
 						<span class="acc-list__entry__name">
                             {{event.title}}
                         </span>
-                        </div>
-
-                    </div>
-                {{/each}}
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
             </div>
+
         </div>
     </div>
 </section>

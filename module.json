@@ -18,7 +18,8 @@
     }
   ],
   "esmodules": [
-    "scripts/index.mjs"
+    "scripts/index.mjs",
+    "libs/sortable.esm.js"
   ],
   "scripts": [
   ],

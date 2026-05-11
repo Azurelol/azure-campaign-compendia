@@ -15,14 +15,18 @@
     --acc-color-card: #e4e3e3;
 
     /* controls */
-    --acc-color-control: var(--acc-primitive-color-white); /* label/icon tint */
+    --acc-color-control: var(--acc-primitive-color-white);
     --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-white), white 25%);
-    --acc-color-bg-control: var(--acc-primitive-color-grey-light); /* fill/background */
-    --acc-color-bg-control-hover: var(--acc-primitive-color-azure); /* fill/background */
-    --acc-color-shadow-control: var(--acc-primitive-color-warm-brown); /* drop shadow */
-    --acc-color-border-control: var(--acc-primitive-color-grey-mid); /* border/outline */
-    --acc-color-shadow: var(--acc-primitive-color-warm-brown); /* drop shadow */
-    --acc-color-shadow-secondary: var(--acc-primitive-color-white); /* drop shadow */
+    --acc-color-bg-control: var(--acc-primitive-color-grey-light);
+    --acc-color-bg-control-hover: var(--acc-primitive-color-azure);
+    --acc-color-shadow-control: var(--acc-primitive-color-warm-brown);
+    --acc-color-border-control: var(--acc-primitive-color-grey-mid);
+    --acc-color-shadow: var(--acc-primitive-color-warm-brown);
+    --acc-color-shadow-secondary: var(--acc-primitive-color-white);
+
+
+    --acc-color-control-header: var(--acc-primitive-color-grey-light);
+    --acc-color-bg-control-header: var(--acc-primitive-color-warm-brown);
 
     /* panels */
     --acc-color-bg-panel: var(--acc-primitive-color-parchment-light);

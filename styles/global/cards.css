@@ -88,6 +88,32 @@
     }
 }
 
+.acc-list__container {
+
+    display: flex;
+    flex-direction: column;
+    background: var(--acc-color-bg-control);
+    border: 1px solid var(--acc-color-border-control);
+
+    .acc-list__container__header {
+        display: flex;
+        flex-direction: row;
+        background: var(--acc-color-bg-control-header);
+        color: var(--acc-color-control-header);
+        justify-content: space-between;
+
+        .acc-list__container__header__title {
+            padding: 4px;
+            font-size: large;
+        }
+    }
+
+    .acc-list__container__body {
+        height: 100%;
+
+    }
+}
+
 .acc-list {
     .acc-list__entry {
         color: var(--acc-color-text-panel);

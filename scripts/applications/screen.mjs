@@ -6,6 +6,7 @@ import {Settings} from "../utils/settings.mjs";
 import {ScreenDataModel} from "../documents/screen-data-model.mjs";
 import {StringUtils} from "../utils/string-utils.mjs";
 import {Dialogs} from "../dialogs.mjs";
+import Sortable from "../../libs/sortable.esm.js";
 
 /**
  * @property
@@ -138,6 +139,15 @@ export class GMScreen extends ACApplication {
         switch (partId) {
             case 'kits':
                 this.#kitBrowser.attachListeners(html);
+                break;
+
+            case 'planner':
+                const eventList = html.querySelector('.acc-list');
+                Sortable.create(eventList, {
+                    onEnd(evt) {
+                        ui.notifications.info(`Moved element from ${evt.oldIndex} to ${evt.newIndex}`);
+                    }
+                });
                 break;
         }
     }
