@@ -32,11 +32,13 @@ export class GMScreen extends ACApplication {
             viewStoryKit: this.#viewStoryKit,
             editStoryKit: this.#editStoryKit,
             createPoll: this.#createPoll,
+            toggleEvent: this.#toggleEvent,
 
             addObject: this.#addObject,
             editObject: this.#editObject,
             removeObject: this.#removeObject,
             pinObject: this.#pinObject,
+            expandObject: this.#expandObject,
         },
     };
 
@@ -106,6 +108,9 @@ export class GMScreen extends ACApplication {
                 break;
 
             case 'overview': {
+                const data = await this.loadData();
+                context.data = data;
+                context.events = data.events;
                 context.pinned = await this.getPinnedObjects();
             }
                 break;
@@ -333,6 +338,41 @@ export class GMScreen extends ACApplication {
      * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
      * @returns {Promise<void>}
      */
+    static async #toggleEvent(event, target) {
+        const {id, status, index} = target.dataset;
+        const data = await this.loadData();
+        const _index = Number.parseInt(index);
+        switch (status) {
+            case 'pending': {
+                const event = data.events.pending[_index];
+                if (event) {
+                    data.events.pending.splice(_index, 1);
+                    data.events.resolved.push(event);
+                    await this.saveData(data);
+                    ui.notifications.info(`Resolved event.`)
+                }
+            }
+                break;
+
+            case 'resolved': {
+                const event = data.events.resolved[_index];
+                if (event) {
+                    data.events.resolved.splice(_index, 1);
+                    data.events.pending.push(event);
+                    await this.saveData(data);
+                    ui.notifications.info(`Changed event back to pending.`)
+                }
+            }
+                break;
+        }
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
     static async #addObject(event, target) {
         const {type} = target.dataset;
         const data = await this.loadData();
@@ -350,12 +390,15 @@ export class GMScreen extends ACApplication {
                 };
                 const confirm = await GMScreen.#inspectEvent(event);
                 if (confirm) {
-                    if (!data.events) {
-                        data.events = [];
+                    if (!data.events.pending) {
+                        data.events = {
+                            pending: [],
+                            resolved: []
+                        }
                     }
-                    data.events.push(event);
+                    data.events.pending.push(event);
                     await this.saveData(data);
-                    ui.notifications.info(`Added GM screen event.`)
+                    ui.notifications.info(`Added pending event.`)
                 }
             }
                 break;
@@ -388,7 +431,7 @@ export class GMScreen extends ACApplication {
      * @returns {Promise<void>}
      */
     static async #removeObject(event, target) {
-        const {index, type} = target.dataset;
+        const {index, type, status} = target.dataset;
         const data = await this.loadData();
         switch (type) {
             case 'note': {
@@ -402,12 +445,21 @@ export class GMScreen extends ACApplication {
                 break;
 
             case 'event': {
-                const event = data.events[index];
-                if (event) {
-                    data.event.splice(Number.parseInt(index), 1);
-                    await this.saveData(data);
-                    ui.notifications.info(`Removed GM screen event.`)
+                switch (status) {
+                    case 'pending': {
+                        const event = data.events.pending[index];
+                        if (event) {
+                            data.events.pending.splice(Number.parseInt(index), 1);
+                            await this.saveData(data);
+                            ui.notifications.info(`Removed pending event.`)
+                        }
+                    }
+                        break;
+
+                    case 'resolved':
+                        break;
                 }
+
             }
                 break;
 
@@ -442,7 +494,7 @@ export class GMScreen extends ACApplication {
                 break;
 
             case 'event': {
-                const event = data.events[index];
+                const event = data.events.pending[index];
                 if (event) {
                     const confirm = await GMScreen.#inspectEvent(event);
                     if (confirm) {
@@ -521,5 +573,51 @@ export class GMScreen extends ACApplication {
 
 
         await this.saveData(data);
+    }
+
+    /**
+     * @this GMScreen
+     * @param {PointerEvent} event   The originating click event
+     * @param {HTMLElement} target   The capturing HTML element which defined a [data-action]
+     * @returns {Promise<void>}
+     */
+    static async #expandObject(event, target) {
+        const {id, type, index} = target.dataset;
+
+        switch (type) {
+            case 'event': {
+                const data = await this.loadData();
+                const event = data.events.pending[index];
+                if (event) {
+                    await Dialogs.popupText(event.details)
+                }
+            }
+                break;
+
+            case 'kit': {
+                if (this.#kits) {
+                    const kit = this.#kits.find(k => k.id === id);
+                    if (kit) {
+                        const sheetClass = kit._getSheetClass();
+                        new sheetClass({document: kit, mode: "view"}).render(true);
+                    }
+                }
+                break;
+            }
+
+            case 'note': {
+                const data = await this.loadData();
+                const note = data.notes[index];
+                if (note) {
+                    await Dialogs.popupText(note.text)
+                }
+
+                break;
+            }
+
+
+        }
+
+
     }
 }

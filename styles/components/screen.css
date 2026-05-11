@@ -20,9 +20,14 @@
     }
 
     .overview {
-
-
         .content {
+
+            &.multiColumn {
+                display: grid;
+                grid-template-columns: 625px 1fr;
+                grid-template-areas:
+                    'pins events';
+            }
 
             .pins {
                 grid-area: pins;
@@ -30,6 +35,12 @@
                 flex-direction: row;
                 gap: 8px;
                 flex-wrap: wrap;
+            }
+
+            .events {
+                grid-area: events;
+                display: flex;
+                flex-direction: column;
             }
         }
     }
@@ -53,6 +64,18 @@
 
             .events {
                 grid-area: events;
+
+                .controls {
+                    height: 10%;
+                }
+
+                .pending {
+                    background: #FFC847;
+                }
+
+                .resolved {
+                    background: #3DBF6B;
+                }
             }
         }
     }

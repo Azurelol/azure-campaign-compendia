@@ -29,9 +29,15 @@ const {ArrayField, StringField, HTMLField} = foundry.applications.fields;
  */
 
 /**
+ * @typedef ScreenEventQueue
+ * @property {ScreenEventData[]} pending
+ * @property {ScreenEventData[]} resolved
+ */
+
+/**
  * @property {PinReference[]} pinned
  * @property {ScreenNoteData[]} notes
- * @property {ScreenEventData[]} events
+ * @property {ScreenEventQueue} events
  */
 export class ScreenDataModel extends VersionedDataModel {
     static defineSchema() {
@@ -44,10 +50,30 @@ export class ScreenDataModel extends VersionedDataModel {
                 id: new StringField(),
                 text: new HTMLField()
             })),
-            events: new ArrayField(new SchemaField({
-                id: new StringField(),
-                text: new HTMLField()
-            }))
+            events: new SchemaField({
+                pending: new ArrayField(new SchemaField({
+                    id: new StringField(),
+                    title: new StringField(),
+                    details: new HTMLField()
+                })),
+                resolved: new ArrayField(new SchemaField({
+                    id: new StringField(),
+                    title: new StringField(),
+                    details: new HTMLField()
+                }))
+            })
         })
     }
+
+    static migrateData(source) {
+        if (!source.events.pending || !source.events.resolved) {
+            source.events = {
+                pending: [],
+                resolved: []
+            }
+        }
+        return super.migrateData(source);
+    }
+
+
 }

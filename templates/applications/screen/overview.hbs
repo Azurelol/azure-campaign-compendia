@@ -1,9 +1,10 @@
 <section class="tab overview {{tab.cssClass}}" data-tab="overview" data-group="primary">
 
-    <div class="content">
+    <div class="content {{#if events}}multiColumn{{/if}}">
         <div class="pins">
             {{#each pinned as |pin|}}
                 <div class="acc-card --m">
+
                     {{#if (eq pin.type 'kit')}}
                         <div class="acc-card__header">
                             <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
@@ -15,7 +16,8 @@
                             </span>
                         </div>
                         <div class="acc-card__footer">
-                            <button class="acc-card__button" data-action="viewStoryKit" data-id="{{pin.id}}">
+                            <button class="acc-card__button" data-action="expandObject" data-id="{{pin.id}}"
+                                    data-type="kit">
                                 <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
                             </button>
                         </div>
@@ -35,6 +37,30 @@
                 </div>
             {{/each}}
         </div>
+
+        {{#if events}}
+            <div class="events">
+                <ul class="acc-list">
+                    {{#each events.pending as |event|}}
+                        <li class="acc-list__entry --compact" data-index="{{@index}}">
+                            <div class="acc-list__entry__controls">
+                                <div class="acc-list__entry__icon">
+                                    <a data-action="expandObject" data-id="{{event.id}}" data-type="event"
+                                       data-index="{{@index}}">
+                                        <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="acc-list__entry__header">
+						<span class="acc-list__entry__name">
+                            {{event.title}}
+                        </span>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
     </div>
 
 </section>

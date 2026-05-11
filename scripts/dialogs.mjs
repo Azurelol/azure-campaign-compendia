@@ -180,6 +180,30 @@ async function popout(title, content, options = {}) {
 }
 
 /**
+ * @param {String} text
+ * @returns {Promise}
+ */
+async function popupText(text) {
+    if (!text) {
+        return;
+    }
+
+    const content = await Utils.renderTemplate(moduleTemplatePath('dialogs/common'), {
+        message: text
+    })
+    const options = {
+        position: {
+            width: 640,
+            height: 480
+        },
+        classes: [...DIALOG_CLASSES, '--borderless'],
+    }
+    return popout("", content, options);
+
+}
+
+
+/**
  * @typedef {'string'|'number'} InspectorPropertyType
  */
 
@@ -221,5 +245,6 @@ export const Dialogs = {
     confirm,
     input,
     popout,
-    inspect
+    inspect,
+    popupText
 };
