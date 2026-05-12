@@ -192,11 +192,8 @@ async function popupText(text) {
         message: text
     })
     const options = {
-        position: {
-            width: 640,
-            height: 480
-        },
-        classes: [...DIALOG_CLASSES, '--borderless'],
+        position: {},
+        classes: [...DIALOG_CLASSES, '--borderless --popout'],
     }
     return popout("", content, options);
 
@@ -231,7 +228,11 @@ async function inspect(title, object, properties) {
         object: object,
         properties: properties,
     });
-    const options = {};
+    const options = {
+        position: {
+            width: 480,
+        },
+    };
     const result = await input(title, content, options);
     if (result !== null) {
         const expanded = foundry.utils.expandObject(result);

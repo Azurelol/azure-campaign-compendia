@@ -147,10 +147,15 @@ export class GMScreen extends ACApplication {
                 break;
 
             case 'planner':
-                const eventList = html.querySelector('.acc-list');
-                Sortable.create(eventList, {
+                Sortable.create(html.querySelector('.events .acc-list'), {
                     onEnd(evt) {
-                        ui.notifications.info(`Moved element from ${evt.oldIndex} to ${evt.newIndex}`);
+                        ui.notifications.info(`Moved event from ${evt.oldIndex} to ${evt.newIndex}`);
+                    }
+                });
+
+                Sortable.create(html.querySelector('.notes .acc-list'), {
+                    onEnd(evt) {
+                        ui.notifications.info(`Moved note from ${evt.oldIndex} to ${evt.newIndex}`);
                     }
                 });
                 break;

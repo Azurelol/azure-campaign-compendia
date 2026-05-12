@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     background: var(--acc-color-bg-control);
-    
+
     border: 1px solid var(--acc-color-border-control);
 
     &.--borderless {
@@ -33,7 +33,9 @@
 
         .acc-list__container__header__title {
             padding: 4px;
-            font-size: large;
+            font-size: var(--acc-text-size-header);
+            font-family: Segoe UI serif;
+            font-weight: bold;
         }
     }
 

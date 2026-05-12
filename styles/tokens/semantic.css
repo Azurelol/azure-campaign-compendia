@@ -23,8 +23,7 @@
     --acc-color-border-control: var(--acc-primitive-color-grey-mid);
     --acc-color-shadow: var(--acc-primitive-color-warm-brown);
     --acc-color-shadow-secondary: var(--acc-primitive-color-white);
-
-
+    --acc-color-bg-input: var(--acc-primitive-color-parchment-light);
     --acc-color-control-header: var(--acc-primitive-color-grey-light);
     --acc-color-bg-control-header: #404040;
 
@@ -70,6 +69,7 @@
     --acc-font-body: var(--acc-primitive-font-body);
 
     /* text sizes */
+    --acc-text-size-header: 18px;
     --acc-text-size-xs: var(--acc-primitive-size-text-xs);
     --acc-text-size-sm: var(--acc-primitive-size-text-sm);
     --acc-text-size-m: var(--acc-primitive-size-text-m);

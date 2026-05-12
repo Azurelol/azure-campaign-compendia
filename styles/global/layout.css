@@ -21,7 +21,6 @@
 .acc-board {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     grid-area: notes;
     border: var(--acc-border-width-board) solid var(--acc-color-border-panel-secondary);
     background: #aaa79f;
@@ -29,9 +28,11 @@
     border-radius: 4px;
 
     .acc-board__header {
+        height: 30px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         background: var(--acc-color-bg-control-header);
         color: var(--acc-color-control-header);
 
@@ -41,7 +42,7 @@
     }
 
     .acc-board__title {
-        font-size: 24px;
+        font-size: var(--acc-text-size-header);
         font-family: Segoe UI serif;
         font-weight: bold;
     }
@@ -86,7 +87,9 @@
         flex: 2;
 
         input {
-            background: #404040;
+            height: 24px;
+            background: var(--acc-color-bg-input);
+            color: var(--acc-color-text);
         }
     }
 
@@ -95,15 +98,13 @@
         border: none;
 
         i {
-
         }
-
     }
 
     .acc-toolbar__row__flat {
         display: flex;
         align-items: center;
-        padding: 4px;
+        padding: 0;
     }
 
     .acc-toolbar__row {

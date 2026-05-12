@@ -4,20 +4,20 @@
         <div class="notes acc-board">
             <div class="acc-board__header">
                 <span class="acc-board__title">Notes</span>
-            </div>
 
-            <div class="acc-toolbar">
-                <div class="acc-toolbar__row__flat">
-                    <label class="acc-toolbar__search">
-                        <input type="text" placeholder="..."/>
-                    </label>
-                    <button class="acc-button" data-action="addObject" data-type="note">
-                        <i class="acc-icon --xs {{accIconClass 'add'}}"></i>
-                    </button>
+                <div class="acc-toolbar">
+                    <div class="acc-toolbar__row__flat">
+                        <label class="acc-toolbar__search">
+                            <input type="text" placeholder="..."/>
+                        </label>
+                        <button class="acc-button" data-action="addObject" data-type="note">
+                            <i class="acc-icon --xs {{accIconClass 'add'}}"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="">
+            <div class="acc-list">
                 {{#each data.notes as |note|}}
                     <div class="acc-card --note">
                         <div class="acc-card__header">

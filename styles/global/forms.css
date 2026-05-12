@@ -73,12 +73,24 @@
 
     textarea {
         width: 100%;
+        height: 150px;
     }
+}
+
+.acc-popout {
+    background: red;
 }
 
 .acc-form {
     background: var(--acc-color-bg-panel);
     color: var(--acc-color-text-panel);
+
+    &.--popout {
+        align-items: center;
+        justify-content: center;
+        max-width: 640px;
+        max-height: 480px;
+    }
 
     &.--borderless {
 
@@ -88,11 +100,9 @@
             display: none;
         }
 
-        /* Remove default padding on the content area */
-
         .window-content {
             height: 100%;
-            padding: 0;
+            /*padding: 0;*/
             background: none;
 
             .dialog-form {
