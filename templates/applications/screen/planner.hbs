@@ -12,12 +12,12 @@
                         <input type="text" placeholder="..."/>
                     </label>
                     <button class="acc-button" data-action="addObject" data-type="note">
-                        <i class="acc-icon --s {{accIconClass 'add'}}"></i>
+                        <i class="acc-icon --xs {{accIconClass 'add'}}"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="acc-board__list">
+            <div class="">
                 {{#each data.notes as |note|}}
                     <div class="acc-card --note">
                         <div class="acc-card__header">
@@ -44,83 +44,91 @@
             </div>
         </div>
 
-        <div class="events acc-list__container">
+        <div class="events acc-board ">
+            <div class="acc-list__container --borderless">
+                <div class="acc-list__container__header">
+                    <span class="acc-list__container__header__title">Events</span>
+                    <div>
+                        <button class="acc-button" data-action="addObject" data-type="event">
+                            <i class="acc-icon --xs {{accIconClass 'add'}}"></i>
+                        </button>
+                    </div>
+                </div>
 
-            <div class="acc-list__container__header">
-                <span class="acc-list__container__header__title">Events</span>
-                <div>
-                    <button class="acc-button" data-action="addObject" data-type="event">
-                        <i class="acc-icon --s {{accIconClass 'add'}}"></i>
-                    </button>
+                <div class="acc-list__container__body">
+                    <ul class="pending acc-list --split ">
+                        {{#each data.events.pending as |event|}}
+                            <li class="acc-list__entry --basic" data-index="{{@index}}">
+                                <div class="acc-list__entry__controls">
+                                    <div class="acc-list__entry__icon">
+                                        <a data-action="expandObject" data-id="{{event.id}}" data-index="{{@index}}"
+                                           data-type="event" data-tooltip="Expand">
+                                            <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                                        </a>
+                                    </div>
+                                    <div class="acc-list__entry__icon">
+                                        <a data-action="editObject" data-id="{{event.id}}" data-type="event"
+                                           data-index="{{@index}}" data-tooltip="Edit">
+                                            <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
+                                        </a>
+                                    </div>
+                                    <div class="acc-list__entry__icon">
+                                        <a data-action="toggleEvent" data-id="{{event.id}}" data-status="pending"
+                                           data-index="{{@index}}" data-tooltip="Resolve">
+                                            <i class="acc-icon --xs {{accIconClass 'check'}}"></i>
+                                        </a>
+                                    </div>
+                                    <div class="acc-list__entry__icon">
+                                        <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
+                                           data-index="{{@index}}" data-tooltip="Remove">
+                                            <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="acc-list__entry__header">
+						<span class="acc-list__entry__name">
+                            {{event.title}}
+                        </span>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+
+                    <div class="divider acc-divider --hairline">
+                        <span class="acc-divider__icon" data-tooltip="Resolved">
+                            <i class="acc-icon --xs fa fa-circle-arrow-down">
+                            </i>
+                        </span>
+                    </div>
+
+                    <ul class="resolved acc-list --split">
+                        {{#each data.events.resolved as |event|}}
+                            <li class="acc-list__entry --basic" data-index="{{@index}}">
+                                <div class="acc-list__entry__controls">
+                                    <div class="acc-list__entry__icon">
+                                        <a data-action="toggleEvent" data-id="{{event.id}}" data-status="resolved"
+                                           data-index="{{@index}}" data-tooltip="Revert">
+                                            <i class="acc-icon --xs {{accIconClass 'undo'}}"></i>
+                                        </a>
+                                    </div>
+                                    <div class="acc-list__entry__icon">
+                                        <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
+                                           data-status="resolved"
+                                           data-index="{{@index}}" data-tooltip="Remove">
+                                            <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="acc-list__entry__header">
+						<span class="acc-list__entry__name">
+                            {{event.title}}
+                        </span>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
                 </div>
             </div>
-
-            <div class="acc-list__container__body">
-                <ul class="pending acc-list --split ">
-                    {{#each data.events.pending as |event|}}
-                        <li class="acc-list__entry --basic" data-index="{{@index}}">
-                            <div class="acc-list__entry__controls">
-                                <div class="acc-list__entry__icon">
-                                    <a data-action="expandObject" data-id="{{event.id}}" data-index="{{@index}}"
-                                       data-type="event">
-                                        <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
-                                    </a>
-                                </div>
-                                <div class="acc-list__entry__icon">
-                                    <a data-action="editObject" data-id="{{event.id}}" data-type="event"
-                                       data-index="{{@index}}">
-                                        <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
-                                    </a>
-                                </div>
-                                <div class="acc-list__entry__icon">
-                                    <a data-action="toggleEvent" data-id="{{event.id}}" data-status="pending"
-                                       data-index="{{@index}}">
-                                        <i class="acc-icon --xs {{accIconClass 'check'}}"></i>
-                                    </a>
-                                </div>
-                                <div class="acc-list__entry__icon">
-                                    <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
-                                       data-index="{{@index}}">
-                                        <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="acc-list__entry__header">
-						<span class="acc-list__entry__name">
-                            {{event.title}}
-                        </span>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
-
-                <ul class="resolved acc-list --split">
-                    {{#each data.events.resolved as |event|}}
-                        <li class="acc-list__entry --basic" data-index="{{@index}}">
-                            <div class="acc-list__entry__controls">
-                                <div class="acc-list__entry__icon">
-                                    <a data-action="toggleEvent" data-id="{{event.id}}" data-status="resolved"
-                                       data-index="{{@index}}">
-                                        <i class="acc-icon --xs {{accIconClass 'undo'}}"></i>
-                                    </a>
-                                </div>
-                                <div class="acc-list__entry__icon">
-                                    <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
-                                       data-index="{{@index}}">
-                                        <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="acc-list__entry__header">
-						<span class="acc-list__entry__name">
-                            {{event.title}}
-                        </span>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-
         </div>
     </div>
 </section>

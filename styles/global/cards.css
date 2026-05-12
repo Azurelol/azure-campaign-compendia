@@ -67,14 +67,17 @@
         }
     }
 
+    --acc-card-size-s: 160px;
+    --acc-card-size-m: 200px;
+
     &.--s {
-        width: 160px;
-        height: 160px;
+        width: var(--acc-card-size-s);
+        height: var(--acc-card-size-s);
     }
 
     &.--m {
-        width: 200px;
-        height: 200px;
+        width: var(--acc-card-size-m);
+        height: var(--acc-card-size-m);
     }
 
     &.--note {
@@ -88,107 +91,3 @@
     }
 }
 
-.acc-list__container {
-
-    display: flex;
-    flex-direction: column;
-    background: var(--acc-color-bg-control);
-    border: 1px solid var(--acc-color-border-control);
-
-    .acc-list__container__header {
-        display: flex;
-        flex-direction: row;
-        background: var(--acc-color-bg-control-header);
-        color: var(--acc-color-control-header);
-        justify-content: space-between;
-
-        .acc-list__container__header__title {
-            padding: 4px;
-            font-size: large;
-        }
-    }
-
-    .acc-list__container__body {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-.acc-list {
-
-    padding: 0;
-    margin: 0;
-
-    ul, ol {
-        padding: 0;
-        margin: 0;
-    }
-
-    &.--split {
-        flex: 2;
-    }
-
-    .acc-list__entry {
-        color: var(--acc-color-text-panel);
-        border: 1px solid var(--acc-color-border-panel);
-        background: var(--acc-color-bg-panel);
-        background-blend-mode: multiply;
-        background-position: right top;
-
-        .acc-list__entry__icon {
-            display: flex;
-            align-items: center;
-            color: var(--acc-color-icon);
-        }
-
-        .acc-list__entry__controls {
-            display: flex;
-            flex-direction: row;
-            gap: 0.4rem;
-        }
-
-        &.--compact {
-
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            gap: 4px;
-
-            .acc-list__entry__header {
-                .acc-list__entry__name {
-                    font-size: large;
-                    font-weight: 500;
-                }
-            }
-        }
-
-        &.--basic {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            gap: 1rem;
-            padding-left: 1rem;
-            justify-content: space-between;
-
-            .acc-list__entry__header {
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                justify-content: space-between;
-                width: 100%;
-
-                .acc-list__entry__name {
-                    font-family: 'CreditValleybold';
-                    font-size: x-large;
-                    font-weight: 700;
-                }
-            }
-
-            .acc-list__entry__description {
-                overflow-y: auto;
-                user-select: text;
-            }
-        }
-    }
-}

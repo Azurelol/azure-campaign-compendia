@@ -456,7 +456,14 @@ export class GMScreen extends ACApplication {
                     }
                         break;
 
-                    case 'resolved':
+                    case 'resolved': {
+                        const event = data.events.resolved[index];
+                        if (event) {
+                            data.events.resolved.splice(Number.parseInt(index), 1);
+                            await this.saveData(data);
+                            ui.notifications.info(`Removed resolved event.`)
+                        }
+                    }
                         break;
                 }
 

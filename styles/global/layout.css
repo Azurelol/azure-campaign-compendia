@@ -23,16 +23,21 @@
     flex-direction: column;
     gap: 8px;
     grid-area: notes;
-    border: 2px solid var(--acc-color-border-panel-secondary);
+    border: var(--acc-border-width-board) solid var(--acc-color-border-panel-secondary);
     background: #aaa79f;
     color: var(--acc-color-text-panel);
     border-radius: 4px;
-    padding: 8px;
 
     .acc-board__header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        background: var(--acc-color-bg-control-header);
+        color: var(--acc-color-control-header);
+
+        i {
+            color: var(--acc-color-control-header);
+        }
     }
 
     .acc-board__title {
@@ -120,6 +125,38 @@
         min-width: 6rem;
         color: var(--acc-color-text);
         font-size: 1rem;
+    }
+}
+
+.acc-divider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .acc-divider__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(to bottom, var(--acc-color-bg-control), var(--acc-color-bg-content));
+        border: 1px solid var(--acc-color-bg-card);
+        border-radius: 16px;
+        padding: 4px;
+    }
+
+    &.--hairline {
+        height: 4px;
+        overflow: visible;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .acc-divider__icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }
 

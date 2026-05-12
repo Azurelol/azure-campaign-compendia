@@ -22,6 +22,8 @@
     .overview {
         .content {
 
+            height: 100%;
+
             &.multiColumn {
                 display: grid;
                 grid-template-columns: 625px 1fr;
@@ -32,15 +34,15 @@
             .pins {
                 grid-area: pins;
                 display: flex;
-                flex-direction: row;
-                gap: 8px;
-                flex-wrap: wrap;
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .events {
                 grid-area: events;
                 display: flex;
                 flex-direction: column;
+                gap: 1rem;
             }
         }
     }
@@ -69,12 +71,23 @@
                     height: 10%;
                 }
 
+                --color-pending: #A8845A;
+                --color-resolved: #7A9E6F;
+                --color-divider: #4C4D4D;
+                --color-divider-border: grey;
+
+                .divider {
+                    background-color: var(--color-divider);
+                    border-top: 1px solid var(--color-divider-border);
+                    border-bottom: 1px solid var(--color-divider-border);
+                }
+
                 .pending {
-                    background: #FFC847;
+                    background: var(--color-pending);
                 }
 
                 .resolved {
-                    background: #3DBF6B;
+                    background: var(--color-resolved);
                 }
             }
         }
