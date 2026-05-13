@@ -1,5 +1,5 @@
 import ACApplication from "./application.mjs";
-import {moduleTemplatePath} from "../utils/utils.mjs";
+import {moduleTemplatePath, Utils} from "../utils/utils.mjs";
 import {StoryKitSheet} from "../documents/story-kit-sheet.mjs";
 import {StoryKitBrowser} from "./kit-browser.mjs";
 import {Settings} from "../utils/settings.mjs";
@@ -7,6 +7,7 @@ import {ScreenDataModel} from "../documents/screen-data-model.mjs";
 import {StringUtils} from "../utils/string-utils.mjs";
 import {Dialogs} from "../dialogs.mjs";
 import Sortable from "../../libs/sortable.esm.js";
+import {ObjectUtils} from "../utils/object-utils.mjs";
 
 /**
  * @property
@@ -147,19 +148,36 @@ export class GMScreen extends ACApplication {
                 break;
 
             case 'planner':
-                Sortable.create(html.querySelector('.events .acc-list'), {
-                    onEnd(evt) {
+                const screen = this;
+                Sortable.create(html.querySelector('.events .pending.acc-list'), {
+                    onEnd: async (evt) => {
                         ui.notifications.info(`Moved event from ${evt.oldIndex} to ${evt.newIndex}`);
+                        await screen.swapArrayElement('events.pending', evt.oldIndex, evt.newIndex);
+                    }
+                });
+
+                Sortable.create(html.querySelector('.events .resolved.acc-list'), {
+                    onEnd: async (evt) => {
+                        ui.notifications.info(`Moved event from ${evt.oldIndex} to ${evt.newIndex}`);
+                        await screen.swapArrayElement('events.resolved', evt.oldIndex, evt.newIndex);
                     }
                 });
 
                 Sortable.create(html.querySelector('.notes .acc-list'), {
-                    onEnd(evt) {
+                    onEnd: async (evt) => {
                         ui.notifications.info(`Moved note from ${evt.oldIndex} to ${evt.newIndex}`);
+                        await screen.swapArrayElement('notes', evt.oldIndex, evt.newIndex);
                     }
                 });
                 break;
         }
+    }
+
+    async swapArrayElement(propertyPath, oldIndex, newIndex) {
+        const data = await this.loadData();
+        const array = Utils.getProperty(data, propertyPath);
+        ObjectUtils.swapArrayElements(array, oldIndex, newIndex);
+        await this.saveData(data);
     }
 
     /**
@@ -275,13 +293,6 @@ export class GMScreen extends ACApplication {
     async _onRender(context, options) {
         await super._onRender(context, options);
         this.#kitBrowser.refresh(this.element);
-    }
-
-    /**
-     * @returns {Promise<*>}
-     */
-    async refresh() {
-        return this.render(true);
     }
 
     /**

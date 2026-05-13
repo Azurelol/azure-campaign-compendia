@@ -46,6 +46,11 @@
     }
 }
 
+ul.acc-list li,
+ol.acc-list li {
+    margin-bottom: 0;
+}
+
 .acc-list {
 
     padding: 0;
@@ -85,6 +90,7 @@
             flex-direction: row;
             width: 100%;
             gap: 4px;
+            padding: 2px;
 
             .acc-list__entry__header {
                 .acc-list__entry__name {

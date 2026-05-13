@@ -25,6 +25,14 @@ export default class ACApplication extends HandlebarsApplicationMixin(Applicatio
         super(options)
     }
 
+    /**
+     * @desc Re-renders the application.
+     * @returns {Promise<*>}
+     */
+    async refresh() {
+        return this.render(true);
+    }
+
     static async filePicker(event, target) {
         const field = target.dataset.target;
         const current = this.element.querySelector(`[name="${field}"]`)?.value ?? '';
