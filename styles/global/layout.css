@@ -229,3 +229,30 @@
     gap: 4px;
     padding: 0.125rem 0;
 }
+
+.acc-tag__picker {
+    position: relative;
+}
+
+.acc-tag__picker__toggle {
+    
+}
+
+.acc-tag__picker__popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    background: var(--acc-color-bg-panel);
+    border: 1px solid var(--acc-color-border);
+    border-radius: 4px;
+    padding: 4px;
+    flex-wrap: wrap;
+    gap: 4px;
+    min-width: 200px;
+
+    &.--open {
+        display: flex;
+    }
+}

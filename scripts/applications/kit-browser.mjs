@@ -1,5 +1,6 @@
 import {Constants} from "../constants.mjs";
 import {HTMLUtils} from "../utils/html-utils.mjs";
+import {ACHandlebars} from "../handlebars.mjs";
 
 export class StoryKitBrowser {
     /** @type GMScreen **/
@@ -17,7 +18,7 @@ export class StoryKitBrowser {
     /**
      * @param {HTMLElement} html
      */
-    attachListeners(html) {
+    async attachListeners(html) {
         const controls = html.querySelector('.acc-browser__controls');
         const toolbar = controls.querySelector('.acc-toolbar');
         const searchInput = toolbar.querySelector('.acc-toolbar__search').querySelector('input');
@@ -32,22 +33,17 @@ export class StoryKitBrowser {
             );
         }
 
-        controls.querySelectorAll('.acc-tag__group .acc-tag__filter').forEach((tag) => {
-            tag.addEventListener('click', () => {
-                const value = tag.dataset.tag;
-
-                if (this.tags.includes(value)) {
-                    this.tags = this.tags.filter((t) => t !== value);
-                    tag.classList.remove('active');
-                } else {
+        await ACHandlebars.setupComponent.tagPicker(html, {
+            tags: this.tags,
+            onUpdate: (id, value, active) => {
+                if (active) {
                     this.tags.push(value);
-                    tag.classList.add('active');
+                } else {
+                    this.tags = this.tags.filter(tag => tag !== value);
                 }
-
                 this.#updateEntries();
-            });
+            }
         });
-
     }
 
     /**

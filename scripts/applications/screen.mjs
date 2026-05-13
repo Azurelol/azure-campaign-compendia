@@ -140,11 +140,11 @@ export class GMScreen extends ACApplication {
      * @param {ApplicationRenderOptions} options Rendering options passed to the render method
      * @protected
      */
-    _attachPartListeners(partId, html, options) {
-        super._attachPartListeners(partId, html, options);
+    async _attachPartListeners(partId, html, options) {
+        await super._attachPartListeners(partId, html, options);
         switch (partId) {
             case 'kits':
-                this.#kitBrowser.attachListeners(html);
+                await this.#kitBrowser.attachListeners(html);
                 break;
 
             case 'planner':
