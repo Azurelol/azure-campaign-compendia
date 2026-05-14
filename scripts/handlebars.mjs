@@ -120,6 +120,17 @@ async function setupTagPicker(html, options) {
                 if (p !== popup) p.classList.remove('--open');
             });
             popup.classList.toggle('--open');
+
+            if (popup.classList.contains('--open')) {
+                const boundary = popup.closest('.window-content') ?? document.documentElement;
+                const boundaryRect = boundary.getBoundingClientRect();
+                const rect = popup.getBoundingClientRect();
+                if (rect.right > boundaryRect.right) {
+                    popup.classList.add('--flip');
+                } else {
+                    popup.classList.remove('--flip');
+                }
+            }
         });
 
         // Toggle tag on click

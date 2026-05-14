@@ -2,12 +2,14 @@
     <div class="acc-browser">
         <div class="acc-browser__controls">
 
-            <div class="acc-toolbar">
+            <div class="acc-toolbar --stretch">
                 <div class="acc-toolbar__row">
+                    {{accTagPicker 'Tone' browser.tones browser.selected}}
+                    {{accTagPicker 'Setting' browser.themes browser.selected}}
+                    {{accTagPicker 'Theme' browser.settings browser.selected}}
                     <label class="acc-toolbar__search">
                         <input type="text" placeholder="..."/>
                     </label>
-                    {{accTagPicker 'Tone' browser.tones browser.selected}}
                 </div>
             </div>
         </div>

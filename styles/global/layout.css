@@ -83,6 +83,10 @@
     display: flex;
     flex-direction: column;
 
+    &.--stretch {
+        width: 100%;
+    }
+
     .acc-toolbar__search {
         flex: 2;
 
@@ -221,7 +225,6 @@
     }
 }
 
-
 .acc-tag__group {
     display: flex;
     align-items: center;
@@ -271,5 +274,10 @@
 
     &.--open {
         display: flex;
+    }
+
+    &.--flip {
+        left: auto;
+        right: 0;
     }
 }
