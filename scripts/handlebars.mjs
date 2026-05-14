@@ -105,7 +105,14 @@ async function setupTagPicker(html, options) {
     html.querySelectorAll('.acc-tag__picker').forEach(picker => {
         const toggle = picker.querySelector('.acc-tag__picker__toggle');
         const popup = picker.querySelector('.acc-tag__picker__popup');
+        const count = toggle.querySelector('.acc-tag__picker__count');
 
+        // Initialize count
+        const initialCount = popup.querySelectorAll('.acc-tag__filter.active').length;
+        count.textContent = `${initialCount}`;
+        count.hidden = initialCount === 0;
+
+        // Show tag picker on click
         toggle.addEventListener('click', (e) => {
             e.stopPropagation();
             // Close any other open pickers first
@@ -115,10 +122,17 @@ async function setupTagPicker(html, options) {
             popup.classList.toggle('--open');
         });
 
+        // Toggle tag on click
         popup.querySelectorAll('.acc-tag__filter').forEach((tag) => {
             tag.addEventListener('click', () => {
                 const value = tag.dataset.tag;
                 tag.classList.toggle('active');
+
+                // Update count badge
+                const activeTags = popup.querySelectorAll('.acc-tag__filter.active').length;
+                count.textContent = `${activeTags}`;
+                count.hidden = activeTags === 0;
+
                 options.onUpdate?.(picker.id, value, tag.classList.contains('active'));
             });
         });
