@@ -28,7 +28,8 @@
     border-radius: 4px;
 
     .acc-board__header {
-        height: 30px;
+        height: 32px;
+        padding: 4px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -39,12 +40,32 @@
         i {
             color: var(--acc-color-control-header);
         }
+
+        .acc-board__banner {
+            display: flex;
+            align-items: center;
+
+            i {
+                color: var(--acc-color-icon);
+            }
+        }
     }
 
     .acc-board__title {
         font-size: var(--acc-text-size-header);
         font-family: Segoe UI serif;
         font-weight: bold;
+    }
+
+    &.--borderless {
+        background: none;
+        border: none;
+
+        .acc-board__header {
+            justify-content: center;
+            align-items: center;
+            background: none;
+        }
     }
 }
 

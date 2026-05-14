@@ -1,9 +1,10 @@
 .acc-card {
+    --bg-color: var(--acc-color-bg-card);
     display: flex;
     flex-direction: column;
-    border: 2px solid var(--acc-color-border);
+    border: 2px solid var(--acc-color-border-card);
     border-radius: var(--acc-border-radius, 4px);
-    background: var(--acc-color-bg-card);
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--bg-color) 80%, white) 0%, var(--bg-color) 100%);
     color: var(--acc-color-card);
     overflow: hidden;
 
@@ -59,7 +60,7 @@
         font-size: 15px;
 
         i {
-            color: var(--acc-color-border);
+            color: var(--acc-color-card);
         }
 
         &:hover {
@@ -80,17 +81,19 @@
         height: var(--acc-card-size-m);
     }
 
-    &.--note {
+    &.--borderless {
+        border: none;
+    }
 
-        background: #dfdf5a;
-        color: #2f2b2b;
+    &.--note {
+        --bg-color: #dfdf5a;
+        color: black;
 
         i {
-            color: #2f2b2b;
+            color: #4e4545
         }
 
         .acc-card__header {
-            /*border-top: 1px solid yellow;*/
             justify-content: flex-end;
         }
     }

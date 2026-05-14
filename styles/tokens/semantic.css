@@ -24,8 +24,8 @@
     --acc-color-shadow: var(--acc-primitive-color-warm-brown);
     --acc-color-shadow-secondary: var(--acc-primitive-color-white);
     --acc-color-bg-input: var(--acc-primitive-color-parchment-light);
-    --acc-color-control-header: var(--acc-primitive-color-grey-light);
     --acc-color-bg-control-header: #404040;
+    --acc-color-control-header: #E5DBD0;
 
     /* panels */
     --acc-color-bg-panel: var(--acc-primitive-color-parchment-light);
@@ -38,6 +38,9 @@
     --acc-color-border-panel-secondary: #454545;
     --acc-color-bg-input-panel-secondary: #2d2d2d;
     --acc-color-text-panel-secondary: #d4d4d4;
+
+    /* boards */
+    --acc-border-width-board: 3px;
 
     /* tables */
     --acc-color-bg-table-row: var(--acc-primitive-color-grey-850);
@@ -59,11 +62,12 @@
 
     /* borders */
     --acc-border-radius: 4px;
-    --acc-color-border: var(--acc-primitive-color-stone);
+    --acc-color-border: var(--acc-primitive-color-burgundy);
+    --acc-color-border-card: #665151;
     --acc-color-border-kit: var(--acc-primitive-color-border-kit);
     --acc-color-border-title: var(--acc-primitive-color-border-title);
     --acc-color-border-panel: var(--acc-primitive-color-border-panel);
-    --acc-border-width-board: 4px;
+
 
     /* typography */
     --acc-font-title: var(--acc-primitive-font-title);

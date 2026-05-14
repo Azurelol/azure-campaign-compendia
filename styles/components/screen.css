@@ -25,6 +25,7 @@
             height: 100%;
 
             &.multiColumn {
+                gap: 1rem;
                 display: grid;
                 grid-template-columns: 625px 1fr;
                 grid-template-areas:
@@ -111,6 +112,9 @@
     }
 
     &.theme-classic {
+
+        background: linear-gradient(135deg, #fffdf4 0%, #f5e9cc 50%, #e8d4a0 100%);
+
         grid-template-columns: 1fr auto;
         grid-template-rows: 1fr 100px;
         grid-template-areas:

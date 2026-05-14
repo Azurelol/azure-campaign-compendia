@@ -55,6 +55,8 @@ ol.acc-list li {
 
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 
     ul, ol {
         padding: 0;
@@ -89,14 +91,21 @@ ol.acc-list li {
             display: flex;
             flex-direction: row;
             width: 100%;
-            gap: 4px;
+            gap: 1rem;
             padding: 2px;
+            align-items: center;
+            background: none;
+            border: none;
 
             .acc-list__entry__header {
                 .acc-list__entry__name {
-                    font-size: large;
-                    font-weight: 500;
+                    font-size: 16px;
+                    font-weight: 400;
                 }
+            }
+
+            .acc-list__entry__controls {
+                
             }
         }
 

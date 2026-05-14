@@ -1,10 +1,10 @@
 <section class="tab overview {{tab.cssClass}}" data-tab="overview" data-group="primary">
 
     <div class="content {{#if events}}multiColumn{{/if}}">
-        <div class="pins">
-            <div class="acc-divider" style="margin-bottom: 1rem;">
-                <span class="acc-divider__icon" data-tooltip="Pins">
-                    <i class="acc-icon --xs {{accIconClass 'pin'}}">
+        <div class="pins acc-board --borderless">
+            <div class="acc-board__header" style="margin-bottom: 1rem;">
+                <span class="acc-board__banner" data-tooltip="Pins">
+                    <i class="acc-icon --s {{accIconClass 'pin'}}">
                     </i>
                 </span>
             </div>
@@ -13,8 +13,8 @@
                     <div class="acc-card --m {{pin.cssClass}}">
                         {{#if (eq pin.type 'kit')}}
                             <div class="acc-card__header">
-                                <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
                                 {{pin.object.name}}
+                                <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
                             </div>
                             <div class="acc-card__body">
                             <span>
@@ -46,12 +46,12 @@
         </div>
 
         {{#if events}}
-            <div class="events">
-                <div class="acc-divider">
-                <span class="acc-divider__icon" data-tooltip="Events">
-                    <i class="acc-icon --xs {{accIconClass 'events'}}">
-                    </i>
-                </span>
+            <div class="events acc-board --borderless">
+                <div class="acc-board__header">
+                    <span class="acc-board__banner" data-tooltip="Events">
+                        <i class="acc-icon --s {{accIconClass 'events'}}">
+                        </i>
+                    </span>
                 </div>
                 <ul class="acc-list">
                     {{#each events.pending as |event|}}
