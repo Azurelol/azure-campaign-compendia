@@ -2,7 +2,7 @@
 
     <div class="content {{#if events}}multiColumn{{/if}}">
         <div class="pins">
-            <div class="acc-divider">
+            <div class="acc-divider" style="margin-bottom: 1rem;">
                 <span class="acc-divider__icon" data-tooltip="Pins">
                     <i class="acc-icon --xs {{accIconClass 'pin'}}">
                     </i>
@@ -10,8 +10,7 @@
             </div>
             <div class="acc-grid" style="--acc-grid-col-size: var(--acc-card-size-m)">
                 {{#each pinned as |pin|}}
-                    <div class="acc-card --m">
-
+                    <div class="acc-card --m {{pin.cssClass}}">
                         {{#if (eq pin.type 'kit')}}
                             <div class="acc-card__header">
                                 <i class="acc-icon --xs {{accIconClass pin.type}}"></i>

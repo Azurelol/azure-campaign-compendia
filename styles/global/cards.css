@@ -82,7 +82,12 @@
 
     &.--note {
 
-        background: #333333;
+        background: #dfdf5a;
+        color: #2f2b2b;
+
+        i {
+            color: #2f2b2b;
+        }
 
         .acc-card__header {
             /*border-top: 1px solid yellow;*/

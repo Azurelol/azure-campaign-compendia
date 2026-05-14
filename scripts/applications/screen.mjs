@@ -249,6 +249,7 @@ export class GMScreen extends ACApplication {
                             id: pin.id,
                             preview: object.text,
                             object: object,
+                            cssClass: '--note'
                         };
                     }
                     break;
