@@ -92,11 +92,6 @@ export class GMScreen extends ACApplication {
         this.#kitBrowser = new StoryKitBrowser(this);
     }
 
-    async _onDropJournalEntry(event, entry) {
-        await super._onDropJournalEntry(event, entry);
-        return this.addDocumentReference(entry, 'JournalEntry');
-    }
-
     /** @override */
     async _prepareContext(options) {
         return await super._prepareContext(options);
@@ -177,6 +172,24 @@ export class GMScreen extends ACApplication {
         }
     }
 
+    async _onDropJournalEntry(event, entry) {
+        return this.addDocumentReference(entry, 'JournalEntry');
+    }
+
+    async _onDropActor(event, actor) {
+        return this.addDocumentReference(actor, 'Actor');
+    }
+
+    async _onDropItem(event, item) {
+        return this.addDocumentReference(item, 'Item');
+    }
+
+    /**
+     * @param {String} propertyPath
+     * @param {Number} oldIndex
+     * @param {Number} newIndex
+     * @returns {Promise<void>}
+     */
     async swapArrayElement(propertyPath, oldIndex, newIndex) {
         const data = await this.loadData();
         const array = Utils.getProperty(data, propertyPath);
