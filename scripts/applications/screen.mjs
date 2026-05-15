@@ -94,7 +94,7 @@ export class GMScreen extends ACApplication {
 
     async _onDropJournalEntry(event, entry) {
         await super._onDropJournalEntry(event, entry);
-        ui.notifications.info(`Dropped journal entry ${entry.name}`)
+        return this.addDocumentReference(entry, 'JournalEntry');
     }
 
     /** @override */
@@ -181,6 +181,29 @@ export class GMScreen extends ACApplication {
         const data = await this.loadData();
         const array = Utils.getProperty(data, propertyPath);
         ObjectUtils.swapArrayElements(array, oldIndex, newIndex);
+        await this.saveData(data);
+    }
+
+    /**
+     * @param {Object} document
+     * @param {String} type
+     * @returns {Promise<void>}
+     */
+    async addDocumentReference(document, type) {
+        /** @type ScreenDocumentReference **/
+        const reference = {
+            id: StringUtils.randomID(),
+            type: type,
+            uuid: document.uuid,
+            name: document.name,
+            img: document.img,
+        }
+        const data = await this.loadData();
+        if (!data.documents) {
+            data.documents = [];
+        }
+        data.documents.push(reference);
+        ui.notifications.info(`Added document reference for ${reference.name}`)
         await this.saveData(data);
     }
 
@@ -460,7 +483,7 @@ export class GMScreen extends ACApplication {
                 if (note) {
                     data.notes.splice(Number.parseInt(index), 1);
                     await this.saveData(data);
-                    ui.notifications.info(`Removed GM screen note.`)
+                    ui.notifications.info(`Removed note.`)
                 }
             }
                 break;
@@ -491,8 +514,13 @@ export class GMScreen extends ACApplication {
             }
                 break;
 
-            case 'kit': {
-
+            case 'document': {
+                const reference = data.documents[index];
+                if (reference) {
+                    data.documents.splice(Number.parseInt(index), 1);
+                    await this.saveData(data);
+                    ui.notifications.info(`Removed document reference.`)
+                }
             }
                 break;
         }

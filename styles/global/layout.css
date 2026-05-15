@@ -26,6 +26,7 @@
     background: #aaa79f;
     color: var(--acc-color-text-panel);
     border-radius: 4px;
+    gap: 8px;
 
     .acc-board__header {
         height: 32px;

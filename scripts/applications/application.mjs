@@ -89,6 +89,8 @@ export default class ACApplication extends HandlebarsApplicationMixin(Applicatio
                 return (await this._onDropItem(event, document)) ?? null;
             case 'JournalEntry':
                 return (await this._onDropJournalEntry(event, document)) ?? null;
+            case 'JournalEntryPage':
+                return (await this._onDropJournalEntryPage(event, document)) ?? null;
             case 'Folder':
                 return (await this._onDropFolder(event, document)) ?? null;
             default:
@@ -109,11 +111,21 @@ export default class ACApplication extends HandlebarsApplicationMixin(Applicatio
     /**
      * @param {DragEvent} event     The initiating drop event
      * @param {JournalEntry} entry
-     * @returns {Promise<Item|null|undefined>}
+     * @returns {Promise<JournalEntry|null|undefined>}
      * @protected
      */
-    async _onDropJournalEntry(event, item) {
+    async _onDropJournalEntry(event, entry) {
     }
+
+    /**
+     * @param {DragEvent} event     The initiating drop event
+     * @param {JournalEntryPage} page
+     * @returns {Promise<JournalEntryPage|null|undefined>}
+     * @protected
+     */
+    async _onDropJournalEntryPage(event, page) {
+    }
+
 
     /**
      * Handle a dropped Folder on the Actor Sheet.

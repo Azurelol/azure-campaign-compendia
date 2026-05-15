@@ -74,7 +74,7 @@ ol.acc-list li {
         background-blend-mode: multiply;
         background-position: right top;
 
-        .acc-list__entry__icon {
+        .acc-list__entry__action {
             display: flex;
             align-items: center;
             color: var(--acc-color-icon);
@@ -105,7 +105,7 @@ ol.acc-list li {
             }
 
             .acc-list__entry__controls {
-                
+
             }
         }
 

@@ -23,14 +23,11 @@
         .content {
 
             height: 100%;
-
-            &.multiColumn {
-                gap: 1rem;
-                display: grid;
-                grid-template-columns: 625px 1fr;
-                grid-template-areas:
-                    'pins events';
-            }
+            gap: 1rem;
+            display: grid;
+            grid-template-columns: 625px 1fr;
+            grid-template-areas:
+                    'pins sidebar';
 
             .pins {
                 grid-area: pins;
@@ -38,11 +35,12 @@
                 flex-direction: column;
             }
 
-            .events {
-                grid-area: events;
+            .sidebar {
+                grid-area: sidebar;
                 display: flex;
                 flex-direction: column;
                 gap: 1rem;
+                justify-content: space-around;
             }
         }
     }

@@ -18,22 +18,22 @@
             {{#each kits as |kit|}}
                 <li class="acc-list__entry --basic" data-index="{{@index}}">
                     <div class="acc-list__entry__controls">
-                        <div class="acc-list__entry__icon">
+                        <div class="acc-list__entry__action">
                             {{accDocumentAnchor kit size='xs'}}
                         </div>
-                        <div class="acc-list__entry__icon">
+                        <div class="acc-list__entry__action">
                             <a data-action="viewStoryKit" data-id="{{kit.id}}">
                                 <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
                             </a>
                         </div>
                         {{#if kit.isOwner}}
-                            <div class="acc-list__entry__icon">
+                            <div class="acc-list__entry__action">
                                 <a data-action="editStoryKit" data-id="{{kit.id}}">
                                     <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
                                 </a>
                             </div>
                         {{/if}}
-                        <div class="acc-list__entry__icon">
+                        <div class="acc-list__entry__action">
                             <a data-action="pinObject" data-id="{{kit.id}}" data-type="kit">
                                 <i class="acc-icon --xs {{#unless
                                         (lookup @root.pinned kit.id)}}muted{{/unless}} {{accIconClass 'pin'}}"></i>

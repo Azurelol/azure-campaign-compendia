@@ -35,9 +35,21 @@ const {ArrayField, StringField, HTMLField} = foundry.applications.fields;
  */
 
 /**
+ * @typedef ScreenDocumentReference
+ * @property {String} id
+ * @property {'JournalEntry'} type
+ * @property {String} uuid The uuid of the document being referenced.
+ * @property {String} name The name of the document.
+ * @property {String} img An image of the document.
+
+ */
+
+
+/**
  * @property {PinReference[]} pinned
  * @property {ScreenNoteData[]} notes
  * @property {ScreenEventQueue} events
+ * @property {ScreenDocumentReference[]} documents
  */
 export class ScreenDataModel extends VersionedDataModel {
     static defineSchema() {
@@ -61,7 +73,14 @@ export class ScreenDataModel extends VersionedDataModel {
                     title: new StringField(),
                     details: new HTMLField()
                 }))
-            })
+            }),
+            documents: new ArrayField(new SchemaField({
+                id: new StringField(),
+                type: new StringField(),
+                uuid: new StringField(),
+                name: new StringField(),
+                img: new StringField(),
+            }))
         })
     }
 

@@ -60,25 +60,25 @@
                         {{#each data.events.pending as |event|}}
                             <li class="acc-list__entry --basic" data-index="{{@index}}">
                                 <div class="acc-list__entry__controls">
-                                    <div class="acc-list__entry__icon">
+                                    <div class="acc-list__entry__action">
                                         <a data-action="expandObject" data-id="{{event.id}}" data-index="{{@index}}"
                                            data-type="event" data-tooltip="Expand">
                                             <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
                                         </a>
                                     </div>
-                                    <div class="acc-list__entry__icon">
+                                    <div class="acc-list__entry__action">
                                         <a data-action="editObject" data-id="{{event.id}}" data-type="event"
                                            data-index="{{@index}}" data-tooltip="Edit">
                                             <i class="acc-icon --xs {{accIconClass 'edit'}}"></i>
                                         </a>
                                     </div>
-                                    <div class="acc-list__entry__icon">
+                                    <div class="acc-list__entry__action">
                                         <a data-action="toggleEvent" data-id="{{event.id}}" data-status="pending"
                                            data-index="{{@index}}" data-tooltip="Resolve">
                                             <i class="acc-icon --xs {{accIconClass 'check'}}"></i>
                                         </a>
                                     </div>
-                                    <div class="acc-list__entry__icon">
+                                    <div class="acc-list__entry__action">
                                         <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
                                            data-index="{{@index}}" data-tooltip="Remove">
                                             <i class="acc-icon --xs {{accIconClass 'remove'}}"></i>
@@ -105,13 +105,13 @@
                         {{#each data.events.resolved as |event|}}
                             <li class="acc-list__entry --basic" data-index="{{@index}}">
                                 <div class="acc-list__entry__controls">
-                                    <div class="acc-list__entry__icon">
+                                    <div class="acc-list__entry__action">
                                         <a data-action="toggleEvent" data-id="{{event.id}}" data-status="resolved"
                                            data-index="{{@index}}" data-tooltip="Revert">
                                             <i class="acc-icon --xs {{accIconClass 'undo'}}"></i>
                                         </a>
                                     </div>
-                                    <div class="acc-list__entry__icon">
+                                    <div class="acc-list__entry__action">
                                         <a data-action="removeObject" data-id="{{event.id}}" data-type="event"
                                            data-status="resolved"
                                            data-index="{{@index}}" data-tooltip="Remove">
