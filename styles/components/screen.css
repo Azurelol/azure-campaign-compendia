@@ -1,0 +1,185 @@
+.acc-screen {
+    display: grid;
+    height: 100%;
+    padding: 8px;
+    gap: 8px;
+
+    background: var(--acc-color-bg);
+    color: var(--acc-color-text);
+
+    .tab {
+    }
+
+    .tab,
+    .active {
+        grid-area: active-tab;
+    }
+
+    .nav {
+        grid-area: nav;
+    }
+
+    .overview {
+        .content {
+
+            height: 100%;
+            gap: 1rem;
+            display: grid;
+            grid-template-columns: 625px 1fr;
+            grid-template-areas:
+                    'pins sidebar';
+
+            .pins {
+                grid-area: pins;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .sidebar {
+                grid-area: sidebar;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                justify-content: space-around;
+            }
+        }
+    }
+
+    .kits {
+        overflow-y: hidden;
+    }
+
+    .planner {
+        .content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-areas:
+                    'notes events';
+            height: 100%;
+            gap: 1rem;
+
+            .notes {
+                grid-area: notes;
+            }
+
+            .events {
+                grid-area: events;
+
+                .controls {
+                    height: 10%;
+                }
+
+                --color-pending: #A8845A;
+                --color-resolved: #7A9E6F;
+                --color-divider: #4C4D4D;
+                --color-divider-border: grey;
+
+                .divider {
+                    background-color: var(--color-divider);
+                    border-top: 1px solid var(--color-divider-border);
+                    border-bottom: 1px solid var(--color-divider-border);
+                }
+
+                .pending {
+                    background: var(--color-pending);
+                }
+
+                .resolved {
+                    background: var(--color-resolved);
+                }
+            }
+        }
+    }
+
+    .widgets {
+        grid-area: widgets;
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+        align-items: center;
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            i {
+                font-size: 20px;
+            }
+        }
+    }
+
+    &.theme-classic {
+
+        background: linear-gradient(135deg, #fffdf4 0%, #f5e9cc 50%, #e8d4a0 100%);
+
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr 100px;
+        grid-template-areas:
+            'active-tab active-tab'
+            'nav widgets';
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+
+            .tabs {
+                flex-direction: row;
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                border-top: none;
+                border-bottom: none;
+            }
+
+            .button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                min-width: 100px;
+                height: 100px;
+                padding: 8px;
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                border: none;
+                text-shadow: none;
+                background: transparent;
+                color: var(--acc-color-icon);
+                transition: background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+
+                i {
+                    color: var(--acc-color-icon);
+                    font-size: 32px;
+                    transition: color 0.2s ease,
+                    filter 0.2s ease;
+                }
+
+                &.active {
+                    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.35) 100%);
+                    color: var(--acc-color-icon-active);
+
+                    i {
+                        color: var(--acc-color-icon-active);
+                    }
+                }
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.06);
+                    border-color: rgba(255, 255, 255, 0.1);
+                    color: var(--acc-color-icon-hover);
+
+                    i {
+                        color: var(--acc-color-icon-hover);
+                    }
+                }
+            }
+        }
+    }
+}

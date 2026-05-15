@@ -1,0 +1,101 @@
+.acc-card {
+    --bg-color: var(--acc-color-bg-card);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--acc-color-border-card);
+    border-radius: var(--acc-border-radius, 4px);
+    background: radial-gradient(ellipse at center, color-mix(in srgb, var(--bg-color) 80%, white) 0%, var(--bg-color) 100%);
+    color: var(--acc-color-card);
+    overflow: hidden;
+
+    i {
+        color: var(--acc-color-card);
+    }
+
+    .acc-card__header {
+        display: flex;
+        align-items: center;
+        padding: 0.5em 0.75em;
+        font-weight: bold;
+        justify-content: space-between;
+    }
+
+    .acc-card__body {
+        flex: 1;
+        padding: 0.75em;
+        overflow-y: auto;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    .acc-card__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5em;
+        padding: 0.5em 0.75em;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    .acc-card__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 2px 8px;
+        border-radius: var(--acc-primitive-border-radius-md);
+    }
+
+    .acc-card__button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        font-size: 15px;
+
+        i {
+            color: var(--acc-color-card);
+        }
+
+        &:hover {
+            color: var(--acc-color-icon-active);
+        }
+    }
+
+    --acc-card-size-s: 160px;
+    --acc-card-size-m: 200px;
+
+    &.--s {
+        width: var(--acc-card-size-s);
+        height: var(--acc-card-size-s);
+    }
+
+    &.--m {
+        width: var(--acc-card-size-m);
+        height: var(--acc-card-size-m);
+    }
+
+    &.--borderless {
+        border: none;
+    }
+
+    &.--note {
+        --bg-color: #dfdf5a;
+        color: black;
+
+        i {
+            color: #4e4545
+        }
+
+        .acc-card__header {
+            justify-content: flex-end;
+        }
+    }
+}
+

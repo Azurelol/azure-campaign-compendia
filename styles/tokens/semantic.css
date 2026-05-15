@@ -1,0 +1,85 @@
+/* ============================================================
+   TIER 2 — Semantic tokens
+   What a value is *for*. References Tier 1 only.
+   - Never used in components directly.
+   - The convention is TYPE-CATEGORY-ROLE. (Where type are essentially CSS property families)
+   ============================================================ */
+:root {
+    /* backgrounds */
+    --acc-color-bg: var(--acc-primitive-color-parchment);
+    --acc-color-bg-content: var(--acc-primitive-color-parchment-light);
+    --acc-color-bg-title: var(--acc-primitive-color-parchment-pale);
+
+    /* cards */
+    --acc-color-bg-card: rgb(107, 107, 107);
+    --acc-color-card: #e4e3e3;
+
+    /* controls */
+    --acc-color-control: var(--acc-primitive-color-white);
+    --acc-color-control-hover: color-mix(in srgb, var(--acc-primitive-color-white), white 25%);
+    --acc-color-bg-control: var(--acc-primitive-color-grey-light);
+    --acc-color-bg-control-hover: var(--acc-primitive-color-azure);
+    --acc-color-shadow-control: var(--acc-primitive-color-warm-brown);
+    --acc-color-border-control: var(--acc-primitive-color-grey-mid);
+    --acc-color-shadow: var(--acc-primitive-color-warm-brown);
+    --acc-color-shadow-secondary: var(--acc-primitive-color-white);
+    --acc-color-bg-input: var(--acc-primitive-color-parchment-light);
+    --acc-color-bg-control-header: #404040;
+    --acc-color-control-header: #E5DBD0;
+
+    /* panels */
+    --acc-color-bg-panel: var(--acc-primitive-color-parchment-light);
+    --acc-color-bg-panel-head: var(--acc-primitive-color-taupe);
+    --acc-color-text-panel: var(--acc-primitive-color-text);
+    --acc-color-text-panel-head: var(--acc-primitive-color-dim);
+
+    --acc-color-bg-panel-secondary: #212121;
+    --acc-color-bg-panel-tertiary: #252526;
+    --acc-color-border-panel-secondary: #454545;
+    --acc-color-bg-input-panel-secondary: #2d2d2d;
+    --acc-color-text-panel-secondary: #d4d4d4;
+
+    /* boards */
+    --acc-border-width-board: 3px;
+
+    /* tables */
+    --acc-color-bg-table-row: var(--acc-primitive-color-grey-850);
+    --acc-color-bg-table-row-alt: var(--acc-primitive-color-grey-800);
+
+    /* icons */
+    --acc-color-icon: var(--acc-primitive-color-burgundy-dark);
+    --acc-color-icon-active: var(--acc-primitive-color-burgundy);
+    --acc-color-icon-hover: color-mix(in srgb, var(--acc-primitive-color-burgundy), white 40%);
+    --acc-color-bg-badge: var(--acc-primitive-color-burgundy);
+    --acc-color-badge: var(--acc-primitive-color-grey-light);
+
+    /* text */
+    --acc-color-text: var(--acc-primitive-color-text);
+    --acc-color-text-title: var(--acc-primitive-color-brown-dark);
+    --acc-color-text-muted: var(--acc-primitive-color-dim);
+    --acc-color-text-inverted: var(--acc-primitive-color-white);
+    --acc-color-text-bullet: var(--acc-primitive-color-black);
+
+    /* borders */
+    --acc-border-radius: 4px;
+    --acc-color-border: var(--acc-primitive-color-burgundy);
+    --acc-color-border-card: #665151;
+    --acc-color-border-kit: var(--acc-primitive-color-border-kit);
+    --acc-color-border-title: var(--acc-primitive-color-border-title);
+    --acc-color-border-panel: var(--acc-primitive-color-border-panel);
+
+
+    /* typography */
+    --acc-font-title: var(--acc-primitive-font-title);
+    --acc-font-heading: var(--acc-primitive-font-heading);
+    --acc-font-body: var(--acc-primitive-font-body);
+
+    /* text sizes */
+    --acc-text-size-header: 18px;
+    --acc-text-size-xs: var(--acc-primitive-size-text-xs);
+    --acc-text-size-sm: var(--acc-primitive-size-text-sm);
+    --acc-text-size-m: var(--acc-primitive-size-text-m);
+    --acc-text-size-base: var(--acc-primitive-size-text-base);
+    --acc-text-size-lg: var(--acc-primitive-size-text-lg);
+    --acc-text-size-xl: var(--acc-primitive-size-text-xl);
+}

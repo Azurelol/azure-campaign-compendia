@@ -1,0 +1,140 @@
+
+.acc-grid {
+    --acc-grid-col-size: 200px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--acc-grid-col-size, 200px));
+    gap: 4px;
+}
+
+.acc-list__container {
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--acc-color-bg-control);
+
+    border: 1px solid var(--acc-color-border-control);
+
+    &.--borderless {
+        border: none;
+    }
+
+    .acc-list__container__header {
+        display: flex;
+        flex-direction: row;
+        background: var(--acc-color-bg-control-header);
+        color: var(--acc-color-control-header);
+        justify-content: space-between;
+
+        i {
+            color: var(--acc-color-control-header);
+        }
+
+        .acc-list__container__header__title {
+            padding: 4px;
+            font-size: var(--acc-text-size-header);
+            font-family: Segoe UI serif;
+            font-weight: bold;
+        }
+    }
+
+    .acc-list__container__body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+ul.acc-list li,
+ol.acc-list li {
+    margin-bottom: 0;
+}
+
+.acc-list {
+
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    ul, ol {
+        padding: 0;
+        margin: 0;
+    }
+
+    &.--split {
+        flex: 2;
+    }
+
+    .acc-list__entry {
+        color: var(--acc-color-text-panel);
+        border: 1px solid var(--acc-color-border-panel);
+        background: var(--acc-color-bg-panel);
+        background-blend-mode: multiply;
+        background-position: right top;
+
+        .acc-list__entry__action {
+            display: flex;
+            align-items: center;
+            color: var(--acc-color-icon);
+        }
+
+        .acc-list__entry__controls {
+            display: flex;
+            flex-direction: row;
+            gap: 0.4rem;
+        }
+
+        &.--compact {
+
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: 1rem;
+            padding: 2px;
+            align-items: center;
+            background: none;
+            border: none;
+
+            .acc-list__entry__header {
+                .acc-list__entry__name {
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+            }
+
+            .acc-list__entry__controls {
+
+            }
+        }
+
+        &.--basic {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: 1rem;
+            padding-left: 1rem;
+            justify-content: space-between;
+
+            .acc-list__entry__header {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                justify-content: space-between;
+                width: 100%;
+
+                .acc-list__entry__name {
+                    font-family: 'CreditValleybold';
+                    font-size: x-large;
+                    font-weight: 700;
+                }
+            }
+
+            .acc-list__entry__description {
+                overflow-y: auto;
+                user-select: text;
+            }
+        }
+    }
+}

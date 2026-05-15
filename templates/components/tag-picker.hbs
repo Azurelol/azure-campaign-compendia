@@ -1,0 +1,16 @@
+<div id="{{label}}" class="acc-tag__picker">
+    <button type="button" class="acc-tag__picker__toggle">
+        <i class="fas fa-tag"></i>
+        {{label}}
+        <span class="acc-tag__picker__count">{{count}}</span>
+        <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="acc-tag__picker__popup">
+        {{#each tags as |tag|}}
+            <div class="acc-tag__filter {{#if (accContains ../selected tag)}}active{{/if}}"
+                 data-tag="{{tag}}">
+                {{accHumanize tag}}
+            </div>
+        {{/each}}
+    </div>
+</div>

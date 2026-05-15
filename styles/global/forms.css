@@ -1,0 +1,117 @@
+.acc-details {
+
+    background: var(--acc-color-bg-panel);
+    border: 2px solid var(--acc-color-border);
+
+    > summary {
+        font-size: var(--acc-text-size-lg);
+        background: var(--acc-color-bg-panel-head);
+    }
+
+    .acc-details__content {
+        padding: 8px;
+    }
+
+    prose-mirror.editor.prosemirror.active div.editor-container div.editor-content.ProseMirror {
+        background: var(--acc-primitive-color-white);
+        border: 1px solid var(--acc-color-border-control);
+    }
+}
+
+.acc-property-section {
+    background: var(--acc-section-bg, var(--acc-color-bg-panel));
+    padding: 4px;
+    border: 1px solid var(--acc-color-border-panel);
+
+    --acc-section-bg: color-mix(in srgb, var(--acc-color-bg-panel) 85%, black);
+
+    .acc-property-section {
+        --acc-section-bg: color-mix(in srgb, var(--acc-color-bg-panel) 70%, black);
+
+        .acc-property-section {
+            --acc-section-bg: color-mix(in srgb, var(--acc-color-bg-panel) 55%, black);
+        }
+    }
+
+}
+
+.acc-property-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &.--row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &.--stretch {
+        width: 100%;
+    }
+
+    &.--three {
+
+    }
+}
+
+.acc-property {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    --property-label-width: 60px;
+
+    &.--stacked {
+        flex-direction: column;
+    }
+
+    span {
+        width: var(--property-label-width);
+    }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+    }
+}
+
+.acc-popout {
+    background: red;
+}
+
+.acc-form {
+    background: var(--acc-color-bg-panel);
+    color: var(--acc-color-text-panel);
+
+    &.--popout {
+        align-items: center;
+        justify-content: center;
+        max-width: 640px;
+        max-height: 480px;
+    }
+
+    &.--borderless {
+
+        /* Hide the titlebar */
+
+        .window-header {
+            display: none;
+        }
+
+        .window-content {
+            height: 100%;
+            /*padding: 0;*/
+            background: none;
+
+            .dialog-form {
+                height: 100%;
+            }
+
+            .dialog-content {
+                height: 100%;
+            }
+        }
+    }
+}

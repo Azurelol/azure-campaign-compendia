@@ -3,5 +3,26 @@
     "JournalEntryPage": {
       "azure-campaign-compendia.storyKit": "Story Kit"
     }
+  },
+  "ACC": {
+    "GMScreen": "GM Screen",
+    "DIE": {
+      "d2": "D2",
+      "d4": "D4",
+      "d6": "D6",
+      "d8": "D8",
+      "d12": "D12"
+    },
+    "CLOCK": {
+      "Short": "Short",
+      "Medium": "Medium",
+      "Long": "Long"
+    },
+    "STORY": {
+      "TONE": {
+        "Dark": "Dark",
+        "Grim": "Grim"
+      }
+    }
   }
 }

@@ -1,19 +1,21 @@
-<div class="form-group">
-
-    <div class="inline-fields">
+<div class="acc-property-section">
+    <div class="acc-property-group --row">
         <label>
             Label
-            <input type="text" name="{{path}}.label" maxlength="18" value="{{ data.label }}"  data-dtype="String"/>
+            <input type="text" name="{{path}}.label" maxlength="18" value="{{ data.label }}" data-dtype="String"/>
         </label>
 
         <label>
             Clock
-            <input type="number" name="{{path}}.clock" min="0" max="8"  value="{{ data.clock }}"  data-dtype="Number" />
+            <select name="{{path}}.clock" class="">
+                {{selectOptions constants.clockSize selected=data.clock sort=true localize=true blank="-"}}
+            </select>
         </label>
 
         <label>
             Fail State
-            <input type="text" name="{{path}}.failState" maxlength="32" value="{{ data.failState }}"  data-dtype="String"/>
+            <input type="text" name="{{path}}.failState" maxlength="32" value="{{ data.failState }}"
+                   data-dtype="String"/>
         </label>
     </div>
 
@@ -24,7 +26,7 @@
                 <label>
                     <input type="text" name="{{../path}}.traits.{{ index }}"
                            value="{{ entry }}"
-                           data-dtype="String" />
+                           data-dtype="String"/>
                 </label>
             </li>
         {{/each}}
@@ -37,7 +39,7 @@
                 <label>
                     <input type="text" name="{{../path}}.moves.{{ index }}"
                            value="{{ entry }}"
-                           data-dtype="String" />
+                           data-dtype="String"/>
                 </label>
             </li>
         {{/each}}

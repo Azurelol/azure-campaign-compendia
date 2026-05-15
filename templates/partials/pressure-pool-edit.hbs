@@ -1,13 +1,15 @@
-<div class="form-group">
-    <div class="inline-fields">
+<div class="acc-property-section">
+    <div class="acc-property-group --row">
         <label>
             Title
-            <input type="text" name="{{path}}.label" maxlength="25" value="{{ pool.label }}"  data-dtype="String" />
+            <input type="text" name="{{path}}.label" maxlength="25" value="{{ pool.label }}" data-dtype="String"/>
         </label>
 
         <label>
             Clock
-            <input type="number" name="{{path}}.clock" min="0" max="8"  value="{{ pool.clock }}"  data-dtype="Number" />
+            <select name="{{path}}.clock" class="">
+                {{selectOptions constants.clockSize selected=pool.clock sort=true localize=true blank="-"}}
+            </select>
         </label>
     </div>
 
@@ -15,17 +17,17 @@
     <ol>
         <li>
             <label>
-                <input type="text" name="{{path}}.event1" maxlength="40" value="{{ pool.event1 }}" data-dtype="String" />
+                <input type="text" name="{{path}}.event1" maxlength="40" value="{{ pool.event1 }}" data-dtype="String"/>
             </label>
         </li>
         <li>
             <label>
-                <input type="text" name="{{path}}.event2" maxlength="40" value="{{ pool.event2 }}" data-dtype="String" />
+                <input type="text" name="{{path}}.event2" maxlength="40" value="{{ pool.event2 }}" data-dtype="String"/>
             </label>
         </li>
         <li>
             <label>
-                <input type="text" name="{{path}}.event3" maxlength="40" value="{{ pool.event3 }}" data-dtype="String" />
+                <input type="text" name="{{path}}.event3" maxlength="40" value="{{ pool.event3 }}" data-dtype="String"/>
             </label>
         </li>
     </ol>

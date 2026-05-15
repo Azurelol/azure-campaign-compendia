@@ -1,0 +1,118 @@
+/* ============================================================
+   CUSTOM ICONS
+   ============================================================ */
+:root {
+    --icon-acc-d2: url(../static/icons/dice-six-faces-two.svg);
+    --icon-acc-d4: url(../static/icons/dice-six-faces-four.svg);
+    --icon-acc-d6: url(../static/icons/dice-six-faces-six.svg);
+}
+
+.acc-d2 {
+    background-image: var(--icon-acc-d2);
+}
+
+.acc-d4 {
+    background-image: var(--icon-acc-d4);
+}
+
+.acc-d6 {
+    background-image: var(--icon-acc-d6);
+}
+
+/* ============================================================
+   ICON CLASS
+   ============================================================ */
+.acc-anchor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.acc-icon {
+    --icon-size: 100%;
+    display: inline-block;
+    line-height: 1;
+    font-size: var(--icon-size);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+    object-fit: contain;
+    color: var(--acc-color-icon);
+
+    &.--xs {
+        --icon-size: 16px;
+    }
+
+    &.--s {
+        --icon-size: 24px;
+    }
+
+    &.--sm {
+        --icon-size: 36px;
+    }
+
+    &.--m {
+        --icon-size: 48px;
+    }
+
+    &.--l {
+        --icon-size: 64px;
+    }
+
+    &.--xl {
+        --icon-size: 96px;
+    }
+
+    &.glow {
+        filter: drop-shadow(0 0 4px var(--acc-color-shadow-control));
+    }
+
+    &.warn {
+        color: var(--acc-primitive-color-warning);
+    }
+
+    &.center {
+        align-self: center;
+        justify-self: center;
+    }
+
+    &.invert {
+        filter: invert(1);
+    }
+
+    &.outline {
+        filter: drop-shadow(0 0 0.5px var(--acc-color-shadow)) drop-shadow(0 0 0.5px var(--acc-color-shadow));
+    }
+
+    &.spin {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    &.muted {
+        opacity: 0.4;
+    }
+
+    &.pulse {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.4;
+        }
+    }
+}
