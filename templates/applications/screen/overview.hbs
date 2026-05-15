@@ -39,15 +39,6 @@
                                     {{pin.preview}}
                                 </span>
                             </div>
-                            <div class="acc-card__footer">
-                                <button class="acc-button" data-action="pinObject" data-type="note"
-                                        data-id="{{note.id}}"
-                                        data-index="{{@index}}">
-                                    <i class="acc-icon --xs {{#unless
-                                            (lookup @root.pinned note.id)}}muted{{/unless}} {{accIconClass 'pin'}}"></i>
-                                </button>
-                            </div>
-
                         {{/if}}
 
                     </div>
