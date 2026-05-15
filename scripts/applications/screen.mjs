@@ -80,6 +80,10 @@ export class GMScreen extends ACApplication {
         },
     };
 
+    /**
+     * @type GMScreen
+     */
+    _instance;
 
     /** @type StoryKitBrowser */
     #kitBrowser;
@@ -90,6 +94,16 @@ export class GMScreen extends ACApplication {
     constructor(options = {}) {
         super(options)
         this.#kitBrowser = new StoryKitBrowser(this);
+    }
+
+    static open() {
+        if (!GMScreen._instance) GMScreen._instance = new GMScreen();
+        GMScreen._instance.render(true, {force: true});
+    }
+
+    async close(options = {}) {
+        GMScreen._instance = null;
+        return super.close(options);
     }
 
     /** @override */

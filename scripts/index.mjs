@@ -39,8 +39,7 @@ Hooks.once('init', async () => {
             button: true,
             visible: game.user.isGM,
             onChange: () => {
-                const app = new GMScreen();
-                app.render(true);
+                GMScreen.open();
             }
         };
 
