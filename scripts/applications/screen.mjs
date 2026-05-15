@@ -92,10 +92,14 @@ export class GMScreen extends ACApplication {
         this.#kitBrowser = new StoryKitBrowser(this);
     }
 
+    async _onDropJournalEntry(event, entry) {
+        await super._onDropJournalEntry(event, entry);
+        ui.notifications.info(`Dropped journal entry ${entry.name}`)
+    }
+
     /** @override */
     async _prepareContext(options) {
-        let context = await super._prepareContext(options);
-        return context;
+        return await super._prepareContext(options);
     }
 
     /** @inheritdoc */
