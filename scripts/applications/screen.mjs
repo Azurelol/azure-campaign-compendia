@@ -164,21 +164,18 @@ export class GMScreen extends ACApplication {
                 const screen = this;
                 Sortable.create(html.querySelector('.events .pending.acc-list'), {
                     onEnd: async (evt) => {
-                        ui.notifications.info(`Moved event from ${evt.oldIndex} to ${evt.newIndex}`);
                         await screen.swapArrayElement('events.pending', evt.oldIndex, evt.newIndex);
                     }
                 });
 
                 Sortable.create(html.querySelector('.events .resolved.acc-list'), {
                     onEnd: async (evt) => {
-                        ui.notifications.info(`Moved event from ${evt.oldIndex} to ${evt.newIndex}`);
                         await screen.swapArrayElement('events.resolved', evt.oldIndex, evt.newIndex);
                     }
                 });
 
                 Sortable.create(html.querySelector('.notes .acc-list'), {
                     onEnd: async (evt) => {
-                        ui.notifications.info(`Moved note from ${evt.oldIndex} to ${evt.newIndex}`);
                         await screen.swapArrayElement('notes', evt.oldIndex, evt.newIndex);
                     }
                 });
@@ -570,7 +567,6 @@ export class GMScreen extends ACApplication {
                     if (confirm) {
                         data[index] = note;
                         await this.saveData(data);
-                        ui.notifications.info(`Edited GM screen note.`)
                     }
                 }
             }
@@ -583,7 +579,6 @@ export class GMScreen extends ACApplication {
                     if (confirm) {
                         data[index] = event;
                         await this.saveData(data);
-                        ui.notifications.info(`Edited GM screen event.`)
                     }
                 }
                 break;
