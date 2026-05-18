@@ -59,7 +59,7 @@ on:
   # available for release events, so if you add other events, you may need to
   # alter other parts of this workflow.
   release:
-    types: [published]
+    types: [ published ]
 
 
 jobs:
@@ -125,6 +125,7 @@ jobs:
             vendor/                              \
             styles/                              \
             packs/                               \
+            libs/                                \
             assets/                              \
             language/                            \
             lang/
