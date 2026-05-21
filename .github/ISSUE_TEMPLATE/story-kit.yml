@@ -1,0 +1,24 @@
+name: Story Kit
+description: Submit a story kit.
+title: "[Story Kit]: "
+labels: []
+type: feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for submitting a story kit for community use!
+  - type: input
+    id: title
+    attributes:
+      label: Title
+    validations:
+      required: true
+  - type: textarea
+    id: introduction
+    attributes:
+      label: What happened?
+      description: A short, introductory blurb.
+      placeholder: In a galaxy long, long ago...
+    validations:
+      required: true
