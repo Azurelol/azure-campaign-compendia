@@ -1,8 +1,6 @@
 name: Story Kit
 description: Submit a story kit.
 title: "[Story Kit]: "
-labels: []
-type: feature
 body:
   - type: markdown
     attributes:
