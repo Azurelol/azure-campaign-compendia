@@ -1,17 +1,11 @@
 name: Story Kit
 description: Submit a story kit.
-title: "[Story Kit]: "
+title: ""
 body:
   - type: markdown
     attributes:
       value: |
         Thank you for submitting a story kit for community use!
-  - type: input
-    id: title
-    attributes:
-      label: Title
-    validations:
-      required: true
   - type: textarea
     id: introduction
     attributes:
@@ -20,3 +14,46 @@ body:
       placeholder: In a galaxy long, long ago...
     validations:
       required: true
+  - type: textarea
+    id: hooks
+    attributes:
+      label: Hooks
+      description: Evocative short sentences used when introducing the scenario to your PCs.
+    validations:
+      required: true
+  - type: textarea
+    id: pressure-pools
+    attributes:
+      label: Pressure Pools
+      description: These act as timers, rolled to build tension and keep things moving.
+    validations:
+      required: true
+  - type: textarea
+    id: threads
+    attributes:
+      label: Threads
+      description: These are useful pieces such as props, NPCs and more that form the backbone of the kit.
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Setup
+      description: These help you make some choices that change how the scenario plays out.
+    validations:
+      required: true
+  - type: textarea
+    id: challenges
+    attributes:
+      label: Challenges
+      description: These highlight likely situations for testing your PCs and providing exciting moments.
+    validations:
+      required: true
+  - type: input
+    id: twist
+    attributes:
+      label: Twist
+      description: One or more twists that can turn the scenario on its head.
+    validations:
+      required: true
+
