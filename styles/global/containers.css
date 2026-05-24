@@ -126,8 +126,9 @@ ol.acc-list li {
 
                 .acc-list__entry__name {
                     font-family: 'CreditValleybold';
-                    font-size: x-large;
+                    font-size: 20px;
                     font-weight: 700;
+                    text-wrap: nowrap;
                 }
             }
 

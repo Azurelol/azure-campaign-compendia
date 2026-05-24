@@ -15,6 +15,7 @@ export const ACHandlebars = Object.freeze({
         return foundry.applications.handlebars.loadTemplates([
             moduleTemplatePath('partials/document-anchor'),
             moduleTemplatePath('components/tag-picker'),
+            moduleTemplatePath('components/skeleton'),
         ]);
     },
     setupComponent: {
@@ -37,6 +38,14 @@ export const ACHandlebars = Object.freeze({
             args.pop();
             return args.join('');
         });
+        Handlebars.registerHelper('accNotEmpty', val => {
+            if (!val) return false;
+            if (Array.isArray(val)) return val.length > 0;
+            if (typeof val === 'object') return Object.keys(val).length > 0;
+            return true;
+        }
+        );
+        Handlebars.registerHelper('accSkeleton', skeleton);
         Handlebars.registerHelper('accTagPicker', tagPicker);
         Handlebars.registerHelper('accHumanize', function (str) {
             if (str && typeof str === 'string') {
@@ -82,6 +91,25 @@ function tagPicker(label, tags, selected, options) {
                 label: label,
                 tags: tags,
                 selected: selected,
+            })
+            : '';
+    return new Handlebars.SafeString(html);
+}
+
+/**
+ * @param {Object} options
+ * @returns {Handlebars.SafeString}
+ */
+function skeleton(options) {
+    if (options.hash) {
+        options = options.hash;
+    }
+
+    const template = Handlebars.partials[moduleTemplatePath('components/skeleton')];
+    const html =
+        typeof template === 'function'
+            ? template({
+                ...options
             })
             : '';
     return new Handlebars.SafeString(html);

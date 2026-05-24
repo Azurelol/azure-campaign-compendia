@@ -1,0 +1,65 @@
+.ah-skeleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: rgba(128, 128, 128, 0.12);
+    border-radius: 4px;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    font-size: inherit;
+}
+
+.ah-skeleton__label {
+    position: relative;
+    z-index: 1;
+    font-size: 1.25em;
+    color: rgba(128, 128, 128, 0.6);
+    pointer-events: none;
+    user-select: none;
+}
+
+.ah-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(128, 128, 128, 0.15) 50%,
+            transparent 100%
+    );
+    animation: rz-shimmer 3.2s ease-in-out infinite;
+}
+
+/* Wave variant (slower, wider sweep) */
+.ah-skeleton-wave::after {
+    animation: rz-wave 2s ease-in-out infinite;
+    background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(128, 128, 128, 0.12) 40%,
+            rgba(128, 128, 128, 0.22) 50%,
+            rgba(128, 128, 128, 0.12) 60%,
+            transparent 100%
+    );
+}
+
+.ah-skeleton-circle {
+    border-radius: 50% !important;
+}
+
+@keyframes rz-shimmer {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(100%);  }
+}
+
+@keyframes rz-wave {
+    0%   { transform: translateX(-150%); }
+    100% { transform: translateX(150%);  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .ah-skeleton::after { animation: none; }
+}

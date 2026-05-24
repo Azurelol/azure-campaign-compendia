@@ -9,41 +9,45 @@
                     </i>
                 </span>
             </div>
-            <div class="acc-grid" style="--acc-grid-col-size: var(--acc-card-size-m)">
-                {{#each pinned as |pin|}}
-                    <div class="acc-card --m {{pin.cssClass}}">
-                        {{#if (eq pin.type 'kit')}}
-                            <div class="acc-card__header">
-                                {{pin.object.name}}
-                                <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
-                            </div>
-                            <div class="acc-card__body">
-                            <span>
-                                {{pin.preview}}
-                            </span>
-                            </div>
-                            <div class="acc-card__footer">
-                                <button class="acc-card__button" data-action="expandObject" data-id="{{pin.id}}"
-                                        data-type="kit">
-                                    <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
-                                </button>
-                            </div>
-                        {{/if}}
-
-                        {{#if (eq pin.type 'note')}}
-                            <div class="acc-card__header">
-                                <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
-                            </div>
-                            <div class="acc-card__body">
+                {{#if (accNotEmpty pinned)}}
+                    <div class="acc-grid" style="--acc-grid-col-size: var(--acc-card-size-m)">
+                        {{#each pinned as |pin|}}
+                            <div class="acc-card --m {{pin.cssClass}}">
+                                {{#if (eq pin.type 'kit')}}
+                                    <div class="acc-card__header">
+                                        {{pin.object.name}}
+                                        <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
+                                    </div>
+                                    <div class="acc-card__body">
                                 <span>
                                     {{pin.preview}}
                                 </span>
-                            </div>
-                        {{/if}}
+                                    </div>
+                                    <div class="acc-card__footer">
+                                        <button class="acc-card__button" data-action="expandObject" data-id="{{pin.id}}"
+                                                data-type="kit">
+                                            <i class="acc-icon --xs {{accIconClass 'popout'}}"></i>
+                                        </button>
+                                    </div>
+                                {{/if}}
 
+                                {{#if (eq pin.type 'note')}}
+                                    <div class="acc-card__header">
+                                        <i class="acc-icon --xs {{accIconClass pin.type}}"></i>
+                                    </div>
+                                    <div class="acc-card__body">
+                                    <span>
+                                        {{pin.preview}}
+                                    </span>
+                                    </div>
+                                {{/if}}
+
+                            </div>
+                        {{/each}}
                     </div>
-                {{/each}}
-            </div>
+                {{else}}
+                    {{accSkeleton label='Nothing has been yet pinnned.'}}
+                {{/if}}
         </div>
 
         <div class="sidebar">
@@ -54,7 +58,7 @@
                         </i>
                     </span>
                 </div>
-                {{#if events}}
+                {{#if (accNotEmpty events.pending)}}
                     <ul class="acc-list">
                         {{#each events.pending as |event|}}
                             <li class="acc-list__entry --compact" data-index="{{@index}}">
@@ -75,7 +79,7 @@
                         {{/each}}
                     </ul>
                 {{else}}
-
+                    {{accSkeleton label='No pending events are available.'}}
                 {{/if}}
 
             </div>
@@ -108,6 +112,9 @@
                             </li>
                         {{/each}}
                     </ul>
+
+                {{else}}
+                    {{accSkeleton label='No documents have been bookmarked.'}}
                 {{/if}}
             </div>
 

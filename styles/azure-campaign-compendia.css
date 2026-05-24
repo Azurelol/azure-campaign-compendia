@@ -3,6 +3,7 @@
 @import "tokens/semantic.css";
 
 /* GLOBAL */
+@import "global/application.css";
 @import "global/layout.css";
 @import "global/icons.css";
 @import "global/forms.css";
@@ -12,4 +13,5 @@
 /* COMPONENTS */
 @import "components/story-kit.css";
 @import "components/screen.css";
+@import "components/skeleton.css";
 

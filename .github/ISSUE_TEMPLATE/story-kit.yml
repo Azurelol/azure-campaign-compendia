@@ -9,7 +9,7 @@ body:
   - type: textarea
     id: introduction
     attributes:
-      label: What happened?
+      label: Introduction
       description: A short, introductory blurb.
       placeholder: In a galaxy long, long ago...
     validations:

@@ -110,7 +110,6 @@ Constants.icons = {
 
     poll: 'fa-solid fa-square-poll-vertical',
 
-
     planner: 'fa fa-notebook',
     kit: 'fa fa-book',
     note: 'fa fa-sticky-note',

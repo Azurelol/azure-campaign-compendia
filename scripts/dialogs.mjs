@@ -80,10 +80,10 @@ async function confirm(options) {
         }),
         rejectClose: false,
         yes: {
-            label: 'FU.Confirm',
+            label: 'ACC.DIALOG.Confirm',
         },
         no: {
-            label: 'FU.Cancel',
+            label: 'ACC.DIALOG.Cancel',
         },
     });
 }
@@ -101,7 +101,7 @@ async function input(title, content, options = {}) {
         classes: DIALOG_CLASSES,
         rejectClose: false,
         ok: {
-            label: 'FU.Confirm',
+            label: 'ACC.DIALOG.Confirm',
         },
         actions: {
             // Image Picker: Browse

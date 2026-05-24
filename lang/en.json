@@ -6,6 +6,10 @@
   },
   "ACC": {
     "GMScreen": "GM Screen",
+    "DIALOG": {
+      "Confirm": "Confirm",
+      "Cancel": "Cancel"
+    },
     "DIE": {
       "d2": "D2",
       "d4": "D4",

@@ -28,6 +28,7 @@ export class GMScreen extends ACApplication {
             submitOnChange: true,
             closeOnSubmit: false,
         },
+        classes: ['acc-application'],
         position: {width: 850, height: 800},
         actions: {
             viewStoryKit: this.#viewStoryKit,
@@ -72,7 +73,7 @@ export class GMScreen extends ACApplication {
     static TABS = {
         primary: {
             tabs: [
-                {id: 'overview', label: 'Overview', icon: 'ra ra-double-team'},
+                {id: 'overview', label: 'Overview', icon: 'fas fa-people-group'},
                 {id: 'kits', label: 'Story Kits', icon: 'fas fa-book'},
                 {id: 'planner', label: 'Planner', icon: 'fas fa-notebook'},
             ],
@@ -235,11 +236,16 @@ export class GMScreen extends ACApplication {
      * @returns {Promise<ScreenDataModel>}
      */
     async loadData() {
+        /** @type ScreenDataModel **/
         let data = await Settings.get(Settings.keys.screenData);
         if (data === undefined) {
-            data = new ScreenDataModel();
+            data = new ScreenDataModel(ScreenDataModel.schema.initial());
             await this.saveData(data);
         }
+        else{
+            data = new ScreenDataModel(data);
+        }
+        data = data.toObject();
         return data;
     }
 
@@ -248,7 +254,8 @@ export class GMScreen extends ACApplication {
      * @returns {Promise<void>}
      */
     async saveData(data) {
-        await Settings.set(Settings.keys.screenData, data);
+        const _data = data;
+        await Settings.set(Settings.keys.screenData, _data);
         return this.refresh();
     }
 

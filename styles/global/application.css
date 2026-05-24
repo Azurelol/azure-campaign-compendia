@@ -1,0 +1,5 @@
+.acc-application {
+    .window-header {
+        background: var(--acc-color-bg-control-header);
+    }
+}

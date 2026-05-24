@@ -1,7 +1,5 @@
 import {VersionedDataModel} from "./versioned-data-model.mjs";
 
-const {ArrayField, StringField, HTMLField} = foundry.applications.fields;
-
 /**
  * @typedef PinReference
  * @property {String} type The type of the object being referenced.
@@ -41,9 +39,9 @@ const {ArrayField, StringField, HTMLField} = foundry.applications.fields;
  * @property {String} uuid The uuid of the document being referenced.
  * @property {String} name The name of the document.
  * @property {String} img An image of the document.
-
  */
 
+const {ArrayField, StringField, HTMLField, SchemaField} = foundry.data.fields;
 
 /**
  * @property {PinReference[]} pinned
@@ -53,7 +51,7 @@ const {ArrayField, StringField, HTMLField} = foundry.applications.fields;
  */
 export class ScreenDataModel extends VersionedDataModel {
     static defineSchema() {
-        return Object.assign(super.defineSchema, {
+        return Object.assign(super.defineSchema(), {
             pinned: new ArrayField(new SchemaField({
                 type: new StringField(),
                 id: new StringField(),
